@@ -1,0 +1,82 @@
+Everything in English
+
+Also try to use one name for one type of activity/action, e.g.:
+bool isMoving = true;
+
+void StopMoving()
+{
+    isMoving = false;
+}
+
+
+Other rules:
+
+FileName.extension
+
+NamesForUnityStuff
+// for scenes, scene objects, prefabs, tags, etc.
+
+
+variableName
+
+// without immediate assigning of values
+type var1, var2, var3, var4;
+
+// with assigning values
+type var1, var3;
+type var2 = ...;
+type var4 = ...;
+
+
+type FunctionName(arg1, arg2, arg3)
+{
+    ...
+}
+
+// if function is supposed to be empty then
+type FunctionName(...) {} 
+
+
+// separate arguments with a space after comma
+FunctionBeingCalled(arg1, arg2, arg3)
+
+
+if (condition)
+    statement
+else
+    statement2
+
+
+if (condition)
+{
+    block
+}
+else
+{
+    block2
+}
+
+
+if (condition)
+{
+    statement
+}
+else
+{
+    block
+}
+
+
+if (condition)
+{
+    block
+}
+else
+{    
+    statement
+}
+
+
+// separate operators from arguments with single space, like so:
+a * b + c - d / 6
+
