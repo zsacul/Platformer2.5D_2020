@@ -8,14 +8,14 @@ public class Shooting : MonoBehaviour
     public Transform bulletExit;
     public GameObject pistol, bullet, testObject;
 
-
     float xMov;
     bool jump, shot;
 
-    public float moveSpeed = 10f, jumpHeight = 1f, bulletSpeed = 100f;
+    public float moveSpeed = 10f;
+    public float jumpHeight = 1f;
+    public float bulletSpeed = 100f;
     public float gravity = -9.81f;
     bool isGrounded;
-
 
     public Material[] stateMaterials;
 
@@ -49,13 +49,9 @@ public class Shooting : MonoBehaviour
     void CheckState()
     {
         if (state == State.running)
-        {
             GetComponent<MeshRenderer>().material = stateMaterials[0];
-        }
         else if(state == State.shooting)
-        {
             GetComponent<MeshRenderer>().material = stateMaterials[1];
-        }
     }
 
     void GetInput()
@@ -65,15 +61,11 @@ public class Shooting : MonoBehaviour
         //     jump = true;
         // else jump = false;
 
-
-        
-
         if(Input.GetButtonDown("StateButton"))
         {
             if (state == State.running)
             {
                 state = State.shooting;
-                
             }
             else if (state == State.shooting)
             {
@@ -112,7 +104,8 @@ public class Shooting : MonoBehaviour
         mouse.z = transform.position.z - Camera.main.transform.position.z;
         Vector3 pos = Camera.main.ScreenToWorldPoint(mouse);
         pistol.transform.LookAt(pos);
-        if(shot)
+
+        if (shot)
         {
             GameObject newBullet;
             newBullet = Instantiate(bullet, bulletExit.position, pistol.transform.rotation);

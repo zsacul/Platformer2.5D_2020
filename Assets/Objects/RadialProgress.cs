@@ -9,18 +9,13 @@ public class RadialProgress : MonoBehaviour
     public float duration;
     float currentTime;
     
+    void Start() {}
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (currentTime < duration)
             currentTime += Time.deltaTime;
+            
         Bar.fillAmount = currentTime / duration;
     }
 }
