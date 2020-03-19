@@ -38,7 +38,7 @@ public class ClimbingScript : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-    	if(other.gameObject.CompareTag("Player1") || other.gameObject.CompareTag("Player2"))
+    	if (other.gameObject.CompareTag("Player1") || other.gameObject.CompareTag("Player2"))
     	    other.gameObject.GetComponent<Rigidbody>().useGravity = true;
     }
 }

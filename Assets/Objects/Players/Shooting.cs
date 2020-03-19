@@ -30,7 +30,6 @@ public class Shooting : MonoBehaviour
         testTime = Time.time;
     }
 
-
     // void ApplyGravity()
     // {
     //     velocity.y += gravity * Time.deltaTime;
@@ -61,7 +60,7 @@ public class Shooting : MonoBehaviour
         //     jump = true;
         // else jump = false;
 
-        if(Input.GetButtonDown("StateButton"))
+        if (Input.GetButtonDown("StateButton"))
         {
             if (state == State.running)
             {
@@ -70,10 +69,9 @@ public class Shooting : MonoBehaviour
             else if (state == State.shooting)
             {
                 state = State.running;
-                transform.eulerAngles = new Vector3(0, 0, 0);
-                pistol.transform.eulerAngles = new Vector3(0, 90, 0);
+                transform.eulerAngles = new Vector3(0f, 0f, 0f);
+                pistol.transform.eulerAngles = new Vector3(0f, 90f, 0f);
             }
-
         }
 
         if (Input.GetButtonDown("Fire1"))
@@ -92,7 +90,7 @@ public class Shooting : MonoBehaviour
     //     Vector3 move = transform.right * Math.Abs(xMov);
     //     controller.Move(move * moveSpeed * Time.deltaTime);
 
-    //     if(isGrounded && jump)
+    //     if (isGrounded && jump)
     //     {
     //         velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
     //     }
@@ -114,9 +112,9 @@ public class Shooting : MonoBehaviour
         }
 
         if ((pos - bulletExit.position).x < 0)
-            transform.eulerAngles = new Vector3(0, -180, 0);
+            transform.eulerAngles = new Vector3(0f, -180f, 0f);
         else
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            transform.eulerAngles = new Vector3(0f, 0f, 0f);
 
     }
 
