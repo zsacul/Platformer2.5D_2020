@@ -6,7 +6,7 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     public Transform bulletExit;
-    public GameObject pistol, bullet, testObject;
+    public GameObject pistol, bullet;
 
     float xMov;
     bool jump, shot;
@@ -17,59 +17,31 @@ public class Shooting : MonoBehaviour
     public float gravity = -9.81f;
     bool isGrounded;
 
+    PlayerScript playerScript;
+
     public Material[] stateMaterials;
 
     Vector3 velocity;
 
-    enum State { running, shooting };
-    State state;
-    public float testTime;
-
     void Start()
     {
-        testTime = Time.time;
+        playerScript = GetComponent<PlayerScript>();
     }
-
-
-    // void ApplyGravity()
-    // {
-    //     velocity.y += gravity * Time.deltaTime;
-    //     controller.Move(velocity * Time.deltaTime);
-    // }
-
-    // void CheckGround()
-    // {
-    //     isGrounded = Physics.CheckSphere(groundCheck.position, groundDist, groundMask);
-    //     if (isGrounded && velocity.y < 0f)
-    //     {
-    //         velocity.y = -2f;
-    //     }
-    // }
 
     void CheckState()
     {
-        if (state == State.running)
+        if (playerScript.state == PlayerScript.State.running)
             GetComponent<MeshRenderer>().material = stateMaterials[0];
-        else if(state == State.shooting)
+        else if(playerScript.state == PlayerScript.State.shooting)
             GetComponent<MeshRenderer>().material = stateMaterials[1];
     }
 
     void GetInput()
     {
-        // xMov = Input.GetAxis("Horizontal");
-        // if (Input.GetButtonDown("Jump"))
-        //     jump = true;
-        // else jump = false;
-
         if(Input.GetButtonDown("StateButton"))
         {
-            if (state == State.running)
+            if (playerScript.state == PlayerScript.State.shooting)
             {
-                state = State.shooting;
-            }
-            else if (state == State.shooting)
-            {
-                state = State.running;
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 pistol.transform.eulerAngles = new Vector3(0, 90, 0);
             }
@@ -81,22 +53,6 @@ public class Shooting : MonoBehaviour
         else
             shot = false;
     }
-
-    // void Move()
-    // {
-    //     if (xMov < 0)
-    //         transform.eulerAngles = new Vector3(0, -180, 0);
-    //     else if (xMov > 0)
-    //         transform.eulerAngles = new Vector3(0, 0, 0);
-
-    //     Vector3 move = transform.right * Math.Abs(xMov);
-    //     controller.Move(move * moveSpeed * Time.deltaTime);
-
-    //     if(isGrounded && jump)
-    //     {
-    //         velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-    //     }
-    // }
 
     void Shot()
     {
@@ -122,15 +78,10 @@ public class Shooting : MonoBehaviour
 
     void Update()
     {
-        GetInput();
-        //CheckGround();
-        CheckState();
 
-        if (state == State.running)
-        {
-            //Move();
-        }
-        else if(state == State.shooting)
+        GetInput();
+        CheckState();
+        if(playerScript.state == PlayerScript.State.shooting)
         {
             Shot();
         }
