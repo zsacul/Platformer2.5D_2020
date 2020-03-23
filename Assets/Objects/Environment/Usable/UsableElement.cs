@@ -5,7 +5,15 @@ public class UsableElement : EnvironmentElement
 {
     public Transform interactionSurroundings;
 
-    public virtual int Player1Use()
+    protected UsableElement ()//: base()
+    {}
+
+    protected virtual void Start ()
+    {
+         GameObject.FindWithTag("Player2").GetComponent<Interacting>().AddUsableElement(GetId(), transform.gameObject);
+    }
+
+    public virtual int Player1Use ()
     {
         return 0;
     }

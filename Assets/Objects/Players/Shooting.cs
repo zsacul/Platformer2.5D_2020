@@ -45,7 +45,6 @@ public class Shooting : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 pistol.transform.eulerAngles = new Vector3(0, 90, 0);
             }
-
         }
 
         if (Input.GetButtonDown("Fire1"))
@@ -70,9 +69,9 @@ public class Shooting : MonoBehaviour
         }
 
         if ((pos - bulletExit.position).x < 0)
-            transform.eulerAngles = new Vector3(0, -180, 0);
+            transform.eulerAngles = new Vector3(0f, -180f, 0f);
         else
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            transform.eulerAngles = new Vector3(0f, 0f, 0f);
 
     }
 
