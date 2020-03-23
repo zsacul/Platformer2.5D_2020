@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6077237968133892125}
   - component: {fileID: 6077237968133892124}
   - component: {fileID: 6077237968133892112}
+  - component: {fileID: -7321957730464645439}
   - component: {fileID: 8092701021075920417}
   m_Layer: 0
   m_Name: Player 2
@@ -115,6 +116,19 @@ MonoBehaviour:
   left: 97
   climbing: 0
   grounded: 1
+--- !u!114 &-7321957730464645439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077237968133892123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5268419c159c565268daac3cb88be47d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  use: 102
 --- !u!54 &8092701021075920417
 Rigidbody:
   m_ObjectHideFlags: 0

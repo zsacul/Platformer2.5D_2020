@@ -9,6 +9,8 @@ TagManager:
   - Player2
   - ground
   - Door
+  - InteractionSurrounding
+  - Collider
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - 
   - 
   - Colliders
-  - 
+  - InteractionSurroundings
   - 
   - 
   - 

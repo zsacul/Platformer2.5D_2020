@@ -11,7 +11,7 @@ public class EnvironmentElement : MonoBehaviour
         return id;
     }
 
-    public EnvironmentElement ()
+    protected EnvironmentElement ()
     {
         id = elementsCounter++;
     }
