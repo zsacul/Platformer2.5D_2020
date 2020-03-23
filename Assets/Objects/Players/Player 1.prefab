@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   normalSpeed: 6
-  jumpForce: 90
+  jumpForce: 300
   up: 273
   down: 274
   right: 275
