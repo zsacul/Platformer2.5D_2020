@@ -17,9 +17,9 @@ public class UsableElement : EnvironmentElement
     {
         return 0;
     }
-    public virtual int Player2Use ()
+
+    public virtual int Player2Use()
     {
         return 0;
     }
-
 }
