@@ -36,7 +36,10 @@ public class SwiatelkoScript : MonoBehaviour
             lineActive = !lineActive;
             line.SetActive(lineActive);
             if(!lineActive)
+            {
                 GameObject.Find("Player 1").GetComponent<PlayerScript>().ToGround();
+                rb.useGravity = false;
+            }
         }
     }
 }
