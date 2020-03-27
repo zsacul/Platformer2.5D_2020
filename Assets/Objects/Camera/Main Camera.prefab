@@ -110,3 +110,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb945e0b8f57ae0eb6a3944e9140bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wallVerticalPrefab: {fileID: 2397961075562531723, guid: 0b3a5ba7a9c1003be8fd72f157a2b2e8,
+    type: 3}
+  wallsHeight: 2
+  wallHorizontalPrefab: {fileID: 2397961075562531723, guid: 0b3a5ba7a9c1003be8fd72f157a2b2e8,
+    type: 3}
+  wallsWidth: 4
+  margin: 0
+  sceneDepth: 10
