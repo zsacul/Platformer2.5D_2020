@@ -184,7 +184,7 @@ MonoBehaviour:
   bullet: {fileID: 135366979725776386, guid: 1ee5f9e4bc45918bc988509c435aa1a1, type: 3}
   moveSpeed: 10
   jumpHeight: 1
-  bulletSpeed: 100
+  bulletSpeed: 1000
   gravity: -9.81
   stateMaterials:
   - {fileID: 2100000, guid: 7486b231d2fd4de4abd6a880c77b502d, type: 2}

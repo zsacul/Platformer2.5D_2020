@@ -33,6 +33,7 @@ public class PlayerScript : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+		Physics.IgnoreCollision(GetComponent<Collider>(), GameObject.FindWithTag("Player2").GetComponent<Collider>());
     }
 
     void GetInput()
@@ -68,7 +69,7 @@ public class PlayerScript : MonoBehaviour
         move.y = rb.velocity.y;
         rb.velocity = move;
 
-        if (jump)
+        if (jump && grounded)
         {
             rb.AddForce(new Vector3(0f, jumpForce, 0f));
         }

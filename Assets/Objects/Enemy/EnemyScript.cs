@@ -11,21 +11,58 @@ public class EnemyScript : MonoBehaviour
 	public float waitingTimeMax;
 	public float routeStart;
 	public float routeEnd;
+	public float chasingSpeed;
+	public Vector3 chasingDist;
 	
-	enum State {free, waiting, moving };
-    State state;
+	public enum State {free, waiting, moving, chasing };
+    public State state;
 	int direction;
 	float newX;
+	
+	GameObject boy;
 	
 	Renderer r;
     void Start()
     {
 		state = State.free;
 		r = GetComponent<Renderer>();
+		boy = GameObject.FindWithTag("Player1");
     }
 
+	bool StartChase()
+	{
+		float distX = Mathf.Abs(boy.transform.position.x - transform.position.x);
+		float distY = Mathf.Abs(boy.transform.position.y - transform.position.y);
+		float distZ = Mathf.Abs(boy.transform.position.z - transform.position.z);
+		
+		if(distX <= chasingDist.x && distY <= chasingDist.y && distZ <= chasingDist.z)
+			return true;
+		else
+			return false;
+	}
+	
     void Update()
     {
+		if(StartChase())
+		{
+			state = State.chasing;
+			Debug.Log("chasing");
+		}
+		else
+		{
+			if(state == State.chasing)
+				state = State.free;
+		}
+		
+		if(state == State.chasing)
+		{
+			if(boy.transform.position.x - transform.position.x > 0)
+				direction = 1;
+			else
+				direction = -1;
+			
+			transform.Translate(new Vector3(direction * chasingSpeed * Time.deltaTime, 0f, 0f));
+		}
 		
 		if(state == State.free)
 		{
@@ -67,7 +104,7 @@ public class EnemyScript : MonoBehaviour
 		state = State.free;
 	}	
 	
-	public void OnTriggerEnter(Collider col) 
+	void OnCollisionEnter(Collision col) 
 	{
 		if(col.gameObject.CompareTag("Bullet"))
 		{
@@ -76,9 +113,10 @@ public class EnemyScript : MonoBehaviour
 			if(lives == 0)
 				Death();
 		}
-		if(col.gameObject.CompareTag("Player1") || col.gameObject.CompareTag("Player2"))
+		if(col.gameObject.CompareTag("Player1"))
 		{
-			//SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
+			SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
+			state = State.free;
 		}
 	}
 	
