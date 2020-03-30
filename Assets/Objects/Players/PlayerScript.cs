@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    
+
+    public GameObject Player2;
+
     public float normalSpeed;
     public float jumpForce;
     public float lineClimbSpeed;
-    public float friction = 0.98f;
+    //public float friction = 0.98f;
+    public float powerDist = 2f;
 
     float xMov;
     bool jump;
@@ -25,14 +28,28 @@ public class PlayerScript : MonoBehaviour
     public enum State { running, shooting, climbing };
     public State state;
 
-
+    public bool getting_power = false;
     public bool climbing = false;
     public bool grounded = true;
-    
+
+    private GameObject currentLinePart;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        Player2 = GameObject.Find("Player 2");
+    }
+
+    void CheckForce()
+    {
+        if (Vector3.Distance(Player2.transform.position, this.transform.position) < powerDist)
+        {
+            getting_power = true;
+        }
+        else
+        {
+            getting_power = false;
+        }
     }
 
     void GetInput()
@@ -47,7 +64,6 @@ public class PlayerScript : MonoBehaviour
             if (state == State.running)
             {
                 state = State.shooting;
-
             }
             else if (state == State.shooting)
             {
@@ -78,8 +94,11 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         GetInput();
+        CheckForce();
         if (state == State.running)
             Move();
+
+        Debug.Log(getting_power);
     }
 
     void OnCollisionStay(Collision col)
@@ -103,9 +122,9 @@ public class PlayerScript : MonoBehaviour
 
     void ToLine()
     {
-        rb.velocity = Vector3.zero;
+        //rb.velocity = Vector3.zero;
         rb.useGravity = false;
-        rb.constraints = 0;
+        rb.constraints = RigidbodyConstraints.FreezePositionZ;
         state = State.climbing;
     }
 
@@ -114,42 +133,65 @@ public class PlayerScript : MonoBehaviour
         if (other.gameObject.tag == "line" && Input.GetKey(lineHoldKey))
         {
             ToLine();
+            //rb.velocity = Vector3.zero;
         }
     }
 
     void OnTriggerStay(Collider other)
     {
-
-        if (other.gameObject.tag == "line" && Input.GetKey(lineHoldKey) && !jump)
+        if (currentLinePart == null || currentLinePart == other.gameObject || (currentLinePart.transform.position.y <= other.gameObject.transform.position.y && Input.GetKey(KeyCode.UpArrow)))
         {
-            ToLine();
-
-            transform.rotation = Quaternion.Lerp(transform.rotation, other.gameObject.transform.rotation, 0.5f);
-
-            Vector3 vel = Vector3.zero;
-            vel.x += (other.gameObject.transform.position.x - transform.position.x) * 7f;//for player to hold onto line x
-
-            if (Input.GetKey(KeyCode.UpArrow))
+            currentLinePart = other.gameObject;
+            if (other.gameObject.tag == "line" && Input.GetKey(lineHoldKey) && !jump)
             {
-                vel += transform.up.normalized * lineClimbSpeed; //climbing up
+                ToLine();
+                
+                float deadX = 0.15f;
+                transform.rotation = Quaternion.Lerp(transform.rotation, other.gameObject.transform.rotation, 0.5f);
+
+                Vector3 vel = rb.velocity;
+                
+
+                if (!Input.GetKey(KeyCode.UpArrow))
+                {
+                    
+                    vel = Vector3.zero;
+                    Vector3 destination = other.gameObject.transform.position;// + offset;
+                    Vector3 smoothedPosition = Vector3.Lerp(transform.position, destination, 0.5f);
+                    transform.position = smoothedPosition;
+                }
+                else 
+                {
+                    vel.y = transform.up.y * lineClimbSpeed; //climbing up
+
+                    if (Math.Abs(other.gameObject.transform.position.x - transform.position.x) > deadX)
+                    {
+                        vel.x += (other.gameObject.transform.position - transform.position).x / (Time.fixedDeltaTime * 10);//for player to hold onto line on x
+                    }
+                    else
+                        vel.x *= 0.6f;
+
+                    if (Math.Abs(vel.x) > 2.5f)
+                        vel.x = vel.x > 0 ? 2.5f : -2.5f;
+                }
+
+                vel.z = 0;
+
+                rb.velocity = vel;
+
+                if (xMov < 0)//swinging rope
+                    other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.left * 100f);
+                else if (xMov > 0)
+                    other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.right * 100f);
+
             }
-            else if ((other.gameObject.transform.position - transform.position).magnitude > 0.05f && Math.Abs(other.transform.position.y - transform.position.y) < 0.6f)
+            else if (other.gameObject.tag == "line" && !Input.GetKey(lineHoldKey))
             {
-                vel.y += (other.transform.position.y - transform.position.y) * lineClimbSpeed;//for player to hold onto line y
+                rb.useGravity = true;
+                state = State.running;
+                rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
+                currentLinePart = null;
             }
-            rb.velocity = vel;
-
-            if (xMov < 0)//swinging rope
-                other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.left * 100f);
-            else if (xMov > 0)
-                other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.right * 100f);
-
-        }
-        else if (other.gameObject.tag == "line" && !Input.GetKey(lineHoldKey))
-        {
-            rb.useGravity = true;
-            state = State.running;
-            rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
         }
     }
 
@@ -157,6 +199,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (other.tag == "line")
         {
+            currentLinePart = null;
             ToGround();
         }
     }

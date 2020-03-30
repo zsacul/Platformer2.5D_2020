@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
-{    
+{
+    public float smoothSpeed = 0.2f;
+
     private Transform cameraTransform;
     private Transform player1, player2;
     private Transform leftWall, rightWall, topWall, bottomWall;
@@ -65,6 +67,11 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        cameraTransform.position = GetMiddlePoint();
+        Vector3 target = GetMiddlePoint();
+
+        Vector3 destination = target;// + offset;
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, destination, smoothSpeed);
+        cameraTransform.position = smoothedPosition;
+
     }
 }

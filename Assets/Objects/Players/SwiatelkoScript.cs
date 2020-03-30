@@ -31,14 +31,19 @@ public class SwiatelkoScript : MonoBehaviour
     void Update()
     {
         Move();
-        if(Input.GetKeyDown(lineKey))
+        rb.useGravity = false;
+        if (Input.GetKeyDown(lineKey))
         {
             lineActive = !lineActive;
             line.SetActive(lineActive);
             if(!lineActive)
             {
                 GameObject.Find("Player 1").GetComponent<PlayerScript>().ToGround();
-                rb.useGravity = false;
+                rb.isKinematic = false;
+            }
+            else
+            {
+                rb.isKinematic = true;
             }
         }
     }
