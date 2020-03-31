@@ -16,7 +16,7 @@ public class StoryEventTrigger : MonoBehaviour
     }
     private void Update()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < 1.0f)
+        if (isShown == false && Vector3.Distance(transform.position, player.transform.position) < 1.0f)
         {
             TriggerStoryEvent();
             isShown = true;
