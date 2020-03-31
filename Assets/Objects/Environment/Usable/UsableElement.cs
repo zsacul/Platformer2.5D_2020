@@ -5,7 +5,7 @@ public class UsableElement : EnvironmentElement
 {
     public Transform interactionSurroundings;
 
-    protected UsableElement ()//: base()
+    protected UsableElement ()
     {}
 
     protected virtual void Start ()

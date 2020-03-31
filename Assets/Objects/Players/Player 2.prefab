@@ -108,16 +108,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3698ce24ada3f0c088619e99fd4b7509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player2: {fileID: 0}
   normalSpeed: 6
   jumpForce: 400
   lineClimbSpeed: 0
-  friction: 0.98
+  powerDist: 2
   lineHoldKey: 0
   up: 119
   down: 115
   right: 100
   left: 97
   state: 0
+  getting_power: 0
   climbing: 0
   grounded: 1
 --- !u!114 &-7321957730464645439
@@ -133,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   use: 102
+  barricade: 98
 --- !u!54 &8092701021075920417
 Rigidbody:
   m_ObjectHideFlags: 0

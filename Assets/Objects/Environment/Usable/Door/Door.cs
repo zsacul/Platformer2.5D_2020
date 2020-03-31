@@ -4,14 +4,16 @@ public class Door : UsableElement
 {
     public Transform rightInteractionSurrounding; // interactionSurrounding inherited from UsableElement will be treated as left interaction surrounding
 
-    public Door ()//: base ()
+    public Door ()
     {}
 
     protected override void Start ()
     {
         base.Start();
         interactionSurroundings.GetComponent<InteractionSurrounding>().ParentID = GetId();
+        interactionSurroundings.GetComponent<InteractionSurrounding>().SurroundingType = InteractionSurrounding.Type.leftDoor;
         rightInteractionSurrounding.GetComponent<InteractionSurrounding>().ParentID = GetId();
+        rightInteractionSurrounding.GetComponent<InteractionSurrounding>().SurroundingType = InteractionSurrounding.Type.rightDoor;
     }
 
     public override int Player1Use ()
