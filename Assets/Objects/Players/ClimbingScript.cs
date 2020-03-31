@@ -17,19 +17,17 @@ public class ClimbingScript : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-    	if (other.gameObject.CompareTag("Player1") || other.gameObject.CompareTag("Player2"))
+    	if (other.gameObject.CompareTag("Player1"))
     	{
     	    other.gameObject.GetComponent<Rigidbody>().useGravity = false;
     	    other.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
 
-    	    if (Input.GetKey(players[0].up) && other.gameObject.CompareTag("Player1") || Input.GetKey(players[1].up)  
-                && other.gameObject.CompareTag("Player2"))
+    	    if (Input.GetKey(players[0].up) && other.gameObject.CompareTag("Player1"))
     	    {
     	        other.gameObject.transform.position += new Vector3(0f, speed * Time.deltaTime, 0f);
     	    }
 
-    	    if (Input.GetKey(players[0].down) && other.gameObject.CompareTag("Player1") || Input.GetKey(players[1].down)  
-                && other.gameObject.CompareTag("Player2"))
+    	    if (Input.GetKey(players[0].down) && other.gameObject.CompareTag("Player1"))
     	    {
     	        other.gameObject.transform.position += new Vector3(0f, -speed * Time.deltaTime, 0f);
     	    }
@@ -38,7 +36,7 @@ public class ClimbingScript : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-    	if (other.gameObject.CompareTag("Player1") || other.gameObject.CompareTag("Player2"))
+    	if (other.gameObject.CompareTag("Player1"))
     	    other.gameObject.GetComponent<Rigidbody>().useGravity = true;
     }
 }

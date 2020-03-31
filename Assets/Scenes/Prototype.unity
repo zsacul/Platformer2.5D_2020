@@ -1223,6 +1223,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2000445757}
     m_Modifications:
+    - target: {fileID: 5215223091328419314, guid: 4e6c2ad34bebf69449119e2d1797bcc7,
+        type: 3}
+      propertyPath: chasingDist.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5215223091328419315, guid: 4e6c2ad34bebf69449119e2d1797bcc7,
         type: 3}
       propertyPath: m_Name

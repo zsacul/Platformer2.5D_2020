@@ -48,3 +48,4 @@ MonoBehaviour:
   speed: 1
   waitingTimeMin: 1
   waitingTimeMax: 3
+  chasingDist: {x: 5, y: 1, z: 0}
