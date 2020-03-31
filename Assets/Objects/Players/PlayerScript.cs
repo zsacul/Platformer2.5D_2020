@@ -98,7 +98,7 @@ public class PlayerScript : MonoBehaviour
         if (state == State.running)
             Move();
 
-        Debug.Log(getting_power);
+        //Debug.Log(getting_power);
     }
 
     void OnCollisionStay(Collision col)
