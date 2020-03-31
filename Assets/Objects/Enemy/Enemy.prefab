@@ -113,5 +113,6 @@ MonoBehaviour:
   waitingTimeMax: 4
   routeStart: 5
   routeEnd: 15
-  chasingSpeed: 2
-  chasingDist: {x: 0, y: 0, z: 0}
+  chasingSpeed: 4
+  chasingDist: {x: 5, y: 1, z: 0}
+  state: 0
