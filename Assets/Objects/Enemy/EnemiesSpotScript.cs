@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemiesSpotScript : MonoBehaviour
 {
 	public int enemiesNumber;
-	float routeStart = 1f;
-	float routeEnd = 5f;
-    void Start()
+	float routeStart;
+	float routeEnd;
+    void Awake()
     {
         routeStart = transform.position.x - transform.localScale.x / 2;
 		routeEnd = transform.position.x + transform.localScale.x / 2;

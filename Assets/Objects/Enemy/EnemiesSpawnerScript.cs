@@ -32,6 +32,7 @@ public class EnemiesSpawnerScript : MonoBehaviour
 	void SpawnEnemies()
 	{
 		Physics.IgnoreLayerCollision(10,10);
+		Physics.IgnoreLayerCollision(10,11);
 		for(int s = 0; s < spots.Length; s++)
 		{
 			for(int i = 0; i < spots[s].enemiesNumber; i++)

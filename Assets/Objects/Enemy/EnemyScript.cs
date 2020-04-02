@@ -18,15 +18,20 @@ public class EnemyScript : MonoBehaviour
     public State state;
 	int direction;
 	float newX;
+	float movingTime;
+	float movingTimeMax;
 	
 	GameObject boy;
 	
 	Renderer r;
+	Rigidbody rb;
     void Start()
     {
 		state = State.free;
 		r = GetComponent<Renderer>();
+		rb = GetComponent<Rigidbody>();
 		boy = GameObject.FindWithTag("Player1");
+		movingTimeMax = (routeEnd - routeStart)/speed;
     }
 
 	bool StartChase()
@@ -46,7 +51,7 @@ public class EnemyScript : MonoBehaviour
 		if(StartChase())
 		{
 			state = State.chasing;
-			Debug.Log("chasing");
+			//Debug.Log(state);
 		}
 		else
 		{
@@ -62,6 +67,7 @@ public class EnemyScript : MonoBehaviour
 				direction = -1;
 			
 			transform.Translate(new Vector3(direction * chasingSpeed * Time.deltaTime, 0f, 0f));
+			//rb.MovePosition(transform.position+  new Vector3(direction * chasingSpeed * Time.deltaTime,0f,0f));
 		}
 		
 		if(state == State.free)
@@ -70,6 +76,8 @@ public class EnemyScript : MonoBehaviour
 			if(randAction == 0)
 			{
 				state = State.waiting;
+				//Debug.Log(state);
+				//rb.velocity = new Vector3(0f,0f,0f);
 				float t = Random.Range(waitingTimeMin,waitingTimeMax);
 				StartCoroutine(WaitInPoint(t));
 				
@@ -77,9 +85,12 @@ public class EnemyScript : MonoBehaviour
 			else
 			{
 				state = State.moving;
+				movingTime = Time.time;
+				Debug.Log(state);
 				newX = Random.Range(routeStart, routeEnd);
 				while(Mathf.Abs(newX - transform.position.x) < (routeEnd - routeStart) / 4f) // distance to walk must be minimum 1/4 of route length
 					newX = Random.Range(routeStart, routeEnd);
+				//Debug.Log(newX);
 				if(newX - transform.position.x > 0)
 					direction = 1;
 				else
@@ -89,8 +100,10 @@ public class EnemyScript : MonoBehaviour
 		
 		if(state == State.moving)
 		{
-			if(Mathf.Abs(transform.position.x - newX) > 0.5f)
+			if(Mathf.Abs(transform.position.x - newX) > 0.5f && Time.time - movingTime < movingTimeMax)
 				transform.Translate(new Vector3(direction * speed * Time.deltaTime, 0f, 0f));
+				//rb.velocity = new Vector3(direction * speed, 0f,0f);
+				//rb.MovePosition(transform.position + new Vector3(direction * speed * Time.deltaTime, 0f, 0f));
 			else
 				state = State.free;
 			
