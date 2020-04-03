@@ -150,7 +150,6 @@ MonoBehaviour:
   down: 274
   right: 275
   left: 276
-  lineHolderCol: {fileID: 0}
   state: 0
   getting_power: 0
   climbing: 0
@@ -358,8 +357,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.38524163, z: 0.32979137}
-  m_Center: {x: 0, y: 0.04332167, z: -0.0061750114}
+  m_Size: {x: 1.2795492, y: 0.38524163, z: 3.0223546}
+  m_Center: {x: 0.04091257, y: 0.04332167, z: -0.11833763}
 --- !u!1001 &5338458353646792879
 PrefabInstance:
   m_ObjectHideFlags: 0

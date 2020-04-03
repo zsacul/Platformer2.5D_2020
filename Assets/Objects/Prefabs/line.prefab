@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 5463808582607186424}
   m_Layer: 0
   m_Name: line
-  m_TagString: Untagged
+  m_TagString: line
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
