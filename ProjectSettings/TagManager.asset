@@ -11,6 +11,11 @@ TagManager:
   - Door
   - InteractionSurrounding
   - Collider
+  - Enemy
+  - ScreenEdge
+  - Bullet
+  - line
+  - lineHolder
   layers:
   - Default
   - TransparentFX

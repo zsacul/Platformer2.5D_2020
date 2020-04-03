@@ -23,6 +23,9 @@ public class PlayerScript : MonoBehaviour
     public KeyCode right;
     public KeyCode left;
     private Rigidbody rb;
+    public BoxCollider lineHolderCol;
+
+	Animator anim;
 
     [HideInInspector]
     public enum State { running, shooting, climbing };
@@ -36,6 +39,8 @@ public class PlayerScript : MonoBehaviour
 
     void Awake()
     {
+        //lineHolderCol = GetComponentInChildren<BoxCollider>();
+		anim = GetComponentInChildren<Animator> ();
         rb = GetComponent<Rigidbody>();
         Player2 = GameObject.Find("Player 2");
 		Physics.IgnoreCollision(GetComponent<Collider>(), GameObject.FindWithTag("Player2").GetComponent<Collider>());
@@ -87,8 +92,10 @@ public class PlayerScript : MonoBehaviour
 
         if (jump && grounded)
         {
+            anim.SetTrigger("jump");
             rb.AddForce(new Vector3(0f, jumpForce, 0f));
         }
+        anim.SetFloat("velocity", Math.Abs(rb.velocity.x));
     }
 
 
@@ -102,16 +109,18 @@ public class PlayerScript : MonoBehaviour
         //Debug.Log(getting_power);
     }
 
-    void OnCollisionStay(Collision col)
+    void OnCollisionStay(Collision other)
     {
 	//if (col.gameObject.CompareTag("Platform"))
 	    grounded = true;
+        anim.SetTrigger("ground");
     }
 
-    void OnCollisionExit(Collision col)
+    void OnCollisionExit(Collision other)
     {
 	//if (col.gameObject.CompareTag("Platform"))
 	    grounded = false;
+        
     }
 
     public void ToGround()
@@ -119,6 +128,7 @@ public class PlayerScript : MonoBehaviour
         rb.useGravity = true;
         state = State.running;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
+        //anim.SetTrigger("ground");
     }
 
     void ToLine()
@@ -134,7 +144,8 @@ public class PlayerScript : MonoBehaviour
         if (other.gameObject.tag == "line" && Input.GetKey(lineHoldKey))
         {
             ToLine();
-            //rb.velocity = Vector3.zero;
+            anim.SetTrigger("climb");
+            rb.velocity = Vector3.zero;
         }
     }
 
@@ -146,22 +157,22 @@ public class PlayerScript : MonoBehaviour
             if (other.gameObject.tag == "line" && Input.GetKey(lineHoldKey) && !jump)
             {
                 ToLine();
-                
+
                 float deadX = 0.15f;
                 transform.rotation = Quaternion.Lerp(transform.rotation, other.gameObject.transform.rotation, 0.5f);
 
                 Vector3 vel = rb.velocity;
-                
+
 
                 if (!Input.GetKey(KeyCode.UpArrow))
                 {
-                    
+
                     vel = Vector3.zero;
                     Vector3 destination = other.gameObject.transform.position;// + offset;
                     Vector3 smoothedPosition = Vector3.Lerp(transform.position, destination, 0.5f);
                     transform.position = smoothedPosition;
                 }
-                else 
+                else
                 {
                     vel.y = transform.up.y * lineClimbSpeed; //climbing up
 
@@ -198,7 +209,7 @@ public class PlayerScript : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "line")
+        if (other.gameObject.tag == "line")
         {
             currentLinePart = null;
             ToGround();
