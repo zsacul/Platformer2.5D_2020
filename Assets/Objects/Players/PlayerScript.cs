@@ -147,6 +147,11 @@ public class PlayerScript : MonoBehaviour
             ToLine();
             rb.velocity = Vector3.zero;
         }
+
+        if(other.tag == "ladder")
+        {
+            anim.SetTrigger("climb");
+        }
     }
 
     void OnTriggerStay(Collider other)

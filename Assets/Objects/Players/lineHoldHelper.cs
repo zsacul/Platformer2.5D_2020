@@ -6,11 +6,12 @@ public class lineHoldHelper : MonoBehaviour
 {
     [HideInInspector]
     public bool canCatch;
+    [HideInInspector]
     public GameObject currentLinePart;
 
     void Update()
     {
-
+        Debug.Log(canCatch);
     }
 
     void OnTriggerEnter(Collider other)
@@ -20,7 +21,7 @@ public class lineHoldHelper : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-
+        Debug.Log("col");
         if (other.gameObject.tag == "line")
         {
             if (currentLinePart == null || currentLinePart == other.gameObject || (currentLinePart.transform.position.y <= other.gameObject.transform.position.y && Input.GetKey(KeyCode.UpArrow)))
