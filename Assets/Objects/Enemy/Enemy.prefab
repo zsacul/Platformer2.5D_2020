@@ -115,6 +115,8 @@ MonoBehaviour:
   routeStart: 5
   routeEnd: 15
   chasingSpeed: 4
+  openDoor: 1
+  climbingLadder: 0
   chasingDist: {x: 5, y: 1, z: 0}
   state: 0
 --- !u!54 &-8759892343830623544
