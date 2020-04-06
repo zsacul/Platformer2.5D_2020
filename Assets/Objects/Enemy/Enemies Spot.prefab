@@ -107,3 +107,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesNumber: 1
+  lives: 2
+  speed: 3
+  waitingTimeMin: 1
+  waitingTimeMax: 2
+  chasingDist: {x: 8, y: 1, z: 0}
+  chasingSpeed: 4
+  openDoor: 1
+  climbingLadder: 0
