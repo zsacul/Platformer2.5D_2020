@@ -10,7 +10,7 @@ public class UsableElement : EnvironmentElement
 
     protected virtual void Start ()
     {
-         GameObject.FindWithTag("Player2").GetComponent<Interacting>().AddUsableElement(GetId(), transform.gameObject);
+         //GameObject.FindWithTag("Player2").GetComponent<Interacting>().AddUsableElement(GetId(), transform.gameObject);
     }
 
     public virtual int Player1Use ()
