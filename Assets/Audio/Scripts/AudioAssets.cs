@@ -12,17 +12,21 @@ AudioClips start with s, AudioMixers start with m, please follow this rule.
 public class AudioAssets : MonoBehaviour
 {
     //sfx
-    public AudioClip sTowerShotBlaster;
- 
+    public AudioClip sRunning;
+    public AudioClip sWalking;
+    public AudioClip sCrouchWalking;
+
     //background music
-    public AudioClip sBGMAction1;
-    public AudioClip sBGMAction2;
-    public AudioClip sBGMAction3;
+    public AudioClip sBGM1;
+    public AudioClip sBGM2;
+    public AudioClip sBGM3;
     public AudioClip sBGMAmbient1;
     public AudioClip sBGMAmbient2;
     public AudioClip sBGMAmbient3;
 
     //mixers
-    public AudioMixerGroup mProjectilesMaster;
-    public AudioMixerGroup mBGMMaster;
+    public AudioMixerGroup mMASTER;
+    public AudioMixerGroup mSFX;
+    public AudioMixerGroup mBGM;
+    public AudioMixerGroup mAnimations;
 }

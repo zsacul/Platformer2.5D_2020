@@ -192,18 +192,6 @@ MonoBehaviour:
   stateMaterials:
   - {fileID: 2100000, guid: 7486b231d2fd4de4abd6a880c77b502d, type: 2}
   - {fileID: 2100000, guid: 90a49f56267aa5d4ab16fb69fd4ffabe, type: 2}
---- !u!114 &3960244871658746687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4123026221554084262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be761d90e74696a4983dc4c2090bd4c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1102212823
 Animator:
   serializedVersion: 3
@@ -223,6 +211,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3960244871658746687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123026221554084262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be761d90e74696a4983dc4c2090bd4c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4397274029359987544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123026221554084262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 915b24ab4e1bf224d984c128715858be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4573136301532887120
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,6 +462,18 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: -5716681864270162303, guid: 10273a3263e8a7f4ab66ffa95da0d431,
+        type: 3}
+      propertyPath: m_Animations.Array.data[1]
+      value: 
+      objectReference: {fileID: -203655887218126122, guid: c2972e4d9731a52afad67c22cf5a3cda,
+        type: 3}
+    - target: {fileID: -5716681864270162303, guid: 10273a3263e8a7f4ab66ffa95da0d431,
+        type: 3}
+      propertyPath: m_Animations.Array.data[9]
+      value: 
+      objectReference: {fileID: -203655887218126122, guid: e7a7cd49180103f50885d415805994da,
+        type: 3}
     - target: {fileID: -4964426168678133720, guid: 10273a3263e8a7f4ab66ffa95da0d431,
         type: 3}
       propertyPath: m_StaticEditorFlags

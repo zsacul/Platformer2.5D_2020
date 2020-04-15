@@ -69,6 +69,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  sourceTemplate: {fileID: 5035635970274652091, guid: 34afc6ac2ca15724b99172b0a279720f,
+    type: 3}
+  BGMFadeOutDuration: 5
+  BGMFadeInDuration: 3
+  shouldUseBgmQueue: 1
 --- !u!114 &3741624401419730234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,12 +86,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5dbf26e0a2dfba4eaf0e32e6c3b69ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sTowerShotBlaster: {fileID: 0}
-  sBGMAction1: {fileID: 0}
-  sBGMAction2: {fileID: 0}
-  sBGMAction3: {fileID: 0}
+  sRunning: {fileID: 8300000, guid: 0dcaeefd229465e428b587dab47a1e6e, type: 3}
+  sWalking: {fileID: 8300000, guid: 5180dfa5c312e724887294a77620f7e4, type: 3}
+  sCrouchWalking: {fileID: 8300000, guid: 5180dfa5c312e724887294a77620f7e4, type: 3}
+  sBGM1: {fileID: 0}
+  sBGM2: {fileID: 0}
+  sBGM3: {fileID: 0}
   sBGMAmbient1: {fileID: 0}
   sBGMAmbient2: {fileID: 0}
   sBGMAmbient3: {fileID: 0}
-  mProjectilesMaster: {fileID: 0}
-  mBGMMaster: {fileID: 0}
+  mMASTER: {fileID: 24300002, guid: e1e9b531752c08649b4bf81b1bafda9f, type: 2}
+  mSFX: {fileID: -5698640081988524619, guid: e1e9b531752c08649b4bf81b1bafda9f, type: 2}
+  mBGM: {fileID: 7527865749644391716, guid: e1e9b531752c08649b4bf81b1bafda9f, type: 2}
+  mAnimations: {fileID: 7457593260308747220, guid: e1e9b531752c08649b4bf81b1bafda9f,
+    type: 2}
