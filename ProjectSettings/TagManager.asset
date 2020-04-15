@@ -16,7 +16,7 @@ TagManager:
   - Bullet
   - line
   - lineHolder
-  - ladder
+  - Ladder
   layers:
   - Default
   - TransparentFX

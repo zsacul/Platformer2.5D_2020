@@ -42,7 +42,7 @@ public class PlayerScript : MonoBehaviour
         lineHoldHelp = GetComponentInChildren<lineHoldHelper>();
 		anim = GetComponentInChildren<Animator> ();
         rb = GetComponent<Rigidbody>();
-        Player2 = GameObject.Find("Player 2");
+        Player2 = GameObject.FindWithTag("Player2");
 		Physics.IgnoreCollision(GetComponent<Collider>(), GameObject.FindWithTag("Player2").GetComponent<Collider>());
     }
 
