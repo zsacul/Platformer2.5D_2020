@@ -6,6 +6,7 @@ public class BulletScript : MonoBehaviour
 {
     public float lifeTime = 3f;
     float startTime;
+    public bool power = false;
 
     void Awake()
     {
