@@ -143,9 +143,9 @@ MonoBehaviour:
   Player2: {fileID: 0}
   normalSpeed: 6
   jumpForce: 400
-  lineClimbSpeed: 0
+  lineClimbSpeed: 2
   powerDist: 2
-  lineHoldKey: 303
+  lineHoldKey: 306
   up: 273
   down: 274
   right: 275
@@ -192,18 +192,6 @@ MonoBehaviour:
   stateMaterials:
   - {fileID: 2100000, guid: 7486b231d2fd4de4abd6a880c77b502d, type: 2}
   - {fileID: 2100000, guid: 90a49f56267aa5d4ab16fb69fd4ffabe, type: 2}
---- !u!114 &3960244871658746687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4123026221554084262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be761d90e74696a4983dc4c2090bd4c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1102212823
 Animator:
   serializedVersion: 3
@@ -223,6 +211,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3960244871658746687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123026221554084262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be761d90e74696a4983dc4c2090bd4c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4573136301532887120
 GameObject:
   m_ObjectHideFlags: 0
