@@ -143,9 +143,9 @@ MonoBehaviour:
   Player2: {fileID: 0}
   normalSpeed: 6
   jumpForce: 400
-  lineClimbSpeed: 0
+  lineClimbSpeed: 2
   powerDist: 2
-  lineHoldKey: 303
+  lineHoldKey: 306
   up: 273
   down: 274
   right: 275
