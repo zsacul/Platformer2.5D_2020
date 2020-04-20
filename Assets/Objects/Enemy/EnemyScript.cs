@@ -50,16 +50,32 @@ public class EnemyScript : MonoBehaviour
 		movingTimeMax = (routeEnd - routeStart)/speed;
     }
 
+    bool BoyIsSeen()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, LayerMask.GetMask("Player1")))
+        {
+            return true;
+        }
+        return false;
+    }
+
+
 	bool StartChase()
 	{
 		float distX = Mathf.Abs(boy.transform.position.x - transform.position.x);
 		float distY = Mathf.Abs(boy.transform.position.y - transform.position.y);
 		float distZ = Mathf.Abs(boy.transform.position.z - transform.position.z);
-		
-		if(distX <= chasingDist.x && distY <= chasingDist.y && distZ <= chasingDist.z )
-			return true;
-		else
-			return false;
+
+        if (distX <= chasingDist.x && distY <= chasingDist.y && distZ <= chasingDist.z)
+        {
+            if (BoyIsSeen())
+                return true;
+            else
+                return false;
+        }
+        else
+            return false;
 	}
 	
 	bool StartClimbing()
