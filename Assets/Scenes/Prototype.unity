@@ -1228,6 +1228,16 @@ PrefabInstance:
       propertyPath: chasingDist.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5215223091328419314, guid: 4e6c2ad34bebf69449119e2d1797bcc7,
+        type: 3}
+      propertyPath: chasingDist.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215223091328419314, guid: 4e6c2ad34bebf69449119e2d1797bcc7,
+        type: 3}
+      propertyPath: chasingDist.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5215223091328419315, guid: 4e6c2ad34bebf69449119e2d1797bcc7,
         type: 3}
       propertyPath: m_Name
@@ -1851,6 +1861,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 3738710154424165326, guid: 2f6f9dc339b9c7bd0b4a5516bf85b511,
+        type: 3}
+      propertyPath: wallVerticalPrefab
+      value: 
+      objectReference: {fileID: 2397961075562531723, guid: 0b3a5ba7a9c1003be8fd72f157a2b2e8,
+        type: 3}
+    - target: {fileID: 3738710154424165326, guid: 2f6f9dc339b9c7bd0b4a5516bf85b511,
+        type: 3}
+      propertyPath: wallHorizontalPrefab
+      value: 
+      objectReference: {fileID: 2397961075562531723, guid: 0b3a5ba7a9c1003be8fd72f157a2b2e8,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f6f9dc339b9c7bd0b4a5516bf85b511, type: 3}
 --- !u!1 &2000445756
@@ -1962,7 +1984,8 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6077237968133892112, guid: c11cbcff922a1491cab66eb50e9912f8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c11cbcff922a1491cab66eb50e9912f8, type: 3}
 --- !u!1 &2059152467
 GameObject:

@@ -1,0 +1,288 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7613447209170929310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7084131847828480039}
+  m_Layer: 0
+  m_Name: LadderModel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7084131847828480039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7613447209170929310}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.257663, y: 0.12578058, z: 0.3388633}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2507353650744770532}
+  - {fileID: 7850678838782322814}
+  - {fileID: 2587604731396353532}
+  - {fileID: 3250912607341440062}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2507353650744894824
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7084131847828480039}
+    m_Modifications:
+    - target: {fileID: 100012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_Name
+      value: SteelLadder LP B
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.360663
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1172194
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0861367
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000015454312
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000015454312
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+--- !u!4 &2507353650744770532 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61,
+    type: 3}
+  m_PrefabInstance: {fileID: 2507353650744894824}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2587604731395962736
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7084131847828480039}
+    m_Modifications:
+    - target: {fileID: 100012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_Name
+      value: SteelLadder LP B (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.360663
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.8707806
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0861367
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000015454312
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000015454312
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+--- !u!4 &2587604731396353532 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61,
+    type: 3}
+  m_PrefabInstance: {fileID: 2587604731395962736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3250912607341311666
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7084131847828480039}
+    m_Modifications:
+    - target: {fileID: 100012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_Name
+      value: SteelLadder LP B (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.360663
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.3717806
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0861367
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000015454312
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000015454312
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+--- !u!4 &3250912607341440062 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61,
+    type: 3}
+  m_PrefabInstance: {fileID: 3250912607341311666}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7850678838782456562
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7084131847828480039}
+    m_Modifications:
+    - target: {fileID: 100012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_Name
+      value: SteelLadder LP B (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.360663
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.12221941
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0861367
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000015454312
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000015454312
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ae9ee19c50994244fb89f14137e65f61, type: 3}
+--- !u!4 &7850678838782322814 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400012, guid: ae9ee19c50994244fb89f14137e65f61,
+    type: 3}
+  m_PrefabInstance: {fileID: 7850678838782456562}
+  m_PrefabAsset: {fileID: 0}

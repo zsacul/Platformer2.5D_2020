@@ -64,6 +64,11 @@ public class Shooting : MonoBehaviour
         {
             GameObject newBullet;
             newBullet = Instantiate(bullet, bulletExit.position, pistol.transform.rotation);
+            if (playerScript.getting_power)
+                newBullet.GetComponent<BulletScript>().power = true;
+            else
+                newBullet.GetComponent<BulletScript>().power = false;
+
             Vector3 shotDir = (pos - bulletExit.position).normalized; 
             newBullet.GetComponent<Rigidbody>().AddForce(shotDir * bulletSpeed);
         }

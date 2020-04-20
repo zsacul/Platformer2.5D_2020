@@ -32,11 +32,22 @@ public class ClimbingScript : MonoBehaviour
     	        other.gameObject.transform.position += new Vector3(0f, -speed * Time.deltaTime, 0f);
     	    }
     	}
+		if(other.gameObject.CompareTag("Enemy"))
+		{
+			other.gameObject.GetComponent<Rigidbody>().useGravity = false;
+    	    other.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
+			other.gameObject.GetComponent<EnemyScript>().ladder = true;
+		}
     }
 
     void OnTriggerExit(Collider other)
     {
     	if (other.gameObject.CompareTag("Player1"))
     	    other.gameObject.GetComponent<Rigidbody>().useGravity = true;
+		if (other.gameObject.CompareTag("Enemy"))
+		{
+    	    other.gameObject.GetComponent<Rigidbody>().useGravity = true;
+			other.gameObject.GetComponent<EnemyScript>().ladder = false;
+		}
     }
 }

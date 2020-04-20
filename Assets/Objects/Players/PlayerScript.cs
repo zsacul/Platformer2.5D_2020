@@ -23,6 +23,9 @@ public class PlayerScript : MonoBehaviour
     public KeyCode right;
     public KeyCode left;
     private Rigidbody rb;
+    private lineHoldHelper lineHoldHelp;
+
+	Animator anim;
 
     [HideInInspector]
     public enum State { running, shooting, climbing };
@@ -36,8 +39,10 @@ public class PlayerScript : MonoBehaviour
 
     void Awake()
     {
+        lineHoldHelp = GetComponentInChildren<lineHoldHelper>();
+		anim = GetComponentInChildren<Animator> ();
         rb = GetComponent<Rigidbody>();
-        Player2 = GameObject.Find("Player 2");
+        Player2 = GameObject.FindWithTag("Player2");
 		Physics.IgnoreCollision(GetComponent<Collider>(), GameObject.FindWithTag("Player2").GetComponent<Collider>());
     }
 
@@ -87,8 +92,10 @@ public class PlayerScript : MonoBehaviour
 
         if (jump && grounded)
         {
+            anim.SetTrigger("jump");
             rb.AddForce(new Vector3(0f, jumpForce, 0f));
         }
+        anim.SetFloat("velocity", Math.Abs(rb.velocity.x));
     }
 
 
@@ -102,16 +109,18 @@ public class PlayerScript : MonoBehaviour
         //Debug.Log(getting_power);
     }
 
-    void OnCollisionStay(Collision col)
+    void OnCollisionStay(Collision other)
     {
 	//if (col.gameObject.CompareTag("Platform"))
 	    grounded = true;
+        anim.SetTrigger("ground");
     }
 
-    void OnCollisionExit(Collision col)
+    void OnCollisionExit(Collision other)
     {
 	//if (col.gameObject.CompareTag("Platform"))
 	    grounded = false;
+        
     }
 
     public void ToGround()
@@ -119,6 +128,7 @@ public class PlayerScript : MonoBehaviour
         rb.useGravity = true;
         state = State.running;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
+        //anim.SetTrigger("ground");
     }
 
     void ToLine()
@@ -127,78 +137,82 @@ public class PlayerScript : MonoBehaviour
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezePositionZ;
         state = State.climbing;
+        anim.SetTrigger("climb");
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "line" && Input.GetKey(lineHoldKey))
+        if (lineHoldHelp.canCatch && Input.GetKey(lineHoldKey))
         {
             ToLine();
-            //rb.velocity = Vector3.zero;
+            rb.velocity = Vector3.zero;
+        }
+
+        if(other.tag == "ladder")
+        {
+            anim.SetTrigger("climb");
         }
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (currentLinePart == null || currentLinePart == other.gameObject || (currentLinePart.transform.position.y <= other.gameObject.transform.position.y && Input.GetKey(KeyCode.UpArrow)))
+       
+        if (lineHoldHelp.canCatch && Input.GetKey(lineHoldKey) && !jump)
         {
-            currentLinePart = other.gameObject;
-            if (other.gameObject.tag == "line" && Input.GetKey(lineHoldKey) && !jump)
+            ToLine();
+
+            float deadX = 0.15f;
+            transform.rotation = Quaternion.Lerp(transform.rotation, other.gameObject.transform.rotation, 0.5f);
+
+            Vector3 vel = rb.velocity;
+
+
+            if (!Input.GetKey(KeyCode.UpArrow))
             {
-                ToLine();
-                
-                float deadX = 0.15f;
-                transform.rotation = Quaternion.Lerp(transform.rotation, other.gameObject.transform.rotation, 0.5f);
-
-                Vector3 vel = rb.velocity;
-                
-
-                if (!Input.GetKey(KeyCode.UpArrow))
-                {
-                    
-                    vel = Vector3.zero;
-                    Vector3 destination = other.gameObject.transform.position;// + offset;
-                    Vector3 smoothedPosition = Vector3.Lerp(transform.position, destination, 0.5f);
-                    transform.position = smoothedPosition;
-                }
-                else 
-                {
-                    vel.y = transform.up.y * lineClimbSpeed; //climbing up
-
-                    if (Math.Abs(other.gameObject.transform.position.x - transform.position.x) > deadX)
-                    {
-                        vel.x += (other.gameObject.transform.position - transform.position).x / (Time.fixedDeltaTime * 10);//for player to hold onto line on x
-                    }
-                    else
-                        vel.x *= 0.6f;
-
-                    if (Math.Abs(vel.x) > 2.5f)
-                        vel.x = vel.x > 0 ? 2.5f : -2.5f;
-                }
-
-                vel.z = 0;
-
-                rb.velocity = vel;
-
-                if (xMov < 0)//swinging rope
-                    other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.left * 100f);
-                else if (xMov > 0)
-                    other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.right * 100f);
-
+                anim.SetBool("arrow_up", false);
+                vel = Vector3.zero;
+                Vector3 destination = lineHoldHelp.currentLinePart.transform.position;// + offset;
+                Vector3 smoothedPosition = Vector3.Lerp(transform.position, destination, 1);
+                transform.position = smoothedPosition;
             }
-            else if (other.gameObject.tag == "line" && !Input.GetKey(lineHoldKey))
+            else
             {
-                rb.useGravity = true;
-                state = State.running;
-                rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
-                currentLinePart = null;
+                anim.SetBool("arrow_up", true);
+                vel.y = transform.up.y * lineClimbSpeed; //climbing up
+
+                if (Math.Abs(other.gameObject.transform.position.x - transform.position.x) > deadX)
+                {
+                    vel.x += (other.gameObject.transform.position - transform.position).x / (Time.fixedDeltaTime);//for player to hold onto line on x
+                }
+                else
+                    vel.x *= 0.6f;
+
+                if (Math.Abs(vel.x) > 2.5f)
+                    vel.x = vel.x > 0 ? 2.5f : -2.5f;
             }
+
+            vel.z = 0;
+
+            rb.velocity = vel;
+                
+            if (xMov < 0)//swinging rope
+                other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.left * 100f);
+            else if (xMov > 0)
+                other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.right * 100f);
+
+        }
+        else if (other.gameObject.tag == "line" && !Input.GetKey(lineHoldKey))
+        {
+            rb.useGravity = true;
+            state = State.running;
+            rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
+            currentLinePart = null;
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "line")
+        if (other.gameObject.tag == "line")
         {
             currentLinePart = null;
             ToGround();

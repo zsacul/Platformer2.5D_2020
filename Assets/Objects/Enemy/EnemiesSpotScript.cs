@@ -5,24 +5,25 @@ using UnityEngine;
 public class EnemiesSpotScript : MonoBehaviour
 {
 	public int enemiesNumber;
-	float routeStart = 1f;
-	float routeEnd = 5f;
-    void Start()
+	public int lives;
+	public float speed;
+	public float waitingTimeMin;
+	public float waitingTimeMax;
+	public Vector3 chasingDist;
+	public float chasingSpeed;
+	public bool canOpenDoor;
+	public bool canClimbingLadder;
+	float routeStart;
+	float routeEnd;
+    void Awake()
     {
         routeStart = transform.position.x - transform.localScale.x / 2;
-		routeEnd = transform.position.x + transform.localScale.x / 2;
-		
-		//Debug.Log(routeStart);
-		//Debug.Log(routeEnd);
-		
+		routeEnd = transform.position.x + transform.localScale.x / 2;		
     }
 	
 	public float RandFromRoute()
 	{
-		//Debug.Log(routeStart);
-		//Debug.Log(routeEnd);
 		float r = Random.Range(routeStart, routeEnd);
-		//Debug.Log(r);
 		return r;
 	}
 	
