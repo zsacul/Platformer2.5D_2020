@@ -13,6 +13,7 @@ public class EnemiesSpotScript : MonoBehaviour
 	public float chasingSpeed;
 	public bool canOpenDoor;
 	public bool canClimbingLadder;
+	public bool onlyPowerBullet;
 	float routeStart;
 	float routeEnd;
     void Awake()
