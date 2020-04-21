@@ -35,7 +35,22 @@ public class PlayerScript : MonoBehaviour
     public bool climbing = false;
     public bool grounded = true;
 
+    public bool isHiding = false;
+    public bool isSeen = false;
+
     private GameObject currentLinePart;
+
+    public void hidePlayer ()
+    {
+        isHiding = true;
+        anim.SetBool("hiding", true);
+    }
+
+    public void unhidePlayer ()
+    {
+        isHiding = false;
+        anim.SetBool("hiding", false);
+    }
 
     void Awake()
     {

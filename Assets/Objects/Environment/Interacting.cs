@@ -10,6 +10,7 @@ public class Interacting : MonoBehaviour
     public int scriptOwnerType;
     public KeyCode use;
     public KeyCode barricade;
+    public PlayerScript playerScript;
 
     public void AddUsableElement(int id, GameObject obj)
     {
@@ -84,6 +85,19 @@ public class Interacting : MonoBehaviour
                     break;
                 case InteractionSurrounding.Type.rightDoor:
                     anim.SetTrigger("Player1UseRight");
+                    break;
+                case InteractionSurrounding.Type.hidingSpotEntrance:
+                    if (!playerScript.isSeen)
+                        {
+                            Debug.Log("Hiding player");
+                            playerScript.hidePlayer();
+                            anim.SetTrigger("Player1GetInside");
+                        }
+                    break;
+                case InteractionSurrounding.Type.hidingSpotInside:
+                    Debug.Log("Unhiding player");
+                    playerScript.unhidePlayer();
+                    anim.SetTrigger("Player1GetOut");
                     break;
                 default:
                     Debug.Log("Unknown surrounding type!!!");
