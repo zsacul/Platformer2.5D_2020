@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractionSurrounding : MonoBehaviour
 {
-    public enum Type {normal, leftDoor, rightDoor};
+    public enum Type {normal, leftDoor, rightDoor, hidingSpotEntrance, hidingSpotInside};
     private int parentID; 
     public int ParentID
     {
