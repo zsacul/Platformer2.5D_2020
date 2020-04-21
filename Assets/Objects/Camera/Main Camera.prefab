@@ -104,4 +104,4 @@ MonoBehaviour:
     type: 3}
   wallsWidth: 4
   margin: 0
-  sceneDepth: 10
+  sceneDepth: 20

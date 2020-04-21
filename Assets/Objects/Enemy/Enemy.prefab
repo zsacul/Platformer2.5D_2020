@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1228439401950370739}
   - component: {fileID: 1228439401950370748}
   - component: {fileID: -8759892343830623544}
+  - component: {fileID: 2315737868777132447}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -115,10 +116,11 @@ MonoBehaviour:
   routeStart: 5
   routeEnd: 15
   chasingSpeed: 4
-  openDoor: 1
-  climbingLadder: 0
+  canOpenDoor: 0
+  canClimbingLadder: 0
   chasingDist: {x: 5, y: 1, z: 0}
   state: 0
+  ladder: 0
 --- !u!54 &-8759892343830623544
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -135,3 +137,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &2315737868777132447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228439401950370749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5268419c159c565268daac3cb88be47d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptOwnerType: 2
+  use: 0
+  barricade: 0
