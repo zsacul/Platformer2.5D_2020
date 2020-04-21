@@ -155,6 +155,8 @@ MonoBehaviour:
   getting_power: 0
   climbing: 0
   grounded: 1
+  isHiding: 0
+  isSeen: 0
 --- !u!54 &1155893862591916674
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -208,6 +210,7 @@ MonoBehaviour:
   scriptOwnerType: 1
   use: 109
   barricade: 0
+  playerScript: {fileID: 3752391638338540723}
 --- !u!95 &1102212823
 Animator:
   serializedVersion: 3
