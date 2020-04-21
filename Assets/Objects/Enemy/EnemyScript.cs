@@ -14,6 +14,7 @@ public class EnemyScript : MonoBehaviour
 	public float chasingSpeed;
 	public bool canOpenDoor;
 	public bool canClimbingLadder;
+	public bool onlyPowerBullet;
 	public Vector3 chasingDist;
 	
 	public enum State {free, waiting, moving, chasing, climbing };
@@ -179,7 +180,8 @@ public class EnemyScript : MonoBehaviour
 		if(col.gameObject.CompareTag("Bullet"))
 		{
 			Destroy(col.gameObject);
-			Shot();
+			if(!onlyPowerBullet || (col.gameObject.GetComponent<BulletScript>().power))
+				Shot();
 			if(lives == 0)
 				Death();
 		}
