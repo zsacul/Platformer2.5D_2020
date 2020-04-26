@@ -384,7 +384,7 @@ PrefabInstance:
     - target: {fileID: 608647543607551889, guid: f0190af349fa8488aaa10c69a08583da,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.338
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 608647543607551889, guid: f0190af349fa8488aaa10c69a08583da,
         type: 3}
@@ -456,7 +456,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Model
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 657646953972225312, guid: f0190af349fa8488aaa10c69a08583da, type: 3}
+    - {fileID: 5152241396123901101, guid: f0190af349fa8488aaa10c69a08583da, type: 3}
+    - {fileID: 1080851111087536125, guid: f0190af349fa8488aaa10c69a08583da, type: 3}
+    - {fileID: 6837473925998620728, guid: f0190af349fa8488aaa10c69a08583da, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f0190af349fa8488aaa10c69a08583da, type: 3}
 --- !u!4 &1552167664369062154 stripped
 Transform:
