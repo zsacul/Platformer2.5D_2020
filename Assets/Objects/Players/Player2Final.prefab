@@ -48,8 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5268419c159c565268daac3cb88be47d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scriptOwnerType: 0
   use: 102
   barricade: 98
+  playerScript: {fileID: 0}
 --- !u!54 &8092701021075920417
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -179,6 +181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3852370720686675381, guid: cad7d62ffeb85a17e99039c113fe6599, type: 3}
+    - {fileID: 996948806561199163, guid: cad7d62ffeb85a17e99039c113fe6599, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cad7d62ffeb85a17e99039c113fe6599, type: 3}
 --- !u!4 &1392962610350192361 stripped
 Transform:
