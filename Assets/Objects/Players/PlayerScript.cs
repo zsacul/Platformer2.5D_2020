@@ -124,7 +124,7 @@ public class PlayerScript : MonoBehaviour
         //Debug.Log(getting_power);
     }
 
-    void OnCollisionStay(Collision other)
+    /*void OnCollisionStay(Collision other)
     {
 	//if (col.gameObject.CompareTag("Platform"))
 	    grounded = true;
@@ -136,7 +136,13 @@ public class PlayerScript : MonoBehaviour
 	//if (col.gameObject.CompareTag("Platform"))
 	    grounded = false;
         
-    }
+    }*/
+	public void SetGrounded(bool gr) // function used by GroundDetector
+	{
+		grounded = gr;
+		if(grounded)
+			anim.SetTrigger("ground");
+	}
 
     public void ToGround()
     {
