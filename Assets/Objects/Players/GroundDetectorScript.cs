@@ -19,7 +19,7 @@ public class GroundDetectorScript : MonoBehaviour
 	
 	void OnTriggerEnter(Collider col)
 	{
-		if(!col.gameObject.CompareTag("Player1"))
+		if(!col.gameObject.CompareTag("Player1") && !col.gameObject.CompareTag("Door"))
 		{
 			Debug.Log(col.gameObject.name);
 			grounded = true;
