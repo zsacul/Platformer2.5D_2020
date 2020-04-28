@@ -49,6 +49,7 @@ public class PlayerScript : MonoBehaviour
             isHiding = true;
             anim.SetBool("hiding", true);
             transform.eulerAngles = new Vector3(0, 0, 0);
+            rb.velocity = Vector3.zero;
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + hidingSpotDist);
         }
     }
