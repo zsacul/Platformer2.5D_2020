@@ -246,6 +246,7 @@ MonoBehaviour:
   jumpForce: 200
   lineClimbSpeed: 2
   powerDist: 2
+  hidingSpotDist: 4
   lineHoldKey: 306
   up: 273
   down: 274

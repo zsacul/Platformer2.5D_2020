@@ -14,6 +14,8 @@ public class PlayerScript : MonoBehaviour
     //public float friction = 0.98f;
     public float powerDist = 2f;
 
+    public float hidingSpotDist;
+
     float xMov;
     bool jump;
 
@@ -25,7 +27,7 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody rb;
     private lineHoldHelper lineHoldHelp;
 
-	Animator anim;
+    Animator anim;
 
     [HideInInspector]
     public enum State { running, shooting, climbing };
@@ -40,25 +42,34 @@ public class PlayerScript : MonoBehaviour
 
     private GameObject currentLinePart;
 
-    public void hidePlayer ()
+    public void hidePlayer()
     {
-        isHiding = true;
-        anim.SetBool("hiding", true);
+        if (!isHiding)
+        {
+            isHiding = true;
+            anim.SetBool("hiding", true);
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + hidingSpotDist);
+        }
     }
 
-    public void unhidePlayer ()
+    public void unhidePlayer()
     {
-        isHiding = false;
-        anim.SetBool("hiding", false);
+        if (isHiding)
+        {
+            isHiding = false;
+            anim.SetBool("hiding", false);
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - hidingSpotDist);
+        }
     }
 
     void Awake()
     {
         lineHoldHelp = GetComponentInChildren<lineHoldHelper>();
-		anim = GetComponentInChildren<Animator> ();
+        anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         Player2 = GameObject.FindWithTag("Player2");
-		Physics.IgnoreCollision(GetComponent<Collider>(), GameObject.FindWithTag("Player2").GetComponent<Collider>());
+        Physics.IgnoreCollision(GetComponent<Collider>(), GameObject.FindWithTag("Player2").GetComponent<Collider>());
     }
 
     void CheckForce()
@@ -75,21 +86,24 @@ public class PlayerScript : MonoBehaviour
 
     void GetInput()
     {
-        xMov = Input.GetAxis("Horizontal");
-        if (Input.GetKeyDown(KeyCode.Space))
-            jump = true;
-        else jump = false;
-
-        if (Input.GetButtonDown("StateButton"))
+        if (!isHiding)
         {
-            if (state == State.running)
+            xMov = Input.GetAxis("Horizontal");
+            if (Input.GetKeyDown(KeyCode.Space))
+                jump = true;
+            else jump = false;
+
+            if (Input.GetButtonDown("StateButton"))
             {
-                state = State.shooting;
-            }
-            else if (state == State.shooting)
-            {
-                state = State.running;
-                transform.eulerAngles = new Vector3(0, 0, 0);
+                if (state == State.running)
+                {
+                    state = State.shooting;
+                }
+                else if (state == State.shooting)
+                {
+                    state = State.running;
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                }
             }
         }
     }
@@ -137,12 +151,12 @@ public class PlayerScript : MonoBehaviour
 	    grounded = false;
         
     }*/
-	public void SetGrounded(bool gr) // function used by GroundDetector
-	{
-		grounded = gr;
-		if(grounded)
-			anim.SetTrigger("ground");
-	}
+    public void SetGrounded(bool gr) // function used by GroundDetector
+    {
+        grounded = gr;
+        if (grounded)
+            anim.SetTrigger("ground");
+    }
 
     public void ToGround()
     {
@@ -169,7 +183,7 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = Vector3.zero;
         }
 
-        if(other.tag == "ladder")
+        if (other.tag == "ladder")
         {
             anim.SetTrigger("climb");
         }
@@ -177,7 +191,7 @@ public class PlayerScript : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-       
+
         if (lineHoldHelp.canCatch && Input.GetKey(lineHoldKey) && !jump)
         {
             ToLine();
@@ -215,7 +229,7 @@ public class PlayerScript : MonoBehaviour
             vel.z = 0;
 
             rb.velocity = vel;
-                
+
             if (xMov < 0)//swinging rope
                 other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.left * 100f);
             else if (xMov > 0)
