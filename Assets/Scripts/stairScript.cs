@@ -22,5 +22,10 @@ public class stairScript : MonoBehaviour
         {
             StartCoroutine(fadeRoutine(col));
         }
+
+        if (col.gameObject.tag == "Player2" && Input.GetKey(KeyCode.Q))
+        {
+            StartCoroutine(fadeRoutine(col));
+        }
     }
 }
