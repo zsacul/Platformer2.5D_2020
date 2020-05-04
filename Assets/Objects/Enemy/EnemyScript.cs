@@ -54,13 +54,57 @@ public class EnemyScript : MonoBehaviour
         movingTimeMax = (routeEnd - routeStart) / speed;
     }
 
+    void DrawRaysDebug(float rayMult)
+    {
+        Vector3 rayDirection = transform.forward;
+        for (int i = 1; i <= 5; i++) // promienie w lewo
+        {
+            Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y, rayDirection.z - rayMult * i);
+            Debug.DrawRay(transform.position, currentRayDirection * 20, Color.green);
+        }
+
+        Debug.DrawRay(transform.position, transform.forward * 20, Color.green);
+
+        for (int i = 1; i <= 5; i++) // promienie w prawo
+        {
+            Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y, rayDirection.z + rayMult * i);
+            Debug.DrawRay(transform.position, currentRayDirection * 20, Color.green);
+        }
+    }
+
+
     bool BoyIsSeen()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, LayerMask.GetMask("Player1")))
+        Vector3 rayDirection = transform.forward;
+
+        float rayMult = 0.05f;
+
+        //DrawRaysDebug(rayMult);
+
+        for(int i=1; i<=5; i++) // promienie w lewo
+        {
+            Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y, rayDirection.z - rayMult * i);
+            if (Physics.Raycast(transform.position, currentRayDirection, out hit, Mathf.Infinity, LayerMask.GetMask("Player1")))
+            {
+                return true;
+            }
+        }
+
+        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, LayerMask.GetMask("Player1"))) //promień w przód
         {
             return true;
         }
+
+        for (int i = 1; i <= 5; i++) // promienie w prawo
+        {
+            Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y, rayDirection.z + rayMult * i);
+            if (Physics.Raycast(transform.position, currentRayDirection, out hit, Mathf.Infinity, LayerMask.GetMask("Player1")))
+            {
+                return true;
+            }
+        }
+
         return false;
     }
 
@@ -99,7 +143,7 @@ public class EnemyScript : MonoBehaviour
     void SetRotation()
     {
         transform.eulerAngles = new Vector3(0f, direction * 90f, 0f);
-		transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
+		//transform.position = new Vector3 (transform.position.x, transform.position.y, 0f);
 	}
 
     void Update()
