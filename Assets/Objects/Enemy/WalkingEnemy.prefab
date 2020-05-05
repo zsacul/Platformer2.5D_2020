@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &736347488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197218806657931180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3953d82dff1cb047a397abd27cddd82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives: 1
+  speed: 2
+  chasingSpeed: 3
+  climbingSpeed: 2
+  chasingDist: {x: 10, y: 1, z: 8}
+  onlyPowerBullet: 0
+  pointsList:
+  - {x: -14, y: 0.5, z: -10}
+  - {x: -9.5, y: 0.5, z: -8}
+  - {x: -9.5, y: 4, z: -8}
+  - {x: 3, y: 4, z: -5}
+  state: 1
+  currentPoint: 0
+  back: 0
+  angle: 0
+  ladder: 0
+  stairs: 0
+--- !u!1001 &5119671983573765137
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1228439401950370736, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228439401950370736, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228439401950370736, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228439401950370736, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228439401950370736, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228439401950370736, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228439401950370736, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228439401950370736, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228439401950370736, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228439401950370736, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228439401950370736, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228439401950370748, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228439401950370749, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 011661526ee990743bb62fdf6ec61c83, type: 3}
+--- !u!1 &6197218806657931180 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1228439401950370749, guid: 011661526ee990743bb62fdf6ec61c83,
+    type: 3}
+  m_PrefabInstance: {fileID: 5119671983573765137}
+  m_PrefabAsset: {fileID: 0}
