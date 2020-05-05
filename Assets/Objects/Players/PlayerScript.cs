@@ -176,6 +176,14 @@ public class PlayerScript : MonoBehaviour
         anim.SetTrigger("climb");
     }
 
+    public void Cought()
+    {
+        Vector3 lastCheckpoint = GetComponent<CheckpointScript>().lastPos;
+        transform.position = lastCheckpoint;
+        Player2.transform.position = new Vector3(lastCheckpoint.x - 0.5f, lastCheckpoint.y + 1f, lastCheckpoint.z);
+    }
+
+
     void OnTriggerEnter(Collider other)
     {
         if (lineHoldHelp.canCatch && Input.GetKey(lineHoldKey))

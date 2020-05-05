@@ -240,7 +240,8 @@ public class EnemyScript : MonoBehaviour
         }
         if (col.gameObject.CompareTag("Player1"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            col.gameObject.GetComponent<PlayerScript>().Cought();
             state = State.free;
         }
         if (col.gameObject.tag == "InteractionSurrounding" && canOpenDoor)
