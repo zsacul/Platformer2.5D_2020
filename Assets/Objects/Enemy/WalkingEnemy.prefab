@@ -9,26 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 6197218806657931180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3953d82dff1cb047a397abd27cddd82, type: 3}
+  m_Script: {fileID: 11500000, guid: 75829ada74f59a2419b5ec81fc96fb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 1
+  lives: 2
   speed: 2
-  chasingSpeed: 3
-  climbingSpeed: 2
-  chasingDist: {x: 10, y: 1, z: 8}
+  chasingSpeed: 2.5
+  climbingSpeed: 1.5
+  chasingDist: {x: 10, y: 3, z: 1}
   onlyPowerBullet: 0
-  pointsList:
-  - {x: -14, y: 0.5, z: -10}
-  - {x: -9.5, y: 0.5, z: -8}
-  - {x: -9.5, y: 4, z: -8}
-  - {x: 3, y: 4, z: -5}
-  state: 1
-  currentPoint: 0
-  back: 0
-  angle: 0
+  cycleWalking: 1
+  patrolAfterEnd: 0
   ladder: 0
-  stairs: 0
 --- !u!1001 &5119671983573765137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -99,9 +91,10 @@ PrefabInstance:
     - target: {fileID: 1228439401950370749, guid: 011661526ee990743bb62fdf6ec61c83,
         type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: WalkingEnemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1228439401950370748, guid: 011661526ee990743bb62fdf6ec61c83, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 011661526ee990743bb62fdf6ec61c83, type: 3}
 --- !u!1 &6197218806657931180 stripped
 GameObject:
