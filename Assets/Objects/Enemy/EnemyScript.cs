@@ -59,8 +59,44 @@ public class EnemyScript : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, LayerMask.GetMask("Player1")))
         {
-            return true;
+            Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y, rayDirection.z - rayMult * i);
+            if (Physics.Raycast(transform.position, currentRayDirection, out hit, Mathf.Infinity, LayerMask.GetMask("Player1", "Colliders")))
+            {
+                if (hit.transform.name == "Player 1")
+                {
+                    Debug.Log("AAAAA");
+                    return true;
+                }
+            }
         }
+
+        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, LayerMask.GetMask("Player1", "Colliders"))) //promień w przód
+>>>>>>> Stashed changes
+        {
+            if(hit.transform.name == "Player 1")
+            {
+                Debug.Log("AAAAA");
+                return true;
+            }
+            
+        }
+<<<<<<< Updated upstream
+=======
+
+        for (int i = 1; i <= 5; i++) // promienie w prawo
+        {
+            Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y, rayDirection.z + rayMult * i);
+            if (Physics.Raycast(transform.position, currentRayDirection, out hit, Mathf.Infinity, LayerMask.GetMask("Player1", "Colliders")))
+            {
+                if (hit.transform.name == "Player 1")
+                {
+                    Debug.Log("AAAAA");
+                    return true;
+                }
+            }
+        }
+
+>>>>>>> Stashed changes
         return false;
     }
 
@@ -72,6 +108,11 @@ public class EnemyScript : MonoBehaviour
 		float distZ = Mathf.Abs(boy.transform.position.z - transform.position.z);
         if (BoyIsSeen())
         {
+<<<<<<< Updated upstream
+=======
+            Debug.Log("?");
+            return true;
+>>>>>>> Stashed changes
             if (distX <= chasingDist.x && distY <= chasingDist.y && distZ <= 0.2f)
             {
                 return true;
