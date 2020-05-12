@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 1284329944927938790}
   m_Layer: 0
   m_Name: 2
-  m_TagString: Untagged
+  m_TagString: Stairs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 1284329945724190960}
   m_Layer: 0
   m_Name: 1
-  m_TagString: Untagged
+  m_TagString: Stairs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
