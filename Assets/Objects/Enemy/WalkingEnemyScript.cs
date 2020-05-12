@@ -70,8 +70,11 @@ public class WalkingEnemyScript : MonoBehaviour
 				Vector3 point = pointsList[currentPoint];
 				if(stairs)
 				{
-					if(CheckDist(stScript.other.transform.position, point))
+                    Debug.Log("stairs: " + stScript.other.transform.position);
+                    Debug.Log("destination: " + point);
+                    if (CheckDist(stScript.other.transform.position, point))
 					{
+                        
 						transform.position = stScript.other.transform.position;
 					}
 				}
@@ -197,18 +200,21 @@ public class WalkingEnemyScript : MonoBehaviour
         else
             return false;
 	}
-	
-	bool CheckDist(Vector3 point, Vector3 point2)
-	{
-		bool x = Mathf.Abs(point2.x - point.x) < 0.3f;
-		bool y = Mathf.Abs(point2.y - point.y) < 0.3f;
-		bool z = Mathf.Abs(point2.z - point.z) < 0.3f;
-		if(x && y && z)
-			return true;
-		else
-			return false;
-	}
-	void MoveToPoint(Vector3 point)
+
+    bool CheckDist(Vector3 point, Vector3 point2)
+    {
+        float dist = 0.3f;
+        if (stairs)
+            dist = 1f;
+        bool x = Mathf.Abs(point2.x - point.x) < dist;
+        bool y = Mathf.Abs(point2.y - point.y) < dist;
+        bool z = Mathf.Abs(point2.z - point.z) < dist;
+        if (x && y && z)
+            return true;
+        else
+            return false;
+    }
+    void MoveToPoint(Vector3 point)
 	{
 		if(Mathf.Abs(transform.position.y - point.y) < 0.1f)
 		{
@@ -279,7 +285,7 @@ public class WalkingEnemyScript : MonoBehaviour
 		}
 		if(col.gameObject.CompareTag("Player1"))
 		{
-			SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
+            col.gameObject.GetComponent<PlayerScript>().Cought();
 		}
 	}
 	

@@ -9,20 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 6197218806657931180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3953d82dff1cb047a397abd27cddd82, type: 3}
+  m_Script: {fileID: 11500000, guid: ba4e33f28dd69d94287710a5953cfb3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 1
-  speed: 2
+  lives: 3
+  speed: 1
   chasingSpeed: 3
   climbingSpeed: 2
-  chasingDist: {x: 10, y: 1, z: 8}
+  chasingDist: {x: 0, y: 0, z: 0}
   onlyPowerBullet: 0
   pointsList:
-  - {x: -14, y: 0.5, z: -10}
-  - {x: -9.5, y: 0.5, z: -8}
-  - {x: -9.5, y: 4, z: -8}
-  - {x: 3, y: 4, z: -5}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   state: 1
   currentPoint: 0
   back: 0
@@ -91,6 +89,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1228439401950370736, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228439401950370736, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1228439401950370748, guid: 011661526ee990743bb62fdf6ec61c83,
         type: 3}
       propertyPath: m_Enabled
@@ -99,7 +107,7 @@ PrefabInstance:
     - target: {fileID: 1228439401950370749, guid: 011661526ee990743bb62fdf6ec61c83,
         type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: WalkingEnemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 011661526ee990743bb62fdf6ec61c83, type: 3}

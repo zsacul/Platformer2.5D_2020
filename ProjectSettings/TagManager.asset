@@ -18,6 +18,7 @@ TagManager:
   - lineHolder
   - Ladder
   - Checkpoint
+  - Stairs
   layers:
   - Default
   - TransparentFX
