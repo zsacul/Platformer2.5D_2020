@@ -18,6 +18,7 @@ TagManager:
   - lineHolder
   - Ladder
   - Checkpoint
+  - Destination
   - Stairs
   layers:
   - Default
