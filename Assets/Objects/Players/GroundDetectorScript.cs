@@ -21,6 +21,7 @@ public class GroundDetectorScript : MonoBehaviour
 	{
 		if(!col.gameObject.CompareTag("Player1") && !col.gameObject.CompareTag("InteractionSurrounding"))
 		{
+			//Debug.Log(col.gameObject.name);
 			grounded = true;
 			ps.SetGrounded(grounded);
 		}

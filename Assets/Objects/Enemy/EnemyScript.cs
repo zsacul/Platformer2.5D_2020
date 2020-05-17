@@ -87,13 +87,15 @@ public class EnemyScript : MonoBehaviour
             Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y, rayDirection.z - rayMult * i);
             if (Physics.Raycast(transform.position, currentRayDirection, out hit, Mathf.Infinity, LayerMask.GetMask("Player1")))
             {
-                return true;
+                if(hit.collider.gameObject.tag == "Player1")
+                    return true;
             }
         }
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, LayerMask.GetMask("Player1"))) //promień w przód
         {
-            return true;
+            if (hit.collider.gameObject.tag == "Player1")
+                return true;
         }
 
         for (int i = 1; i <= 5; i++) // promienie w prawo
@@ -101,7 +103,8 @@ public class EnemyScript : MonoBehaviour
             Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y, rayDirection.z + rayMult * i);
             if (Physics.Raycast(transform.position, currentRayDirection, out hit, Mathf.Infinity, LayerMask.GetMask("Player1")))
             {
-                return true;
+                if (hit.collider.gameObject.tag == "Player1")
+                    return true;
             }
         }
 

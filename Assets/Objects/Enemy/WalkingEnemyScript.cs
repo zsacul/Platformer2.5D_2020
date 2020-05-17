@@ -13,21 +13,21 @@ public class WalkingEnemyScript : MonoBehaviour
 	public bool onlyPowerBullet;
 	
 	
-	public Vector3[] pointsList;
-	/*public*/ bool cycleWalking = true;
-	//public bool patrolAfterEnd;
+	List<Vector3> pointsList = new List<Vector3>();
+	public bool cycleWalking;
+	public bool patrolAfterEnd;
 	
-	public enum State {chasing, walkingRoute }; //hide in inspector
-    public State state; //hide in inspector
+	enum State {chasing, walkingRoute }; //hide in inspector
+    State state = State.walkingRoute; //hide in inspector
 	
 	//Vector3 direction;	
-	public int currentPoint;
-	public bool back;
-	public 	float angle;
+	int currentPoint;
+	bool back;
+	float angle;
 	
-	//[HideInInspector]
+	[HideInInspector]
 	public bool ladder;
-	public bool stairs;
+	bool stairs;
 	stairScript stScript;
 	
 	GameObject boy;
@@ -35,9 +35,18 @@ public class WalkingEnemyScript : MonoBehaviour
 	Renderer r;
 	Rigidbody rb;
 	
+	void GetPointsList()
+	{
+		foreach (Transform child in transform) 
+             if (child.CompareTag ("Destination")) {
+                 pointsList.Add(child.position);
+				 Destroy(child.gameObject);
+             }
+	}
 
     void Start()
     {
+		GetPointsList();
         currentPoint = 0;
 		r = GetComponent<Renderer>();
 		rb = GetComponent<Rigidbody>();
@@ -55,9 +64,9 @@ public class WalkingEnemyScript : MonoBehaviour
 		
 		if(state == State.walkingRoute)
 		{
-			if(CheckDist(pointsList[currentPoint], transform.position))
+			if(CheckDist(pointsList[currentPoint], transform.position, false))
 			{
-				Debug.Log("in point");
+				//Debug.Log("in point");
 				if(!NextPoint())
 				{
 					RouteEnd();
@@ -70,13 +79,13 @@ public class WalkingEnemyScript : MonoBehaviour
 				Vector3 point = pointsList[currentPoint];
 				if(stairs)
 				{
-                    Debug.Log("stairs: " + stScript.other.transform.position);
-                    Debug.Log("destination: " + point);
-                    if (CheckDist(stScript.other.transform.position, point))
+					if(CheckDist(stScript.other.transform.position, point, true))
 					{
                         
 						transform.position = stScript.other.transform.position;
 					}
+					//Debug.Log("dest " + point);
+					//Debug.Log("stairs" + stScript.other.transform.position);
 				}
 				if(Mathf.Abs(transform.position.y - point.y) < 0.3f || !ladder)
 				{
@@ -200,21 +209,24 @@ public class WalkingEnemyScript : MonoBehaviour
         else
             return false;
 	}
-
-    bool CheckDist(Vector3 point, Vector3 point2)
-    {
-        float dist = 0.3f;
-        if (stairs)
-            dist = 1f;
-        bool x = Mathf.Abs(point2.x - point.x) < dist;
-        bool y = Mathf.Abs(point2.y - point.y) < dist;
-        bool z = Mathf.Abs(point2.z - point.z) < dist;
-        if (x && y && z)
-            return true;
-        else
-            return false;
-    }
-    void MoveToPoint(Vector3 point)
+	
+	bool CheckDist(Vector3 point, Vector3 point2, bool s)
+	{
+		float diff = 0.3f;
+		if(s)
+		{
+			//Debug.Log("Checkdist stairs");
+			diff = 1.5f;
+		}
+		bool x = Mathf.Abs(point2.x - point.x) < diff;
+		bool y = Mathf.Abs(point2.y - point.y) < diff * 1.5f;
+		bool z = Mathf.Abs(point2.z - point.z) < diff;
+		if(x && y && z)
+			return true;
+		else
+			return false;
+	}
+	void MoveToPoint(Vector3 point)
 	{
 		if(Mathf.Abs(transform.position.y - point.y) < 0.1f)
 		{
@@ -238,7 +250,7 @@ public class WalkingEnemyScript : MonoBehaviour
 			}
 		}
 		
-		if(!back && currentPoint + 1 < pointsList.Length)
+		if(!back && currentPoint + 1 < pointsList.Count)
 		{
 			currentPoint += 1;
 			return true;
@@ -262,13 +274,19 @@ public class WalkingEnemyScript : MonoBehaviour
 	
 	void RouteEnd()
 	{
-		if(false/*patrolAfterEnd*/)
+		if(patrolAfterEnd)
 		{
-			transform.eulerAngles = new Vector3(0f, 0f, 0f);
+			/*transform.eulerAngles = new Vector3(0f, 0f, 0f);
 			EnemyScript e = GetComponent<EnemyScript>();
 			e.enabled = true;
 			e.lives = lives;
 			this.enabled = false;
+			*/
+			
+			pointsList.RemoveRange(0, pointsList.Count-2);
+			cycleWalking = true;
+			currentPoint = 0;
+			back = false;
 		}
 		//Debug.Log("route end");
 	}
@@ -294,7 +312,7 @@ public class WalkingEnemyScript : MonoBehaviour
 		if(col.gameObject.CompareTag("Ladder"))
 		{
 			ladder = true;
-			Debug.Log("ladder");
+			//Debug.Log("ladder");
 		}
 		if(col.gameObject.CompareTag("Stairs"))
 		{
@@ -308,7 +326,7 @@ public class WalkingEnemyScript : MonoBehaviour
 		if(col.gameObject.CompareTag("Ladder"))
 		{
 			ladder = false;
-			Debug.Log("not ladder");
+			//Debug.Log("not ladder");
 		}
 		if(col.gameObject.CompareTag("Stairs"))
 		{
