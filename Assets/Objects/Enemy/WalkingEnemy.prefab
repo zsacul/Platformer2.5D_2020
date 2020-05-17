@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6197218806657931180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75829ada74f59a2419b5ec81fc96fb5b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9917a4cf1d441ef408b4ea14813e3c14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lives: 3
@@ -18,14 +18,7 @@ MonoBehaviour:
   climbingSpeed: 2
   chasingDist: {x: 10, y: 3, z: 1}
   onlyPowerBullet: 0
-  pointsList:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  state: 1
-  currentPoint: 0
-  back: 0
-  angle: 0
-  cycleWalking: 1
+  cycleWalking: 0
   patrolAfterEnd: 0
   ladder: 0
 --- !u!1001 &5119671983573765137
