@@ -450,23 +450,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 736347487}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3953d82dff1cb047a397abd27cddd82, type: 3}
+  m_Script: {fileID: 11500000, guid: ba4e33f28dd69d94287710a5953cfb3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 1
+  lives: 3
   speed: 2
   chasingSpeed: 3
   climbingSpeed: 2
-  chasingDist: {x: 10, y: 1, z: 8}
+  chasingDist: {x: 5, y: 1, z: 1}
   onlyPowerBullet: 0
   pointsList:
-  - {x: -14, y: 0.5, z: -10}
-  - {x: -9.5, y: 0.5, z: -8}
-  - {x: -9.5, y: 4, z: -8}
-  - {x: 3, y: 4, z: 0}
-  cycleWalking: 1
-  patrolAfterEnd: 0
-  state: 1
+  - {x: -8.5, y: 0, z: -8}
+  - {x: 10, y: 0, z: 10}
+  state: 0
   currentPoint: 0
   back: 0
   angle: 0
