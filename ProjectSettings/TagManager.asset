@@ -17,6 +17,9 @@ TagManager:
   - line
   - lineHolder
   - Ladder
+  - Checkpoint
+  - Destination
+  - Stairs
   layers:
   - Default
   - TransparentFX
@@ -28,7 +31,7 @@ TagManager:
   - 
   - Colliders
   - InteractionSurroundings
-  - 
+  - Player1
   - 
   - 
   - 

@@ -19,8 +19,9 @@ public class BulletScript : MonoBehaviour
             Destroy(this.gameObject);
     }
 
-    /*void OnCollisionEnter()
-    {
-        Destroy(this.gameObject);
-    }*/
+    void OnCollisionEnter(Collision col)
+    {	
+		if(!col.gameObject.CompareTag("Player1") && !col.gameObject.CompareTag("Bullet"))
+			Destroy(this.gameObject);
+    }
 }

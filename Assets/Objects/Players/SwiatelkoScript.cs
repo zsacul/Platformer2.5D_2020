@@ -13,6 +13,8 @@ public class SwiatelkoScript : MonoBehaviour
 
     Rigidbody rb;
 
+    public Rigidbody[] lineParts;
+
     void Start()
     {
         lineActive = false;
@@ -27,6 +29,15 @@ public class SwiatelkoScript : MonoBehaviour
     }
 
 
+    void StopSwing()
+    {
+        foreach(Rigidbody part in lineParts)
+        {
+            part.velocity = new Vector3(0f, 0f, 0f);
+            part.AddForce(new Vector3(0f, -100f, 0f));
+        }
+    }
+
 
     void Update()
     {
@@ -40,9 +51,11 @@ public class SwiatelkoScript : MonoBehaviour
             {
                 GameObject.Find("Player 1").GetComponent<PlayerScript>().ToGround();
                 rb.isKinematic = false;
+                StopSwing();
             }
             else
             {
+                StopSwing();
                 rb.isKinematic = true;
             }
         }

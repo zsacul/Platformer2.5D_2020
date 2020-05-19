@@ -41,6 +41,7 @@ public class EnemiesSpawnerScript : MonoBehaviour
 				es.routeEnd = spots[s].GetRouteEnd();
 				es.canOpenDoor = spots[s].canOpenDoor;
 				es.canClimbingLadder = spots[s].canClimbingLadder;
+				es.onlyPowerBullet = spots[s].onlyPowerBullet;
 			}
 		}
 	}

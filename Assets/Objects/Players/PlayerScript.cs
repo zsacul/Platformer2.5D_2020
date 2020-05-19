@@ -14,6 +14,8 @@ public class PlayerScript : MonoBehaviour
     //public float friction = 0.98f;
     public float powerDist = 2f;
 
+    public float hidingSpotDist;
+
     float xMov;
     bool jump;
 
@@ -24,41 +26,52 @@ public class PlayerScript : MonoBehaviour
     public KeyCode left;
     private Rigidbody rb;
     private lineHoldHelper lineHoldHelp;
+    private Vector3 frozenHidingPosition;
 
-	Animator anim;
+    Animator anim;
 
     [HideInInspector]
-    public enum State { running, shooting, climbing };
+    public enum State { running, shooting, climbing, hiding };
     public State state;
 
     public bool getting_power = false;
     public bool climbing = false;
     public bool grounded = true;
 
-    public bool isHiding = false;
     public bool isSeen = false;
 
     private GameObject currentLinePart;
 
-    public void hidePlayer ()
+    public void hidePlayer()
     {
-        isHiding = true;
-        anim.SetBool("hiding", true);
+        if (state != State.hiding)
+        {
+            state = State.hiding;
+            anim.SetBool("hiding", true);
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            rb.velocity = Vector3.zero;
+            anim.SetFloat("velocity", 0);
+            frozenHidingPosition = transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + hidingSpotDist);
+        }
     }
 
-    public void unhidePlayer ()
+    public void unhidePlayer()
     {
-        isHiding = false;
-        anim.SetBool("hiding", false);
+        if (state == State.hiding)
+        {
+            state = State.running;
+            anim.SetBool("hiding", false);
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - hidingSpotDist);
+        }
     }
 
     void Awake()
     {
         lineHoldHelp = GetComponentInChildren<lineHoldHelper>();
-		anim = GetComponentInChildren<Animator> ();
+        anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         Player2 = GameObject.FindWithTag("Player2");
-		Physics.IgnoreCollision(GetComponent<Collider>(), GameObject.FindWithTag("Player2").GetComponent<Collider>());
+        Physics.IgnoreCollision(GetComponent<Collider>(), GameObject.FindWithTag("Player2").GetComponent<Collider>());
     }
 
     void CheckForce()
@@ -75,22 +88,29 @@ public class PlayerScript : MonoBehaviour
 
     void GetInput()
     {
-        xMov = Input.GetAxis("Horizontal");
-        if (Input.GetKeyDown(KeyCode.Space))
-            jump = true;
-        else jump = false;
-
-        if (Input.GetButtonDown("StateButton"))
+        if (state != State.hiding)
         {
-            if (state == State.running)
+            xMov = Input.GetAxis("Horizontal");
+            if (Input.GetKeyDown(KeyCode.Space))
+                jump = true;
+            else jump = false;
+
+            if (Input.GetButtonDown("StateButton"))
             {
-                state = State.shooting;
+                if (state == State.running)
+                {
+                    state = State.shooting;
+                }
+                else if (state == State.shooting)
+                {
+                    state = State.running;
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                }
             }
-            else if (state == State.shooting)
-            {
-                state = State.running;
-                transform.eulerAngles = new Vector3(0, 0, 0);
-            }
+        }
+        else
+        {
+            rb.position = frozenHidingPosition;
         }
     }
 
@@ -124,7 +144,7 @@ public class PlayerScript : MonoBehaviour
         //Debug.Log(getting_power);
     }
 
-    void OnCollisionStay(Collision other)
+    /*void OnCollisionStay(Collision other)
     {
 	//if (col.gameObject.CompareTag("Platform"))
 	    grounded = true;
@@ -136,6 +156,12 @@ public class PlayerScript : MonoBehaviour
 	//if (col.gameObject.CompareTag("Platform"))
 	    grounded = false;
         
+    }*/
+    public void SetGrounded(bool gr) // function used by GroundDetector
+    {
+        grounded = gr;
+        if (grounded)
+            anim.SetTrigger("ground");
     }
 
     public void ToGround()
@@ -155,6 +181,14 @@ public class PlayerScript : MonoBehaviour
         anim.SetTrigger("climb");
     }
 
+    public void Cought()
+    {
+        Vector3 lastCheckpoint = GetComponent<CheckpointScript>().lastPos;
+        transform.position = lastCheckpoint;
+        Player2.transform.position = new Vector3(lastCheckpoint.x - 0.5f, lastCheckpoint.y + 1f, lastCheckpoint.z);
+    }
+
+
     void OnTriggerEnter(Collider other)
     {
         if (lineHoldHelp.canCatch && Input.GetKey(lineHoldKey))
@@ -163,7 +197,7 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = Vector3.zero;
         }
 
-        if(other.tag == "ladder")
+        if (other.tag == "ladder")
         {
             anim.SetTrigger("climb");
         }
@@ -171,7 +205,7 @@ public class PlayerScript : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-       
+
         if (lineHoldHelp.canCatch && Input.GetKey(lineHoldKey) && !jump)
         {
             ToLine();
@@ -209,7 +243,7 @@ public class PlayerScript : MonoBehaviour
             vel.z = 0;
 
             rb.velocity = vel;
-                
+
             if (xMov < 0)//swinging rope
                 other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.left * 100f);
             else if (xMov > 0)
