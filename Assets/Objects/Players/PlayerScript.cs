@@ -26,39 +26,40 @@ public class PlayerScript : MonoBehaviour
     public KeyCode left;
     private Rigidbody rb;
     private lineHoldHelper lineHoldHelp;
+    private Vector3 frozenHidingPosition;
 
     Animator anim;
 
     [HideInInspector]
-    public enum State { running, shooting, climbing };
+    public enum State { running, shooting, climbing, hiding };
     public State state;
 
     public bool getting_power = false;
     public bool climbing = false;
     public bool grounded = true;
 
-    public bool isHiding = false;
     public bool isSeen = false;
 
     private GameObject currentLinePart;
 
     public void hidePlayer()
     {
-        if (!isHiding)
+        if (state != State.hiding)
         {
-            isHiding = true;
+            state = State.hiding;
             anim.SetBool("hiding", true);
             transform.eulerAngles = new Vector3(0, 0, 0);
             rb.velocity = Vector3.zero;
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + hidingSpotDist);
+            anim.SetFloat("velocity", 0);
+            frozenHidingPosition = transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + hidingSpotDist);
         }
     }
 
     public void unhidePlayer()
     {
-        if (isHiding)
+        if (state == State.hiding)
         {
-            isHiding = false;
+            state = State.running;
             anim.SetBool("hiding", false);
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - hidingSpotDist);
         }
@@ -87,7 +88,7 @@ public class PlayerScript : MonoBehaviour
 
     void GetInput()
     {
-        if (!isHiding)
+        if (state != State.hiding)
         {
             xMov = Input.GetAxis("Horizontal");
             if (Input.GetKeyDown(KeyCode.Space))
@@ -106,6 +107,10 @@ public class PlayerScript : MonoBehaviour
                     transform.eulerAngles = new Vector3(0, 0, 0);
                 }
             }
+        }
+        else
+        {
+            rb.position = frozenHidingPosition;
         }
     }
 

@@ -7,6 +7,14 @@ public class CameraFollow : MonoBehaviour
     private Transform cameraTransform;
     private Transform player1, player2;
     private Transform leftWall, rightWall, topWall, bottomWall;
+	
+	public float maxDepth;
+	public float minDepth;
+	
+	public float maxWidth;
+	
+	public float horizontalFOV;
+	public float verticalFOV;
 
     [SerializeField]
     private GameObject wallVerticalPrefab;
@@ -34,14 +42,14 @@ public class CameraFollow : MonoBehaviour
         wallHorizontalPrefab.GetComponent<Transform>().localScale = sc;
 
 
-        Vector3 left = Camera.main.ViewportToWorldPoint(new Vector3(margin, 0.5f, sceneDepth));
-        Vector3 right = Camera.main.ViewportToWorldPoint(new Vector3(1.0f - margin, 0.5f, sceneDepth));
+        Vector3 left = Camera.main.ViewportToWorldPoint(new Vector3(maxWidth/4f, 0f, maxDepth/2f));
+        Vector3 right = Camera.main.ViewportToWorldPoint(new Vector3(maxWidth/-4f, 0f, maxDepth/2f));
         Vector3 top = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 1.0f - margin, sceneDepth));
         Vector3 bottom = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, margin, sceneDepth));
 
 
-        leftWall = Instantiate(wallVerticalPrefab, left, Quaternion.Euler(0.0f, 0.0f, -90.0f), cameraTransform).GetComponent<Transform>();
-        rightWall = Instantiate(wallVerticalPrefab, right, Quaternion.Euler(0.0f, 0.0f, 90.0f), cameraTransform).GetComponent<Transform>();
+        leftWall = Instantiate(wallVerticalPrefab, left, Quaternion.Euler(0.0f, horizontalFOV/-2f, -90.0f), cameraTransform).GetComponent<Transform>();
+        rightWall = Instantiate(wallVerticalPrefab, right, Quaternion.Euler(0.0f, horizontalFOV/2f, 90.0f), cameraTransform).GetComponent<Transform>();
         topWall = Instantiate(wallHorizontalPrefab, top, Quaternion.Euler(0.0f, 0.0f, 180.0f), cameraTransform).GetComponent<Transform>();
         bottomWall = Instantiate(wallHorizontalPrefab, bottom, Quaternion.identity, cameraTransform).GetComponent<Transform>();
     }
@@ -58,10 +66,15 @@ public class CameraFollow : MonoBehaviour
 
     void Start()
     {
+		
         cameraTransform = GetComponent<Transform>();
         player1 = GameObject.FindWithTag("Player1").GetComponent<Transform>();
         player2 = GameObject.FindWithTag("Player2").GetComponent<Transform>();
         cameraTransform.position = GetMiddlePoint();
+		cameraTransform.position = new Vector3(cameraTransform.position.x, cameraTransform.position.y, maxDepth);
+		verticalFOV = GetComponent<Camera>().fieldOfView;
+		horizontalFOV = Camera.VerticalToHorizontalFieldOfView(verticalFOV, GetComponent<Camera>().aspect);
+		maxWidth = 2 * maxDepth * Mathf.Tan(Mathf.Rad2Deg * horizontalFOV/2f);
         CreateScreenEdgeWalls();
     }
 

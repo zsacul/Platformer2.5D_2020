@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6197218806657931180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75829ada74f59a2419b5ec81fc96fb5b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9917a4cf1d441ef408b4ea14813e3c14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 2
-  speed: 2
-  chasingSpeed: 2.5
-  climbingSpeed: 1.5
+  lives: 3
+  speed: 1
+  chasingSpeed: 3
+  climbingSpeed: 2
   chasingDist: {x: 10, y: 3, z: 1}
   onlyPowerBullet: 0
-  cycleWalking: 1
+  cycleWalking: 0
   patrolAfterEnd: 0
   ladder: 0
 --- !u!1001 &5119671983573765137
@@ -82,6 +82,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228439401950370736, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228439401950370736, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1228439401950370748, guid: 011661526ee990743bb62fdf6ec61c83,
         type: 3}

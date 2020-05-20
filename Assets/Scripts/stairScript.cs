@@ -7,6 +7,12 @@ public class stairScript : MonoBehaviour
 
     public GameObject other;
     public Animator fadeAnim;
+	public CameraScript cs;
+	
+	void Start()
+	{
+		cs = GameObject.FindWithTag("MainCamera").GetComponent<CameraScript>();
+	}
 
     IEnumerator fadeRoutine(Collider col)
     {
@@ -21,11 +27,13 @@ public class stairScript : MonoBehaviour
         if(col.gameObject.tag == "Player1" && Input.GetKey(KeyCode.DownArrow))
         {
             StartCoroutine(fadeRoutine(col));
+			cs.Stairs(other);
         }
 
         if (col.gameObject.tag == "Player2" && Input.GetKey(KeyCode.Q))
         {
             StartCoroutine(fadeRoutine(col));
+			cs.Stairs(other);
         }
     }
 }

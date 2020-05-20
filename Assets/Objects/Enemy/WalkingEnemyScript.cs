@@ -81,6 +81,7 @@ public class WalkingEnemyScript : MonoBehaviour
 				{
 					if(CheckDist(stScript.other.transform.position, point, true))
 					{
+                        
 						transform.position = stScript.other.transform.position;
 					}
 					//Debug.Log("dest " + point);
@@ -302,7 +303,7 @@ public class WalkingEnemyScript : MonoBehaviour
 		}
 		if(col.gameObject.CompareTag("Player1"))
 		{
-			SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
+            col.gameObject.GetComponent<PlayerScript>().Cought();
 		}
 	}
 	
