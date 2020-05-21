@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -51,6 +52,11 @@ public class EnemyScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         boy = GameObject.FindWithTag("Player1");
         Physics.IgnoreCollision(GameObject.FindWithTag("Player2").GetComponent<Collider>(), GetComponent<Collider>());
+        GameObject[] walls = GameObject.FindGameObjectsWithTag("CameraWall");
+        foreach (GameObject wall in walls)
+        {
+            Physics.IgnoreCollision(wall.GetComponent<Collider>(), GetComponent<Collider>());
+        }
         movingTimeMax = (routeEnd - routeStart) / speed;
     }
 
@@ -60,15 +66,15 @@ public class EnemyScript : MonoBehaviour
         for (int i = 1; i <= 5; i++) // promienie w lewo
         {
             Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y, rayDirection.z - rayMult * i);
-            Debug.DrawRay(transform.position, currentRayDirection * 20, Color.green);
+            //Debug.DrawRay(transform.position, currentRayDirection * 20, Color.green);
         }
 
-        Debug.DrawRay(transform.position, transform.forward * 20, Color.green);
+        //Debug.DrawRay(transform.position, transform.forward * 20, Color.green);
 
         for (int i = 1; i <= 5; i++) // promienie w prawo
         {
             Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y, rayDirection.z + rayMult * i);
-            Debug.DrawRay(transform.position, currentRayDirection * 20, Color.green);
+            //Debug.DrawRay(transform.position, currentRayDirection * 20, Color.green);
         }
     }
 
@@ -260,7 +266,7 @@ public class EnemyScript : MonoBehaviour
                     anim.SetTrigger("Player2UseRight");
                     break;
                 default:
-                    Debug.Log("Unknown surrounding type!!!");
+                    //Debug.Log("Unknown surrounding type!!!");
                     break;
             }
             // Animator anim = usableElements[other.GetComponent<InteractionSurrounding>().ParentID].GetComponent<Animator>();
@@ -269,7 +275,7 @@ public class EnemyScript : MonoBehaviour
         if (col.gameObject.CompareTag("Ladder"))
         {
             ladder = true;
-            Debug.Log("ladder");
+           // Debug.Log("ladder");
         }
     }
 
@@ -278,7 +284,7 @@ public class EnemyScript : MonoBehaviour
         if (col.gameObject.CompareTag("Ladder"))
         {
             ladder = false;
-            Debug.Log("not ladder");
+            //Debug.Log("not ladder");
         }
     }
 
