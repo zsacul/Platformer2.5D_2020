@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2827417374877683422}
   - component: {fileID: 2827417374877683423}
   - component: {fileID: 2827417374877683420}
-  - component: {fileID: 2827417374877683421}
   - component: {fileID: 2827417374877683418}
   m_Layer: 0
   m_Name: Main Camera
@@ -85,32 +84,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2827417374877683419}
   m_Enabled: 1
---- !u!114 &2827417374877683421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2827417374877683419}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5c8e12158b792d4f8ceffec68e1127c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoothSpeed: 0.5
-  maxDepth: -15
-  minDepth: -5
-  maxWidth: 0
-  horizontalFOV: 0
-  verticalFOV: 0
-  wallVerticalPrefab: {fileID: 7188537265178729070, guid: 02e00fcb457d75e46b03361e53f0ce43,
-    type: 3}
-  wallsHeight: 3
-  wallHorizontalPrefab: {fileID: 7188537265178729070, guid: 02e00fcb457d75e46b03361e53f0ce43,
-    type: 3}
-  wallsWidth: 4
-  margin: 0
-  sceneDepth: 10
 --- !u!114 &2827417374877683418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +99,7 @@ MonoBehaviour:
   maxDepth: -12
   minDepth: -7
   margin: 0.5
-  smoothSpeed: 0.3
+  smoothSpeed: 0.07
   wallPrefab: {fileID: 7188537265178729070, guid: 02e00fcb457d75e46b03361e53f0ce43,
     type: 3}
   wallCollision: 0

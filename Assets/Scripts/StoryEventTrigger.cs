@@ -6,25 +6,33 @@ public class StoryEventTrigger : MonoBehaviour
 {
     public StoryEvent storyEvent;
     private bool isShown;
-
+    private StoryEventManager SEM;
+    private static string activeStory;
     [SerializeField]
     public GameObject player;
 
     private void Start()
     {
+        activeStory = "";
         isShown = false;
+        SEM = FindObjectOfType<StoryEventManager>();
     }
     private void Update()
     {
-        if (isShown == false && Vector3.Distance(transform.position, player.transform.position) < 1.0f)
+        float dist = Vector3.Distance(transform.position, player.transform.position);
+        if (isShown == false &&  dist < 1.0f)
         {
-            TriggerStoryEvent();
+            activeStory = gameObject.name;
             isShown = true;
+            TriggerStoryEvent();
+
         }
+        if (Input.GetKeyDown(KeyCode.KeypadEnter) && activeStory==gameObject.name)
+            SEM.DisplayNextStoryEvent();
     }
 
     public void TriggerStoryEvent()
     {
-        FindObjectOfType<StoryEventManager>().StartStoryEvent(storyEvent);
+        SEM.StartStoryEvent(storyEvent);
     }
 }
