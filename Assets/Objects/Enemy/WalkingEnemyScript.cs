@@ -51,8 +51,14 @@ public class WalkingEnemyScript : MonoBehaviour
 		r = GetComponent<Renderer>();
 		rb = GetComponent<Rigidbody>();
 		boy = GameObject.FindWithTag("Player1");
-		//Physics.IgnoreCollision(GameObject.FindWithTag("Player2").GetComponent<Collider>(), GetComponent<Collider>());
-    }
+		Physics.IgnoreCollision(GameObject.FindWithTag("Player2").GetComponent<Collider>(), GetComponent<Collider>());
+		GameObject[] walls = GameObject.FindGameObjectsWithTag("CameraWall");
+		foreach (GameObject wall in walls)
+		{
+			//UnityEngine.Debug.Log(wall.transform.position);
+			Physics.IgnoreCollision(wall.GetComponent<Collider>(), GetComponent<Collider>());
+		}
+	}
 
     // Update is called once per frame
     void Update()

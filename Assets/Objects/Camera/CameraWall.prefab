@@ -118,12 +118,11 @@ GameObject:
   - component: {fileID: 7768438931174354264}
   - component: {fileID: 8270187301397814804}
   - component: {fileID: 1643738865848518886}
-  - component: {fileID: 8980264489992363143}
   - component: {fileID: 2572510236448648580}
   - component: {fileID: 8152740022315444433}
   m_Layer: 0
-  m_Name: Plane
-  m_TagString: Untagged
+  m_Name: CameraWall
+  m_TagString: CameraWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,20 +189,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8980264489992363143
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7188537265178729070}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &2572510236448648580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cs: {fileID: 5016529814719129435, guid: 2f6f9dc339b9c7bd0b4a5516bf85b511, type: 3}
+  collision: 0
 --- !u!65 &8152740022315444433
 BoxCollider:
   m_ObjectHideFlags: 0
