@@ -20,6 +20,7 @@ TagManager:
   - Checkpoint
   - Destination
   - Stairs
+  - CRATE
   layers:
   - Default
   - TransparentFX

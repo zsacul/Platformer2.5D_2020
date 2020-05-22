@@ -1,7 +1,6 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -85,26 +84,41 @@ public class EnemyScript : MonoBehaviour
         for(int i=1; i<=5; i++) // promienie w lewo
         {
             Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y, rayDirection.z - rayMult * i);
-            if (Physics.Raycast(transform.position, currentRayDirection, out hit, Mathf.Infinity, LayerMask.GetMask("Player1")))
+            if (Physics.Raycast(transform.position, currentRayDirection, out hit, Mathf.Infinity))
             {
-                if(hit.collider.gameObject.tag == "Player1")
+                //if (hit.transform.tag != null)
+                //    Debug.Log(hit.transform.tag);
+                if (hit.transform.CompareTag("Player1"))
+                {
+                    //Debug.Log("HERE 1");
                     return true;
+                }
             }
         }
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, LayerMask.GetMask("Player1"))) //promień w przód
+        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity)) //promień w przód
         {
-            if (hit.collider.gameObject.tag == "Player1")
+            //if(hit.transform.tag != null)
+            //    Debug.Log(hit.transform.tag);
+            if (hit.transform.CompareTag("Player1"))
+            {
+                //Debug.Log("SEES");
                 return true;
+            }
         }
 
         for (int i = 1; i <= 5; i++) // promienie w prawo
         {
             Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y, rayDirection.z + rayMult * i);
-            if (Physics.Raycast(transform.position, currentRayDirection, out hit, Mathf.Infinity, LayerMask.GetMask("Player1")))
+            if (Physics.Raycast(transform.position, currentRayDirection, out hit, Mathf.Infinity))
             {
-                if (hit.collider.gameObject.tag == "Player1")
+                //if (hit.transform.tag != null)
+                //    Debug.Log(hit.transform.tag);
+                if (hit.transform.CompareTag("Player1"))
+                {
+                    //Debug.Log("HERE 3");
                     return true;
+                }
             }
         }
 
