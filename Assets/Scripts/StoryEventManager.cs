@@ -36,7 +36,6 @@ public class StoryEventManager : MonoBehaviour
 
     public void DisplayNextStoryEvent()
     {
-        Debug.Log("TUTAJ");
         if(statemnets.Count == 0)
         {
             EndStoryEvent();

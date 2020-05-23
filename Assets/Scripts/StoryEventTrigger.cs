@@ -27,7 +27,7 @@ public class StoryEventTrigger : MonoBehaviour
             TriggerStoryEvent();
 
         }
-        if (Input.GetKeyDown(KeyCode.KeypadEnter) && activeStory==gameObject.name)
+        if (Input.GetKeyDown(KeyCode.RightControl) && activeStory==gameObject.name)
             SEM.DisplayNextStoryEvent();
     }
 
