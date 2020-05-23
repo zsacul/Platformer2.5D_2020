@@ -1,3 +1,7 @@
+using System.Collections.Specialized;
+using System.Diagnostics;
+using System.Security.Cryptography;
+using System.Threading;
 using UnityEngine;
 
 public class CameraScript : MonoBehaviour
@@ -17,7 +21,7 @@ public class CameraScript : MonoBehaviour
 	
 	public bool wallCollision = false;
 	public bool bufferCollision = false;
-	//public bool stairs = false;
+	public bool falling = false;
 	Vector3 stairsPos;
 	
 	public float maxWidth;
@@ -68,7 +72,7 @@ public class CameraScript : MonoBehaviour
 	
 	Vector3 GetMiddlePoint()
     {
-        Vector3 newPos = new Vector3(0.0f, 0.0f, 0f);
+        Vector3 newPos = new Vector3(0.0f, 0.0f, transform.position.z);
 		
         newPos.x = (player1.position.x + player2.position.x) / 2.0f;
         newPos.y = (player1.position.y + player2.position.y) / 2.0f;
@@ -77,25 +81,12 @@ public class CameraScript : MonoBehaviour
     }
 	
 	void SetZPosition()
-	{
-		/*if(stairs)
-		{
-			Vector3 point = GetComponent<Camera>().WorldToViewportPoint(stairsPos);
-			//Debug.Log(point);
-			if(point.x >0.1 && point.x<0.9 && point.y>0.1 && point.y<0.9)
-				stairs = false;
-			else 
-			{
-				zPosition -= 0.1f;
-				transform.Translate(0f, 0f, -0.1f);
-			}
-		}*/
-		
+	{		
 		if(wallCollision)
-			DecreaseZPosition(0.1f);
+			DecreaseZPosition(0.2f);
 		else
 			if(!bufferCollision)
-				IncreaseZPosition(0.1f);
+				IncreaseZPosition(0.2f);
 	}
 	
 	Vector3 SetCameraPosition()
@@ -147,26 +138,66 @@ public class CameraScript : MonoBehaviour
 		}
 	}
 	
-	public void Stairs(GameObject stairsGameObject)
+	public bool Stairs(GameObject stairsGameObject)
 	{
-		//stairs = true;
 		stairsPos = stairsGameObject.transform.position;
-		//oblicz potrzebne cofnięcie kamery żeby uchwycić obie części schodów jednocześnie
-		zPosition = maxDepth;
-		transform.SetPositionAndRotation(new Vector3(transform.position.x, transform.position.y, zPosition), transform.rotation);		
+		Vector3 position = transform.position;
+
+		float horZ;
+		if(stairsPos.x > position.x)
+        {
+			horZ = -(stairsPos.x + 2f - position.x) / Mathf.Tan(horizontalFOV/2 * Mathf.Deg2Rad);
+        }
+        else
+        {
+			horZ = -(position.x - stairsPos.x + 2f ) / Mathf.Tan(horizontalFOV / 2 * Mathf.Deg2Rad);
+		}
+
+		float verZ;
+		if (stairsPos.y > position.y)
+		{
+			verZ = -(stairsPos.y + 2f - position.y) / Mathf.Tan(verticalFOV / 2 * Mathf.Deg2Rad);
+		}
+		else
+		{
+			verZ = -(position.y - stairsPos.y + 2f) / Mathf.Tan(verticalFOV / 2 * Mathf.Deg2Rad);
+		}
+
+		float newZ = Mathf.Min(Mathf.Min(verZ, horZ), zPosition);
+
+		if(newZ >= maxDepth)
+        {
+			zPosition = newZ;
+			transform.SetPositionAndRotation(new Vector3(transform.position.x, transform.position.y, zPosition), transform.rotation);
+			return true;
+		}
+        else
+        {
+			//UnityEngine.Debug.Log("za daleko te schody");
+			return false;
+        }
+
 	}
+
+	void Falling()
+    {
+		UnityEngine.Debug.Log("falling");
+		transform.Translate(new Vector3(0f, 0f, -10f * Time.deltaTime));
+    }
 	
 	void Update()
     {
-		
-        Vector3 target = SetCameraPosition();
-		//Debug.Log("target: " + target);
-		//Debug.Log("pos: " + transform.position);
-		//if(target.y < transform.position.y)
-			//Debug.Log(transform.position);
-        //Vector3 destination = target;// + offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, target, smoothSpeed);
-        transform.position = smoothedPosition;
+		if (falling)
+		{
+			Falling();
+		}
+		else
+		{
+			Vector3 target = SetCameraPosition();
+			Vector3 smoothedPosition = Vector3.Lerp(transform.position, target, smoothSpeed);
+			transform.position = smoothedPosition;
+			//transform.Translate(new Vector3(target.x - transform.position.x, target.y - transform.position.y, 10f * Time.deltaTime * (zPosition - transform.position.z)));
+		}
 
     }
 }

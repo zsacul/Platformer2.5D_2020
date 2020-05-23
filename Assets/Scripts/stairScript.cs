@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,14 +27,26 @@ public class stairScript : MonoBehaviour
     {
         if(col.gameObject.tag == "Player1" && Input.GetKey(KeyCode.DownArrow))
         {
-            StartCoroutine(fadeRoutine(col));
-			cs.Stairs(other);
+            if (cs.Stairs(other))
+                StartCoroutine(fadeRoutine(col));
+            else
+                CannotUseStairs();
+			
         }
 
         if (col.gameObject.tag == "Player2" && Input.GetKey(KeyCode.Q))
         {
-            StartCoroutine(fadeRoutine(col));
-			cs.Stairs(other);
+            if (cs.Stairs(other))
+                StartCoroutine(fadeRoutine(col));
+            else
+                CannotUseStairs();
+			
         }
+    }
+
+    void CannotUseStairs()
+    {
+        //failure sound
+        UnityEngine.Debug.Log("za daleko te schody");
     }
 }
