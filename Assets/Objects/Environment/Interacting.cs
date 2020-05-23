@@ -11,6 +11,7 @@ public class Interacting : MonoBehaviour
     public KeyCode use;
     public KeyCode barricade;
     public PlayerScript playerScript;
+    bool buttonPressed = false;
 
     public void AddUsableElement(int id, GameObject obj)
     {
@@ -40,8 +41,9 @@ public class Interacting : MonoBehaviour
     {
         InteractionSurrounding.Type type = other.GetComponent<InteractionSurrounding>().SurroundingType;
         Animator anim = usableElements[other.GetComponent<InteractionSurrounding>().ParentID].GetComponent<Animator>();
-        if (Input.GetKeyDown(use))
+        if (Input.GetKeyDown(use) && !buttonPressed)
         {
+            buttonPressed = true;
             switch (type)
             {
                 case InteractionSurrounding.Type.leftDoor:
@@ -55,8 +57,9 @@ public class Interacting : MonoBehaviour
                     break;
             }
         }
-        if (Input.GetKeyDown(barricade))
+        else if (Input.GetKeyDown(barricade) && !buttonPressed)
         {
+            buttonPressed = true;
             switch (type)
             {
                 case InteractionSurrounding.Type.leftDoor:
@@ -70,12 +73,15 @@ public class Interacting : MonoBehaviour
                     break;
             }
         }
+        else if (!Input.GetKeyDown(use) && !Input.GetKeyDown(barricade))
+            buttonPressed = false;
         return 0;
     }
     public int BoyOnTrigger (Collider other)
     {
-        if (Input.GetKeyDown(use))
+        if (Input.GetKeyDown(use) && !buttonPressed)
         {
+            buttonPressed = true;
             InteractionSurrounding.Type type = other.GetComponent<InteractionSurrounding>().SurroundingType;
             Animator anim = usableElements[other.GetComponent<InteractionSurrounding>().ParentID].GetComponent<Animator>();
             switch (type)
@@ -104,6 +110,8 @@ public class Interacting : MonoBehaviour
                     break;
             }
         }
+        else if (!Input.GetKeyDown(use))
+            buttonPressed = false;
         return 0;
     }
     public int SoldierOnTrigger (Collider other)
