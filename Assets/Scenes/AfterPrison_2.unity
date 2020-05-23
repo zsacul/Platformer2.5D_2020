@@ -3506,6 +3506,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crate_09 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ccdd3d6ee3bf6cd4c83bec2b56f8be15, type: 3}
+      propertyPath: m_TagString
+      value: CRATE
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ccdd3d6ee3bf6cd4c83bec2b56f8be15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.265951
@@ -3564,6 +3568,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccdd3d6ee3bf6cd4c83bec2b56f8be15, type: 3}
+--- !u!1 &257526193 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: ccdd3d6ee3bf6cd4c83bec2b56f8be15,
+    type: 3}
+  m_PrefabInstance: {fileID: 257526192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &257526194
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257526193}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: ccdd3d6ee3bf6cd4c83bec2b56f8be15, type: 3}
 --- !u!43 &259634958
 Mesh:
   m_ObjectHideFlags: 0
@@ -5489,6 +5513,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ccdd3d6ee3bf6cd4c83bec2b56f8be15, type: 3}
+      propertyPath: m_TagString
+      value: CRATE
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ccdd3d6ee3bf6cd4c83bec2b56f8be15, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.03495121
@@ -6883,6 +6911,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 33b904e8d80028b4fa75cff29015a59b, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 33b904e8d80028b4fa75cff29015a59b, type: 3}
+      propertyPath: m_TagString
+      value: CRATE
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 33b904e8d80028b4fa75cff29015a59b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9414,6 +9446,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3752391638338540723, guid: f4d8e69a9811d6a78ba4f07123ae63fc,
+        type: 3}
+      propertyPath: hidingSpotDist
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3752391638338540728, guid: f4d8e69a9811d6a78ba4f07123ae63fc,
         type: 3}
       propertyPath: m_Name
@@ -9834,6 +9871,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 33b904e8d80028b4fa75cff29015a59b, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 33b904e8d80028b4fa75cff29015a59b, type: 3}
+      propertyPath: m_TagString
+      value: CRATE
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 33b904e8d80028b4fa75cff29015a59b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11376,7 +11417,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1281877082
 Light:
   m_ObjectHideFlags: 0
@@ -11915,6 +11956,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 33b904e8d80028b4fa75cff29015a59b, type: 3}
+      propertyPath: m_TagString
+      value: CRATE
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 33b904e8d80028b4fa75cff29015a59b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.8150492
@@ -12414,6 +12459,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 33b904e8d80028b4fa75cff29015a59b, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 33b904e8d80028b4fa75cff29015a59b, type: 3}
+      propertyPath: m_TagString
+      value: CRATE
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 33b904e8d80028b4fa75cff29015a59b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13992,6 +14041,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 33b904e8d80028b4fa75cff29015a59b, type: 3}
+      propertyPath: m_TagString
+      value: CRATE
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 33b904e8d80028b4fa75cff29015a59b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.271952
@@ -14202,6 +14255,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 33b904e8d80028b4fa75cff29015a59b, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 33b904e8d80028b4fa75cff29015a59b, type: 3}
+      propertyPath: m_TagString
+      value: CRATE
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 33b904e8d80028b4fa75cff29015a59b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16071,6 +16128,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crate_08
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5c99934c3c02ecd4590f102e26e68f17, type: 3}
+      propertyPath: m_TagString
+      value: CRATE
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5c99934c3c02ecd4590f102e26e68f17, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.574951
@@ -16129,3 +16190,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c99934c3c02ecd4590f102e26e68f17, type: 3}
+--- !u!1 &2130168313 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 5c99934c3c02ecd4590f102e26e68f17,
+    type: 3}
+  m_PrefabInstance: {fileID: 2130168312}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &2130168314
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130168313}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 5c99934c3c02ecd4590f102e26e68f17, type: 3}

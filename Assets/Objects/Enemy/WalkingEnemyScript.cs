@@ -163,40 +163,67 @@ public class WalkingEnemyScript : MonoBehaviour
     }
 
 
-    bool BoyIsSeen()
-    {
-        RaycastHit hit;
-        Vector3 rayDirection = transform.forward;
+	bool BoyIsSeen()
+	{
+		RaycastHit hit;
+		Vector3 rayDirection = transform.forward;
 
-        float rayMult = 0.05f;
+		int seeMask = 1 << 9;
+		seeMask = ~seeMask;
 
-        //DrawRaysDebug(rayMult);
+		float rayMult = 0.05f;
 
-        for(int i=1; i<=5; i++) // promienie w lewo
-        {
-            Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y, rayDirection.z - rayMult * i);
-            if (Physics.Raycast(transform.position, currentRayDirection, out hit, Mathf.Infinity, LayerMask.GetMask("Player1")))
-            {
-                return true;
-            }
-        }
+		DrawRaysDebug(rayMult);
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, LayerMask.GetMask("Player1"))) //promień w przód
-        {
-            return true;
-        }
+		for (int i = 1; i <= 5; i++) // promienie w lewo
+		{
+			Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y, rayDirection.z - rayMult * i);
+			if (Physics.Raycast(transform.position, currentRayDirection, out hit, Mathf.Infinity, seeMask))
+			{
+				//if (hit.transform.tag != null)
+				//    Debug.Log(hit.transform.tag);
+				if(gameObject.name == "CellsEnemy")
+					Debug.Log(hit.transform.tag);
+				if (hit.transform.CompareTag("Player1"))
+				{
+					//Debug.Log("HERE 1");
+					return true;
+				}
+			}
+		}
 
-        for (int i = 1; i <= 5; i++) // promienie w prawo
-        {
-            Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y, rayDirection.z + rayMult * i);
-            if (Physics.Raycast(transform.position, currentRayDirection, out hit, Mathf.Infinity, LayerMask.GetMask("Player1")))
-            {
-                return true;
-            }
-        }
+		if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, seeMask)) //promień w przód
+		{
+			//if(hit.transform.tag != null)
+			//    Debug.Log(hit.transform.tag);
+			if (gameObject.name == "CellsEnemy")
+				Debug.Log(hit.transform.tag);
+			if (hit.transform.CompareTag("Player1"))
+			{
+				//Debug.Log("SEES");
+				return true;
+			}
+		}
 
-        return false;
-    }
+		for (int i = 1; i <= 5; i++) // promienie w prawo
+		{
+			Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y, rayDirection.z + rayMult * i);
+			if (Physics.Raycast(transform.position, currentRayDirection, out hit, Mathf.Infinity, seeMask))
+			{
+				//if (hit.transform.tag != null)
+				//    Debug.Log(hit.transform.tag);
+				if (gameObject.name == "CellsEnemy")
+					Debug.Log(hit.transform.tag);
+				if (hit.transform.CompareTag("Player1"))
+				{
+					//Debug.Log("HERE 3");
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
 
 
 	bool StartChase()

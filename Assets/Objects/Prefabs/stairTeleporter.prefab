@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 1284329944927938712}
   - component: {fileID: 1284329944927938791}
   - component: {fileID: 1284329944927938790}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 2
   m_TagString: Stairs
   m_Icon: {fileID: 0}
@@ -191,6 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   other: {fileID: 1284329945724190974}
   fadeAnim: {fileID: 1284329945435548711}
+  cs: {fileID: 0}
 --- !u!1 &1284329945435548709
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +296,7 @@ GameObject:
   - component: {fileID: 1284329945724190975}
   - component: {fileID: 1284329945724190961}
   - component: {fileID: 1284329945724190960}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: 1
   m_TagString: Stairs
   m_Icon: {fileID: 0}
@@ -343,3 +344,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   other: {fileID: 1284329944927938789}
   fadeAnim: {fileID: 1284329945435548711}
+  cs: {fileID: 0}

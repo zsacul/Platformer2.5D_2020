@@ -36,7 +36,7 @@ PrefabInstance:
     - target: {fileID: 1228439401950370736, guid: 011661526ee990743bb62fdf6ec61c83,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2
+      value: 2.11
       objectReference: {fileID: 0}
     - target: {fileID: 1228439401950370736, guid: 011661526ee990743bb62fdf6ec61c83,
         type: 3}
@@ -96,7 +96,7 @@ PrefabInstance:
     - target: {fileID: 1228439401950370739, guid: 011661526ee990743bb62fdf6ec61c83,
         type: 3}
       propertyPath: m_Height
-      value: 9.516243
+      value: 9.93017
       objectReference: {fileID: 0}
     - target: {fileID: 1228439401950370739, guid: 011661526ee990743bb62fdf6ec61c83,
         type: 3}
@@ -106,7 +106,7 @@ PrefabInstance:
     - target: {fileID: 1228439401950370739, guid: 011661526ee990743bb62fdf6ec61c83,
         type: 3}
       propertyPath: m_Center.y
-      value: 4.7717915
+      value: 4.498804
       objectReference: {fileID: 0}
     - target: {fileID: 1228439401950370739, guid: 011661526ee990743bb62fdf6ec61c83,
         type: 3}
@@ -127,6 +127,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WalkingEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2141100905373627191, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1228439401950370748, guid: 011661526ee990743bb62fdf6ec61c83, type: 3}
