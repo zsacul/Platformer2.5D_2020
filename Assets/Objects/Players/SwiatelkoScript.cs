@@ -19,6 +19,8 @@ public class SwiatelkoScript : MonoBehaviour
     {
         lineActive = false;
         rb = this.GetComponent<Rigidbody>();
+        GetComponent<LoopedSoundAttachment>().Play();
+        //GetComponent<AudioSource>().volume = 0.5f;
     }
 
     void Move()
