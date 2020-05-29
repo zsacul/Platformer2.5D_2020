@@ -21,6 +21,8 @@ TagManager:
   - Destination
   - Stairs
   - CRATE
+  - CameraWall
+  - CameraWallBuffer
   layers:
   - Default
   - TransparentFX
