@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Security.Cryptography;
@@ -15,13 +16,15 @@ public class CameraScript : MonoBehaviour
 	WallCollisionDetector rightScript;
 	WallCollisionDetector topScript;
 	WallCollisionDetector bottomScript;
-	
+
 	public GameObject wallPrefab;
 	private Transform player1, player2;
 	
 	public bool wallCollision = false;
 	public bool bufferCollision = false;
 	public bool falling = false;
+
+
 	Vector3 stairsPos;
 	
 	public float maxWidth;
@@ -31,7 +34,22 @@ public class CameraScript : MonoBehaviour
 	public float horizontalFOV;
 	
 	private float zPosition;
-	
+	private PlayerScript ps;
+
+	void Awake()
+	{
+		verticalFOV = GetComponent<Camera>().fieldOfView;
+		horizontalFOV = Camera.VerticalToHorizontalFieldOfView(verticalFOV, GetComponent<Camera>().aspect);
+		maxWidth = 2 * Mathf.Abs(maxDepth) * Mathf.Tan(Mathf.Deg2Rad * horizontalFOV / 2f);
+		maxHeight = 2 * Mathf.Abs(maxDepth) * Mathf.Tan(Mathf.Deg2Rad * verticalFOV / 2f);
+
+		player1 = GameObject.FindWithTag("Player1").GetComponent<Transform>();
+		player2 = GameObject.FindWithTag("Player2").GetComponent<Transform>();
+		CreateWalls();
+		zPosition = -10;
+		ps = GameObject.FindWithTag("Player1").GetComponent<PlayerScript>();
+	}
+
 	public void CreateWalls()
 	{
 		float depth = transform.position.z;
@@ -57,17 +75,19 @@ public class CameraScript : MonoBehaviour
 		
 		//instantiate
 		GameObject left = Instantiate(wallPrefab, leftPosition, leftAngle, GetComponent<Transform>());
-		leftScript = left.GetComponent<WallCollisionDetector>();
+		leftScript = left.gameObject.GetComponentInChildren<WallCollisionDetector>();
 		//left.transform.localScale = new Vector3(verHeight, 1f, verLength);
 		GameObject right = Instantiate(wallPrefab, rightPosition, rightAngle, GetComponent<Transform>());
-		rightScript = right.GetComponent<WallCollisionDetector>();
+		rightScript = right.gameObject.GetComponentInChildren<WallCollisionDetector>();
 		//right.transform.localScale = new Vector3(verHeight, 1f, verLength);
 		GameObject top = Instantiate(wallPrefab, topPosition, topAngle, GetComponent<Transform>());
-		topScript = top.GetComponent<WallCollisionDetector>();
+		topScript = top.gameObject.GetComponentInChildren<WallCollisionDetector>();
 		//top.transform.localScale = new Vector3(horHeight, 1f, horLength);
 		GameObject bottom = Instantiate(wallPrefab, bottomPosition, bottomAngle, GetComponent<Transform>());
-		bottomScript = bottom.GetComponent<WallCollisionDetector>();
+		bottomScript = bottom.gameObject.GetComponentInChildren<WallCollisionDetector>();
 		//bottom.transform.localScale = new Vector3(horHeight, 1f, horLength);
+
+		transform.SetPositionAndRotation(GetMiddlePoint(), transform.rotation);
 	}
 	
 	Vector3 GetMiddlePoint()
@@ -83,12 +103,30 @@ public class CameraScript : MonoBehaviour
 	void SetZPosition()
 	{		
 		if(wallCollision)
-			DecreaseZPosition(0.2f);
+			DecreaseZPosition(3f * Time.deltaTime);
 		else
 			if(!bufferCollision)
-				IncreaseZPosition(0.2f);
+				IncreaseZPosition(3f * Time.deltaTime);
 	}
-	
+
+	public void DecreaseZPosition(float z)
+	{
+		//UnityEngine.Debug.Log("Decrease");
+		if (z > 0 && zPosition - z >= maxDepth)
+		{
+			zPosition -= z;
+		}
+	}
+
+	public void IncreaseZPosition(float z)
+	{
+		//UnityEngine.Debug.Log("Increase");
+		if (z > 0 && zPosition + z <= minDepth)
+		{
+			zPosition += z;
+		}
+	}
+
 	Vector3 SetCameraPosition()
 	{
 		Vector3 target = GetMiddlePoint();
@@ -108,34 +146,6 @@ public class CameraScript : MonoBehaviour
 		target.z = zPosition;
 		
 		return target;	
-	}
-	
-	void Awake()
-	{
-		verticalFOV = GetComponent<Camera>().fieldOfView;
-		horizontalFOV = Camera.VerticalToHorizontalFieldOfView(verticalFOV, GetComponent<Camera>().aspect);
-		maxWidth = 2 * Mathf.Abs(maxDepth) * Mathf.Tan(Mathf.Deg2Rad * horizontalFOV/2f);
-		maxHeight = 2 * Mathf.Abs(maxDepth) * Mathf.Tan(Mathf.Deg2Rad * verticalFOV/2f);
-		CreateWalls();
-		player1 = GameObject.FindWithTag("Player1").GetComponent<Transform>();
-        player2 = GameObject.FindWithTag("Player2").GetComponent<Transform>();
-		zPosition = -10;
-	}
-	
-	public void DecreaseZPosition(float z)
-	{
-		if(z > 0 && zPosition - z >= maxDepth)
-		{
-			zPosition -= z;
-		}
-	}
-	
-	public void IncreaseZPosition(float z)
-	{
-		if(z > 0 && zPosition + z <= minDepth)
-		{
-			zPosition += z;
-		}
 	}
 	
 	public bool Stairs(GameObject stairsGameObject)
@@ -181,21 +191,41 @@ public class CameraScript : MonoBehaviour
 
 	void Falling()
     {
-		UnityEngine.Debug.Log("falling");
+		//UnityEngine.Debug.Log("falling");
 		transform.Translate(new Vector3(0f, 0f, -10f * Time.deltaTime));
-    }
+		zPosition -= 10f * Time.deltaTime;
+
+		/*Vector3 target = transform.position;
+		target.z = -4f * Time.deltaTime;
+		Vector3 smoothedPosition = Vector3.Lerp(transform.position, target, smoothSpeed);
+		//smoothedPosition.z = zPosition;
+		transform.position = smoothedPosition;*/
+	}
 	
 	void Update()
     {
-		if (falling)
+		if (bottomScript.falling && !ps.grounded)
+		{ 			
+			falling = true;
+        }
+		if(ps.grounded)
+        {
+			falling = false;
+        }
+
+		if(falling)
 		{
 			Falling();
+			//UnityEngine.Debug.Log("back");
 		}
-		else
+		else if(!falling)
 		{
 			Vector3 target = SetCameraPosition();
 			Vector3 smoothedPosition = Vector3.Lerp(transform.position, target, smoothSpeed);
+			//smoothedPosition.z = zPosition;
 			transform.position = smoothedPosition;
+			//transform.position = target;
+			//UnityEngine.Debug.Log("forward");
 			//transform.Translate(new Vector3(target.x - transform.position.x, target.y - transform.position.y, 10f * Time.deltaTime * (zPosition - transform.position.z)));
 		}
 
