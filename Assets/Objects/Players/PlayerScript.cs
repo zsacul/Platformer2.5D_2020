@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -18,12 +19,16 @@ public class PlayerScript : MonoBehaviour
 
     float xMov;
     bool jump;
+    public bool inStairs, onLine;
 
     public KeyCode lineHoldKey;
     public KeyCode up;
     public KeyCode down;
     public KeyCode right;
     public KeyCode left;
+    public KeyCode jumpButton;
+    public KeyCode actionKey;
+
     private Rigidbody rb;
     private lineHoldHelper lineHoldHelp;
     private Vector3 frozenHidingPosition;
@@ -91,7 +96,7 @@ public class PlayerScript : MonoBehaviour
         if (state != State.hiding)
         {
             xMov = Input.GetAxis("Horizontal");
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(jumpButton))
                 jump = true;
             else jump = false;
 
@@ -166,15 +171,18 @@ public class PlayerScript : MonoBehaviour
 
     public void ToGround()
     {
+        onLine = false;
         rb.useGravity = true;
         state = State.running;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
         //anim.SetTrigger("ground");
     }
 
     void ToLine()
     {
         //rb.velocity = Vector3.zero;
+        onLine = true;
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezePositionZ;
         state = State.climbing;
@@ -183,9 +191,12 @@ public class PlayerScript : MonoBehaviour
 
     public void Cought()
     {
-        Vector3 lastCheckpoint = GetComponent<CheckpointScript>().lastPos;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        /*Vector3 lastCheckpoint = GetComponent<CheckpointScript>().lastPos;
         transform.position = lastCheckpoint;
         Player2.transform.position = new Vector3(lastCheckpoint.x - 0.5f, lastCheckpoint.y + 1f, lastCheckpoint.z);
+        */
     }
 
 

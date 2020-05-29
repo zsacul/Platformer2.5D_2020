@@ -25,22 +25,47 @@ public class stairScript : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
-        if(col.gameObject.tag == "Player1" && Input.GetKey(KeyCode.DownArrow))
+        if(col.gameObject.tag == "Player1")
         {
-            if (cs.Stairs(other))
-                StartCoroutine(fadeRoutine(col));
-            else
-                CannotUseStairs();
-			
+            PlayerScript playerScript = col.gameObject.GetComponent<PlayerScript>();
+            playerScript.inStairs = true;
+
+            if (Input.GetKey(playerScript.actionKey))
+            {
+                if (cs.Stairs(other))
+                    StartCoroutine(fadeRoutine(col));
+                else
+                    CannotUseStairs();
+            }
+        }
+        
+        if (col.gameObject.tag == "Player2")
+        {
+            SwiatelkoScript swiatelkoScript = col.gameObject.GetComponent<SwiatelkoScript>();
+            swiatelkoScript.inAction = true;
+
+            if (Input.GetKey(swiatelkoScript.actionKey))
+            {
+                if (cs.Stairs(other))
+                    StartCoroutine(fadeRoutine(col));
+                else
+                    CannotUseStairs();
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "Player1")
+        {
+            PlayerScript playerScript = col.gameObject.GetComponent<PlayerScript>();
+            playerScript.inStairs = false;
         }
 
-        if (col.gameObject.tag == "Player2" && Input.GetKey(KeyCode.Q))
+        if (col.gameObject.tag == "Player2")
         {
-            if (cs.Stairs(other))
-                StartCoroutine(fadeRoutine(col));
-            else
-                CannotUseStairs();
-			
+            SwiatelkoScript swiatelkoScript = col.gameObject.GetComponent<SwiatelkoScript>();
+            swiatelkoScript.inAction = false;
         }
     }
 

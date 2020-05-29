@@ -26,6 +26,8 @@ public class Interacting : MonoBehaviour
             switch ((ScriptOwnerType)scriptOwnerType)
             {
                 case ScriptOwnerType.Light:
+                    SwiatelkoScript swiatelkoScript = GetComponent<SwiatelkoScript>();
+                    swiatelkoScript.inAction = true;
                     LightOnTrigger (other);
                     break;
                 case ScriptOwnerType.Boy:
@@ -33,6 +35,20 @@ public class Interacting : MonoBehaviour
                     break;
                 case ScriptOwnerType.Soldier:
                     SoldierOnTrigger (other);
+                    break;
+            }
+        }
+    }
+
+    protected void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "InteractionSurrounding")
+        {
+            switch ((ScriptOwnerType)scriptOwnerType)
+            {
+                case ScriptOwnerType.Light:
+                    SwiatelkoScript swiatelkoScript = GetComponent<SwiatelkoScript>();
+                    swiatelkoScript.inAction = false;
                     break;
             }
         }
@@ -79,6 +95,9 @@ public class Interacting : MonoBehaviour
     }
     public int BoyOnTrigger (Collider other)
     {
+        if (playerScript.inStairs || playerScript.onLine)
+            return 0;
+
         if (Input.GetKeyDown(use) && !buttonPressed)
         {
             buttonPressed = true;

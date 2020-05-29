@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class SwiatelkoScript : MonoBehaviour
 {
 
     public Animator lineAnim;
-    public KeyCode lineKey;
+    public KeyCode actionKey;
     public float moveSpeed = 3f;
     public GameObject line;
     bool lineActive;
+
+    public bool inAction;
 
     Rigidbody rb;
 
@@ -31,10 +34,13 @@ public class SwiatelkoScript : MonoBehaviour
 
     void StopSwing()
     {
-        foreach(Rigidbody part in lineParts)
+        for (int i = 0; i < 5; i++)
         {
-            part.velocity = new Vector3(0f, 0f, 0f);
-            part.AddForce(new Vector3(0f, -100f, 0f));
+            foreach (Rigidbody part in lineParts)
+            {
+                part.velocity = new Vector3(0f, 0f, 0f);
+                part.AddForce(new Vector3(0f, -100f, 0f));
+            }
         }
     }
 
@@ -43,7 +49,7 @@ public class SwiatelkoScript : MonoBehaviour
     {
         Move();
         rb.useGravity = false;
-        if (Input.GetKeyDown(lineKey))
+        if (Input.GetKeyDown(actionKey) && !inAction)
         {
             lineActive = !lineActive;
             line.SetActive(lineActive);
