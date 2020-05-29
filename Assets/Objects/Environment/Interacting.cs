@@ -5,18 +5,19 @@ using UnityEngine;
 public class Interacting : MonoBehaviour
 {
     protected static Dictionary<int, GameObject> usableElements = new Dictionary<int, GameObject>();
-    public enum ScriptOwnerType {Light, Boy, Soldier};
+    public enum ScriptOwnerType { Light, Boy, Soldier };
     //public ScriptOwnerType scriptOwnerType;
     public int scriptOwnerType;
     public KeyCode use;
     public KeyCode barricade;
     public PlayerScript playerScript;
+    public FloatingHintBehaviour floatingHintBehaviour;
     bool buttonPressed = false;
 
     public void AddUsableElement(int id, GameObject obj)
     {
         usableElements.Add(id, obj);
-        Debug.Log ("Added element " + usableElements.Count.ToString() + " with id = " + id.ToString());
+        Debug.Log("Added element " + usableElements.Count.ToString() + " with id = " + id.ToString());
     }
 
     protected void OnTriggerStay(Collider other)
@@ -26,21 +27,49 @@ public class Interacting : MonoBehaviour
             switch ((ScriptOwnerType)scriptOwnerType)
             {
                 case ScriptOwnerType.Light:
-                    LightOnTrigger (other);
+                    LightOnTrigger(other);
                     break;
                 case ScriptOwnerType.Boy:
-                    BoyOnTrigger (other);
+                    BoyOnTrigger(other);
                     break;
                 case ScriptOwnerType.Soldier:
-                    SoldierOnTrigger (other);
+                    SoldierOnTrigger(other);
                     break;
             }
         }
     }
-    public int LightOnTrigger (Collider other)
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "InteractionSurrounding")
+        {
+            switch ((ScriptOwnerType)scriptOwnerType)
+            {
+                case ScriptOwnerType.Light:
+                    floatingHintBehaviour.setText(0);
+                    break;
+                case ScriptOwnerType.Boy:
+                    floatingHintBehaviour.setText(0);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    public int LightOnTrigger(Collider other)
     {
         InteractionSurrounding.Type type = other.GetComponent<InteractionSurrounding>().SurroundingType;
         Animator anim = usableElements[other.GetComponent<InteractionSurrounding>().ParentID].GetComponent<Animator>();
+        switch (type)
+        {
+            case InteractionSurrounding.Type.leftDoor:
+                floatingHintBehaviour.setText(2);
+                break;
+            case InteractionSurrounding.Type.rightDoor:
+                floatingHintBehaviour.setText(2);
+                break;
+            default:
+                break;
+        }
         if (Input.GetKeyDown(use) && !buttonPressed)
         {
             buttonPressed = true;
@@ -77,13 +106,30 @@ public class Interacting : MonoBehaviour
             buttonPressed = false;
         return 0;
     }
-    public int BoyOnTrigger (Collider other)
+    public int BoyOnTrigger(Collider other)
     {
+        InteractionSurrounding.Type type = other.GetComponent<InteractionSurrounding>().SurroundingType;
+        Animator anim = usableElements[other.GetComponent<InteractionSurrounding>().ParentID].GetComponent<Animator>();
+        switch (type)
+        {
+            case InteractionSurrounding.Type.leftDoor:
+                    floatingHintBehaviour.setText(1);
+                    break;
+                case InteractionSurrounding.Type.rightDoor:
+                    floatingHintBehaviour.setText(1);
+                    break;
+                case InteractionSurrounding.Type.hidingSpotEntrance:
+                    floatingHintBehaviour.setText(3);
+                    break;
+                case InteractionSurrounding.Type.hidingSpotInside:
+                    floatingHintBehaviour.setText(4);
+                    break;
+                default:
+                    break;
+        }
         if (Input.GetKeyDown(use) && !buttonPressed)
         {
             buttonPressed = true;
-            InteractionSurrounding.Type type = other.GetComponent<InteractionSurrounding>().SurroundingType;
-            Animator anim = usableElements[other.GetComponent<InteractionSurrounding>().ParentID].GetComponent<Animator>();
             switch (type)
             {
                 case InteractionSurrounding.Type.leftDoor:
@@ -94,11 +140,11 @@ public class Interacting : MonoBehaviour
                     break;
                 case InteractionSurrounding.Type.hidingSpotEntrance:
                     if (!playerScript.isSeen)
-                        {
-                            Debug.Log("Hiding player");
-                            playerScript.hidePlayer();
-                            anim.SetTrigger("Player1GetInside");
-                        }
+                    {
+                        Debug.Log("Hiding player");
+                        playerScript.hidePlayer();
+                        anim.SetTrigger("Player1GetInside");
+                    }
                     break;
                 case InteractionSurrounding.Type.hidingSpotInside:
                     Debug.Log("Unhiding player");
@@ -114,7 +160,7 @@ public class Interacting : MonoBehaviour
             buttonPressed = false;
         return 0;
     }
-    public int SoldierOnTrigger (Collider other)
+    public int SoldierOnTrigger(Collider other)
     {
         InteractionSurrounding.Type type = other.GetComponent<InteractionSurrounding>().SurroundingType;
         Animator anim = usableElements[other.GetComponent<InteractionSurrounding>().ParentID].GetComponent<Animator>();
