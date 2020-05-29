@@ -39,10 +39,24 @@ public class Interacting : MonoBehaviour
                     break;
             }
         }
+        else if (other.tag == "Stairs")
+        {
+            switch ((ScriptOwnerType)scriptOwnerType)
+            {
+                case ScriptOwnerType.Light:
+                    floatingHintBehaviour.setText(6);
+                    break;
+                case ScriptOwnerType.Boy:
+                    floatingHintBehaviour.setText(5);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "InteractionSurrounding")
+        if (other.tag == "InteractionSurrounding" || other.tag == "Stairs")
         {
             switch ((ScriptOwnerType)scriptOwnerType)
             {
