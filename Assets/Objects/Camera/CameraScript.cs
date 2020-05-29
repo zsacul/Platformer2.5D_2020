@@ -87,7 +87,7 @@ public class CameraScript : MonoBehaviour
 		bottomScript = bottom.gameObject.GetComponentInChildren<WallCollisionDetector>();
 		//bottom.transform.localScale = new Vector3(horHeight, 1f, horLength);
 
-		transform.SetPositionAndRotation(GetMiddlePoint(), transform.rotation);
+		//transform.SetPositionAndRotation(GetMiddlePoint(), transform.rotation);
 	}
 	
 	Vector3 GetMiddlePoint()
