@@ -8,7 +8,8 @@ public class FloatingHintBehaviour : MonoBehaviour
     public Text hintText;
 
     string [] possibleTexts = {"", string.Format("Press M\nopen/close"), string.Format("Press F\nunlock & open/close"),
-    string.Format("Press M\nhide"), string.Format("Press M\nleave")};
+    string.Format("Press M\nhide"), string.Format("Press M\nleave"), string.Format("Press DOWN\ngo upstairs/downstairs"),
+    string.Format("Press Q\ngo upstairs/downstairs")};
 
     void Start ()
     {
