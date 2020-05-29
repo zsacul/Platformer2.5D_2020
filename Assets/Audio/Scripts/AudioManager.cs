@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     float BGMFadeOutDuration = 5.0f;
     [SerializeField]
-    float BGMFadeInDuration = 3.0f;
+    float BGMFadeInDuration = 1.0f;
 
 
     /// do not use this!!
@@ -33,6 +33,8 @@ public class AudioManager : MonoBehaviour
     public Queue<GameObject> freeSources = new Queue<GameObject>();
 
     private Queue<AudioClip> BGMqueue = new Queue<AudioClip>();
+    private List<AudioClip> ambientMusic = new List<AudioClip>();
+    private List<AudioClip> actionMusic = new List<AudioClip>();
 
     [SerializeField]
     bool shouldUseBgmQueue = true;
@@ -43,13 +45,14 @@ public class AudioManager : MonoBehaviour
     ///does not interfere in ANY way with any sound, even on the same object
     public void PlaySoundOnce(AudioClip soundToPlay, GameObject originOfSound, AudioMixerGroup mixer)
     {
-        if(originOfSound.GetComponent<AudioSource>() == null)
+        if (originOfSound.GetComponent<AudioSource>() == null)
         {
             AudioSource newSource = originOfSound.AddComponent<AudioSource>();
             newSource.playOnAwake = false;
+            newSource.enabled = true;
             newSource.spatialBlend = 1.0f;
         }
-       
+
         AudioSource src = originOfSound.GetComponent<AudioSource>();
         src.outputAudioMixerGroup = mixer;
         src.PlayOneShot(soundToPlay);
@@ -79,21 +82,26 @@ public class AudioManager : MonoBehaviour
     ///this only works if some clip is already being played on the source. Also, it stops audioSource after the duration and restores original volume
     public void FadeOut(GameObject source, float duration, AnimationCurve curve = null)
     {
+        if (source == null)
+            return;
         AnimationCurve Curve = curve;
         if (Curve == null)
         {
             Curve = defaultFadingCurve;
         }
 
+
         AudioSource aSrc = source.GetComponent<AudioSource>();
 
         IEnumerator IEnumForFade = FadeOutCoroutine(aSrc, duration, Curve, aSrc.volume);
         StartCoroutine(IEnumForFade);
     }
-    
+
     ///this only works if some clip is already being played on the source
     public void FadeIn(GameObject source, float duration, AnimationCurve curve = null)
     {
+        if (source == null)
+            return;
         AnimationCurve Curve = curve;
         if (Curve == null)
         {
@@ -112,10 +120,10 @@ public class AudioManager : MonoBehaviour
     ///it's finished the next BGM from queue shall be played
     public void PlayBGM(AudioClip BGM, float fadeInDuration = 1.0f, float fadeOutDuration = 1.0f)
     {
-        
-        if(src.isPlaying)
+
+        if (src.isPlaying)
         {
-            if(!isBGMFadingOut)
+            if (!isBGMFadingOut)
             {
                 IEnumerator enumerator = ChangeBGM(BGM, fadeInDuration, fadeOutDuration);
                 StartCoroutine(enumerator);
@@ -134,7 +142,7 @@ public class AudioManager : MonoBehaviour
     {
         GameObject srcLoc;
         AudioSource src;
-        
+
 
         if (freeSources.Count > 0)
             srcLoc = freeSources.Dequeue();
@@ -160,25 +168,53 @@ public class AudioManager : MonoBehaviour
     {
         src.Pause();
     }
-        
+
     public void ResumeBGM()
     {
         src.UnPause();
+    }
+
+    public void PlayActionBGM()
+    {
+        shouldUseBgmQueue = true;
+        BGMqueue.Clear();
+
+        for (int i = 0; i < 10; i++)
+        {
+            int r = Random.Range(0, actionMusic.Count);
+            BGMqueue.Enqueue(actionMusic[r]);
+        }
+        PlayBGM(BGMqueue.Dequeue(), BGMFadeInDuration, BGMFadeOutDuration + 2);
+    }
+
+    public void PlayAmbientBGM()
+    {
+        shouldUseBgmQueue = true;
+        BGMqueue.Clear();
+
+        for (int i = 0; i < 10; i++)
+        {
+            int r = Random.Range(0, ambientMusic.Count);
+            BGMqueue.Enqueue(ambientMusic[r]);
+        }
+        PlayBGM(BGMqueue.Dequeue(), BGMFadeInDuration + 4, BGMFadeOutDuration);
     }
 
     private IEnumerator FadeOutCoroutine(AudioSource source, float duration, AnimationCurve curve, float startingVol)
     {
         float currtime = 0;
 
-        while(currtime<duration)
+        while (currtime < duration)
         {
+            if (source == null)
+                yield break;
             source.volume = Mathf.Lerp(startingVol, 0.0f, curve.Evaluate(currtime / duration));
             currtime += Time.deltaTime;
             yield return null;
         }
-        
-       source.Stop();
-       source.volume = startingVol;
+
+        source.Stop();
+        source.volume = startingVol;
     }
     private IEnumerator FadeInCoroutine(AudioSource source, float duration, AnimationCurve curve, float targetVol)
     {
@@ -186,6 +222,8 @@ public class AudioManager : MonoBehaviour
 
         while (currtime < duration)
         {
+            if (source == null)
+                yield break;
             source.volume = Mathf.Lerp(0.0f, targetVol, curve.Evaluate(currtime / duration));
             currtime += Time.deltaTime;
             yield return null;
@@ -193,7 +231,7 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    private IEnumerator ChangeBGM(AudioClip nextBGMtoPlay,  float fadeInDuration, float fadeOutDuration)
+    private IEnumerator ChangeBGM(AudioClip nextBGMtoPlay, float fadeInDuration, float fadeOutDuration)
     {
         float currtime = 0;
         isBGMFadingOut = true;
@@ -215,14 +253,25 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        AddBgmToQueue(Sounds.sBGM2);
-        AddBgmToQueue(Sounds.sBGMAmbient2);
-        AddBgmToQueue(Sounds.sBGMAmbient3);
-        AddBgmToQueue(Sounds.sBGM1);
-        if(shouldUseBgmQueue)
+
+        ambientMusic.Add(Sounds.sBGMAmbient1);
+        ambientMusic.Add(Sounds.sBGMAmbient2);
+        ambientMusic.Add(Sounds.sBGMAmbient3);
+        //ambientMusic.Add(Sounds.sBGMAmbient4);
+
+        //actionMusic.Add(Sounds.sBGMAction1);
+        //actionMusic.Add(Sounds.sBGMAction2);
+        //actionMusic.Add(Sounds.sBGMAction3);
+        //actionMusic.Add(Sounds.sBGMAction4);
+        AddBgmToQueue(Sounds.sBGMAmbient1);
+        if (shouldUseBgmQueue)
         {
-            PlayBGM(BGMqueue.Dequeue(), BGMFadeInDuration, BGMFadeOutDuration);
+            PlayBGM(Sounds.sBGMAmbient1);
         }
+        /* if (shouldUseBgmQueue)
+        {
+            PlayAmbientBGM();
+        }*/
     }
     private void Awake()
     {
@@ -238,24 +287,26 @@ public class AudioManager : MonoBehaviour
         src.outputAudioMixerGroup = Sounds.mBGM;
         src.spatialBlend = 0;
         src.maxDistance = 9999999;
+       
     }
 
-    
+    //just for testing
+    float f = 0;
     void Update()
     {
         //Debug.Log("currentTime: " + (src.clip.length - src.time - BGMFadeInDuration).ToString());
         if (shouldUseBgmQueue && src.isPlaying)
         {
-            if(src.time + BGMFadeOutDuration >= src.clip.length)
-            {   
-                if(BGMqueue.Count > 0)
+            if (src.time + BGMFadeOutDuration >= src.clip.length)
+            {
+                if (BGMqueue.Count > 0)
                     PlayBGM(BGMqueue.Dequeue(), BGMFadeInDuration, BGMFadeOutDuration);
                 else
                     PlayBGM(src.clip, BGMFadeInDuration, BGMFadeOutDuration);
             }
         }
-           
-    
+
+
     }
 
 
