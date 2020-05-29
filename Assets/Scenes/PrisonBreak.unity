@@ -9773,7 +9773,7 @@ PrefabInstance:
     - target: {fileID: 1084364585247931149, guid: a2c40fb2c54361f589ca654372e98e1b,
         type: 3}
       propertyPath: startingState
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1205628444705211939, guid: a2c40fb2c54361f589ca654372e98e1b,
         type: 3}
@@ -22528,11 +22528,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1793461881}
   - {fileID: 48394287}
   - {fileID: 1829509778}
   - {fileID: 1676351204}
   - {fileID: 456289624}
+  - {fileID: 1793461881}
   - {fileID: 5270073}
   - {fileID: 1034250956}
   - {fileID: 1370361755}
