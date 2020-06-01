@@ -17,7 +17,6 @@ public class Interacting : MonoBehaviour
     public void AddUsableElement(int id, GameObject obj)
     {
         usableElements.Add(id, obj);
-        Debug.Log("Added element " + usableElements.Count.ToString() + " with id = " + id.ToString());
     }
 
     protected void OnTriggerStay(Collider other)
@@ -196,7 +195,7 @@ public class Interacting : MonoBehaviour
                 anim.SetTrigger("EnemyUseRight");
                 break;
             default:
-                Debug.Log("Unknown surrounding type!!!");
+                //Debug.Log("Unknown surrounding type!!!");
                 break;
         }
         return 0;
