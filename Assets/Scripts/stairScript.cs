@@ -16,10 +16,6 @@ public class stairScript : MonoBehaviour
 
     void Start()
 	{
-        if (useStairs == null)
-            useStairs = new UnityEvent();
-        if (cantUseStairs == null)
-            cantUseStairs = new UnityEvent();
         cs = GameObject.FindWithTag("MainCamera").GetComponent<CameraScript>();
 	}
 
