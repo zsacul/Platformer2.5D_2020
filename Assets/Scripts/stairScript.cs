@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 
 public class stairScript : MonoBehaviour
 {
@@ -9,10 +11,16 @@ public class stairScript : MonoBehaviour
     public GameObject other;
     public Animator fadeAnim;
 	public CameraScript cs;
-	
-	void Start()
+    public UnityEvent useStairs;
+    public UnityEvent cantUseStairs;
+
+    void Start()
 	{
-		cs = GameObject.FindWithTag("MainCamera").GetComponent<CameraScript>();
+        if (useStairs == null)
+            useStairs = new UnityEvent();
+        if (cantUseStairs == null)
+            cantUseStairs = new UnityEvent();
+        cs = GameObject.FindWithTag("MainCamera").GetComponent<CameraScript>();
 	}
 
     IEnumerator fadeRoutine(Collider col)
@@ -33,9 +41,20 @@ public class stairScript : MonoBehaviour
             if (Input.GetKey(playerScript.actionKey))
             {
                 if (cs.Stairs(other))
+                {
+                    if (useStairs != null)
+                    {
+                        useStairs.Invoke();
+                    }
                     StartCoroutine(fadeRoutine(col));
+                }
                 else
-                    CannotUseStairs();
+                {
+                    if (cantUseStairs != null)
+                    {
+                        cantUseStairs.Invoke();
+                    }
+                }
             }
         }
         
@@ -48,8 +67,10 @@ public class stairScript : MonoBehaviour
             {
                 if (cs.Stairs(other))
                     StartCoroutine(fadeRoutine(col));
-                else
-                    CannotUseStairs();
+                else if (cantUseStairs != null)
+                {
+                    cantUseStairs.Invoke();
+                }
             }
         }
     }
@@ -67,11 +88,5 @@ public class stairScript : MonoBehaviour
             SwiatelkoScript swiatelkoScript = col.gameObject.GetComponent<SwiatelkoScript>();
             swiatelkoScript.inAction = false;
         }
-    }
-
-    void CannotUseStairs()
-    {
-        //failure sound
-        UnityEngine.Debug.Log("za daleko te schody");
     }
 }

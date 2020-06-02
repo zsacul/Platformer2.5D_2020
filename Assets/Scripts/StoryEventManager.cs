@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class StoryEventManager : MonoBehaviour
 {
     private Queue<string> statemnets;
+    public UnityEvent talkEvent;
 
     public Text titleText;
     public Text storyText;
@@ -16,6 +18,9 @@ public class StoryEventManager : MonoBehaviour
     void Start()
     {
         statemnets = new Queue<string>();
+
+        if (talkEvent == null)
+            talkEvent = new UnityEvent();
     }
 
     public void StartStoryEvent(StoryEvent storyevent)
@@ -36,10 +41,14 @@ public class StoryEventManager : MonoBehaviour
 
     public void DisplayNextStoryEvent()
     {
-        if(statemnets.Count == 0)
+        if (statemnets.Count == 0)
         {
             EndStoryEvent();
             return;
+        }
+        else if(talkEvent != null)
+        {
+            talkEvent.Invoke();
         }
 
         string statemnet = statemnets.Dequeue();
