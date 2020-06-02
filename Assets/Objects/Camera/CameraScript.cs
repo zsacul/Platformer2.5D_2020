@@ -38,8 +38,8 @@ public class CameraScript : MonoBehaviour
 
 	void Awake()
 	{
-		verticalFOV = GetComponent<Camera>().fieldOfView - 2*margin;
-		horizontalFOV = Camera.VerticalToHorizontalFieldOfView(verticalFOV, GetComponent<Camera>().aspect) - 2*margin;
+		verticalFOV = GetComponent<Camera>().fieldOfView;
+		horizontalFOV = Camera.VerticalToHorizontalFieldOfView(verticalFOV, GetComponent<Camera>().aspect);
 		maxWidth = 2 * Mathf.Abs(maxDepth) * Mathf.Tan(Mathf.Deg2Rad * horizontalFOV / 2f);
 		maxHeight = 2 * Mathf.Abs(maxDepth) * Mathf.Tan(Mathf.Deg2Rad * verticalFOV / 2f);
 
@@ -152,7 +152,7 @@ public class CameraScript : MonoBehaviour
 	{
 		stairsPos = stairsGameObject.transform.position;
 		Vector3 position = transform.position;
-		float mrg = 2f;
+		float mrg = 3f;
 
 		float horZ;
 		if(stairsPos.x > position.x)
