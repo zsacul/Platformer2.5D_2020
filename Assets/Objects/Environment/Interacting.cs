@@ -74,6 +74,8 @@ public class Interacting : MonoBehaviour
     }
     public int LightOnTrigger(Collider other)
     {
+        //Debug.Log("LightOnTrigger" + other.name);
+
         InteractionSurrounding.Type type = other.GetComponent<InteractionSurrounding>().SurroundingType;
         Animator anim = usableElements[other.GetComponent<InteractionSurrounding>().ParentID].GetComponent<Animator>();
         switch (type)
@@ -87,9 +89,9 @@ public class Interacting : MonoBehaviour
             default:
                 break;
         }
-        if (Input.GetKeyDown(use) && !buttonPressed)
+        if (Input.GetKeyDown(use))// && !buttonPressed)
         {
-            buttonPressed = true;
+            //buttonPressed = true;
             switch (type)
             {
                 case InteractionSurrounding.Type.leftDoor:
@@ -103,9 +105,9 @@ public class Interacting : MonoBehaviour
                     break;
             }
         }
-        else if (Input.GetKeyDown(barricade) && !buttonPressed)
+     /*   else if (Input.GetKeyDown(barricade))// && !buttonPressed)
         {
-            buttonPressed = true;
+            //buttonPressed = true;
             switch (type)
             {
                 case InteractionSurrounding.Type.leftDoor:
@@ -118,9 +120,9 @@ public class Interacting : MonoBehaviour
                     Debug.Log("Unknown surrounding type!!!");
                     break;
             }
-        }
-        else if (!Input.GetKeyDown(use) && !Input.GetKeyDown(barricade))
-            buttonPressed = false;
+        }*/
+        //else if (!Input.GetKeyDown(use) && !Input.GetKeyDown(barricade))
+          //  buttonPressed = false;
         return 0;
     }
     public int BoyOnTrigger(Collider other)
@@ -134,24 +136,24 @@ public class Interacting : MonoBehaviour
         {
             case InteractionSurrounding.Type.leftDoor:
                     floatingHintBehaviour.setText(1);
-                    break;
-                case InteractionSurrounding.Type.rightDoor:
-                    floatingHintBehaviour.setText(1);
-                    break;
-                case InteractionSurrounding.Type.hidingSpotEntrance:
-                    floatingHintBehaviour.setText(3);
-                    break;
-                case InteractionSurrounding.Type.hidingSpotInside:
-                    floatingHintBehaviour.setText(4);
-                    break;
-                default:
-                    break;
+                break;
+            case InteractionSurrounding.Type.rightDoor:
+                floatingHintBehaviour.setText(1);
+                break;
+            case InteractionSurrounding.Type.hidingSpotEntrance:
+                floatingHintBehaviour.setText(3);
+                break;
+            case InteractionSurrounding.Type.hidingSpotInside:
+                floatingHintBehaviour.setText(4);
+                break;
+            default:
+                break;
         }
 
         
-        if (Input.GetKeyDown(use) && !buttonPressed)
+        if (Input.GetKeyDown(use))// && !buttonPressed)
         {
-            buttonPressed = true;
+            //buttonPressed = true;
             switch (type)
             {
                 case InteractionSurrounding.Type.leftDoor:
@@ -178,8 +180,8 @@ public class Interacting : MonoBehaviour
                     break;
             }
         }
-        else if (!Input.GetKeyDown(use))
-            buttonPressed = false;
+        //else if (!Input.GetKeyDown(use))
+          //  buttonPressed = false;
         return 0;
     }
     public int SoldierOnTrigger(Collider other)
