@@ -46,6 +46,9 @@ MonoBehaviour:
   talkEvent:
     m_PersistentCalls:
       m_Calls: []
-  titleText: {fileID: 0}
-  storyText: {fileID: 0}
-  animator: {fileID: 0}
+  titleText: {fileID: 6059127887102049553, guid: 70e1cd3cf8cc3de428837e93bb7f64c9,
+    type: 3}
+  storyText: {fileID: 3037702447122485519, guid: 6d9d901f157edb344a8de9f25e88fba1,
+    type: 3}
+  animator: {fileID: 7486250334096947303, guid: f0d65837481244845908b4606f97af9c,
+    type: 3}
