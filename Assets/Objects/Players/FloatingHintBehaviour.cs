@@ -7,9 +7,9 @@ public class FloatingHintBehaviour : MonoBehaviour
 {
     public Text hintText;
 
-    string [] possibleTexts = {"", string.Format("Press SPCAE\nopen/close"), string.Format("Press E\nunlock & open/close"),
-    string.Format("Press SPCAE\nhide"), string.Format("Press SPCAE\nleave"), string.Format("Press SPCAE\ngo upstairs/downstairs"),
-    string.Format("Press E\ngo upstairs/downstairs")};
+    string [] possibleTexts = {"", string.Format("Press ENTER\nopen/close"), string.Format("Press SPACE\nunlock & open/close"),
+    string.Format("Press ENTER\nhide"), string.Format("Press ENTER\nleave"), string.Format("Press ENTER\ngo upstairs/downstairs"),
+    string.Format("Press SPACE\ngo upstairs/downstairs")};
 
     void Start ()
     {
