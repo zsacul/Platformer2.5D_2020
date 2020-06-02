@@ -121,6 +121,9 @@ public class PlayerScript : MonoBehaviour
 
     void Move()
     {
+
+
+
         if (xMov < 0)
             transform.eulerAngles = new Vector3(0, -180, 0);
         else if (xMov > 0)
@@ -216,7 +219,6 @@ public class PlayerScript : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-
         if (lineHoldHelp.canCatch && Input.GetKey(lineHoldKey) && !jump)
         {
             ToLine();

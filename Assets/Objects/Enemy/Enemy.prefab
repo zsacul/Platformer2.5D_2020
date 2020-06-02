@@ -95,9 +95,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 2.5671875
-  m_Height: 15.604889
+  m_Height: 10.092508
   m_Direction: 1
-  m_Center: {x: -0.06286979, y: 6.8024454, z: 0}
+  m_Center: {x: -0.06286979, y: 4.046255, z: 0}
 --- !u!114 &1228439401950370748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +155,7 @@ MonoBehaviour:
   use: 0
   barricade: 0
   playerScript: {fileID: 0}
+  floatingHintBehaviour: {fileID: 0}
 --- !u!1001 &6398492621267163181
 PrefabInstance:
   m_ObjectHideFlags: 0

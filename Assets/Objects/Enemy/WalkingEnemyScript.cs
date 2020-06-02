@@ -63,10 +63,16 @@ public class WalkingEnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if(StartChase())
+		if (StartChase())
+		{
 			state = State.chasing;
+			GetComponent<Animator>().SetTrigger("running");
+		}
 		else
+		{
 			state = State.walkingRoute;
+			GetComponent<Animator>().SetTrigger("walking");
+		}
 		
 		if(state == State.walkingRoute)
 		{
