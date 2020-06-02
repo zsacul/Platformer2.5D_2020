@@ -4580,9 +4580,9 @@ MonoBehaviour:
   storyEvent:
     title: INFORMATION
     texts:
-    - '(TO USE STAIRS AS LIGHT PRESS E)
+    - '(TO USE STAIRS AS LIGHT PRESS SPACE)
 
-      (TO USE STAIRS AS BOY PRESS SPACE)'
+      (TO USE STAIRS AS BOY PRESS ENTER)'
   player: {fileID: 252782529}
 --- !u!43 &98040184
 Mesh:
@@ -20226,7 +20226,7 @@ MonoBehaviour:
     - Hello there youngster!
     - I can see you've got in trouble.
     - Let's get you out.
-    - (I can press E near the closed door to open it)
+    - (I can press SPACE near the closed door to open it)
   player: {fileID: 252782529}
 --- !u!4 &418828488
 Transform:
@@ -30266,9 +30266,9 @@ MonoBehaviour:
     title: LIGHT
     texts:
     - WE COULD JUMP TO NEXT BUILDING.
-    - (BY PRESSING E LIGHT CAN MAKE A LINE)
+    - (BY PRESSING SPACE LIGHT CAN MAKE A LINE)
     - I WILL MAKE A LINE FOR YOU!
-    - (BY PRESSING SPACE BOY CAN GRAB A LINE)
+    - (BY PRESSING ENTER BOY CAN GRAB A LINE)
   player: {fileID: 252782529}
 --- !u!1001 &819972808
 PrefabInstance:
@@ -59142,7 +59142,7 @@ MonoBehaviour:
     - 'I WILL NOT BE YOUR SERVANT!
 
       OPEN THIS DOOR BY YOURSELF.'
-    - (PRESS SPACE TO OPEN)
+    - (PRESS ENTER TO OPEN)
   player: {fileID: 252782529}
 --- !u!1001 &1736838265
 PrefabInstance:
@@ -77351,7 +77351,7 @@ MonoBehaviour:
   storyEvent:
     title: LIGHT
     texts:
-    - To hide from enemy you can press SPACE in a good spot.
+    - To hide from enemy you can press ENTER in a good spot.
     - Try it with a next corridor.
   player: {fileID: 252782529}
 --- !u!1001 &2116651643
