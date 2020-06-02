@@ -87,7 +87,7 @@ public class CameraScript : MonoBehaviour
 		bottomScript = bottom.gameObject.GetComponentInChildren<WallCollisionDetector>();
 		//bottom.transform.localScale = new Vector3(horHeight, 1f, horLength);
 
-		transform.SetPositionAndRotation(GetMiddlePoint(), transform.rotation);
+		//transform.SetPositionAndRotation(GetMiddlePoint(), transform.rotation);
 	}
 	
 	Vector3 GetMiddlePoint()
@@ -152,28 +152,33 @@ public class CameraScript : MonoBehaviour
 	{
 		stairsPos = stairsGameObject.transform.position;
 		Vector3 position = transform.position;
+		float mrg = 3f;
 
 		float horZ;
 		if(stairsPos.x > position.x)
         {
-			horZ = -(stairsPos.x + 2f - position.x) / Mathf.Tan(horizontalFOV/2 * Mathf.Deg2Rad);
+			horZ = -(stairsPos.x + mrg - position.x) / Mathf.Tan(horizontalFOV/2 * Mathf.Deg2Rad);
         }
         else
         {
-			horZ = -(position.x - stairsPos.x + 2f ) / Mathf.Tan(horizontalFOV / 2 * Mathf.Deg2Rad);
+			horZ = -(position.x - stairsPos.x + mrg ) / Mathf.Tan(horizontalFOV / 2 * Mathf.Deg2Rad);
 		}
 
 		float verZ;
 		if (stairsPos.y > position.y)
 		{
-			verZ = -(stairsPos.y + 2f - position.y) / Mathf.Tan(verticalFOV / 2 * Mathf.Deg2Rad);
+			verZ = -(stairsPos.y + mrg - position.y) / Mathf.Tan(verticalFOV / 2 * Mathf.Deg2Rad);
 		}
 		else
 		{
-			verZ = -(position.y - stairsPos.y + 2f) / Mathf.Tan(verticalFOV / 2 * Mathf.Deg2Rad);
+			verZ = -(position.y - stairsPos.y + mrg) / Mathf.Tan(verticalFOV / 2 * Mathf.Deg2Rad);
 		}
 
 		float newZ = Mathf.Min(Mathf.Min(verZ, horZ), zPosition);
+		//UnityEngine.Debug.Log("verZ: " + verZ);
+		//UnityEngine.Debug.Log("horZ: " + horZ);
+		//UnityEngine.Debug.Log("currentPos: " + zPosition);
+
 
 		if(newZ >= maxDepth)
         {

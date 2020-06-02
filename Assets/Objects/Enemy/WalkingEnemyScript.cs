@@ -189,7 +189,7 @@ public class WalkingEnemyScript : MonoBehaviour
 				//if (hit.transform.tag != null)
 				//    Debug.Log(hit.transform.tag);
 				if(gameObject.name == "CellsEnemy")
-					Debug.Log(hit.transform.tag);
+					//Debug.Log(hit.transform.tag);
 				if (hit.transform.CompareTag("Player1"))
 				{
 					//Debug.Log("HERE 1");
@@ -203,7 +203,7 @@ public class WalkingEnemyScript : MonoBehaviour
 			//if(hit.transform.tag != null)
 			//    Debug.Log(hit.transform.tag);
 			if (gameObject.name == "CellsEnemy")
-				Debug.Log(hit.transform.tag);
+				//Debug.Log(hit.transform.tag);
 			if (hit.transform.CompareTag("Player1"))
 			{
 				//Debug.Log("SEES");
@@ -219,7 +219,7 @@ public class WalkingEnemyScript : MonoBehaviour
 				//if (hit.transform.tag != null)
 				//    Debug.Log(hit.transform.tag);
 				if (gameObject.name == "CellsEnemy")
-					Debug.Log(hit.transform.tag);
+					//Debug.Log(hit.transform.tag);
 				if (hit.transform.CompareTag("Player1"))
 				{
 					//Debug.Log("HERE 3");

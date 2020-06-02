@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class PlayerScript : MonoBehaviour
     public KeyCode left;
     public KeyCode jumpButton;
     public KeyCode actionKey;
+
+    public UnityEvent jumpEvent;
 
     private Rigidbody rb;
     private lineHoldHelper lineHoldHelp;
@@ -72,6 +75,9 @@ public class PlayerScript : MonoBehaviour
 
     void Awake()
     {
+        if (jumpEvent == null)
+            jumpEvent = new UnityEvent();
+
         lineHoldHelp = GetComponentInChildren<lineHoldHelper>();
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
@@ -135,6 +141,10 @@ public class PlayerScript : MonoBehaviour
 
         if (jump && grounded)
         {
+            if (jumpEvent != null)
+            {
+                jumpEvent.Invoke();
+            }
             anim.SetTrigger("jump");
             rb.AddForce(new Vector3(0f, jumpForce, 0f));
         }
@@ -280,8 +290,5 @@ public class PlayerScript : MonoBehaviour
             ToGround();
         }
     }
-
-
-
 
 }
