@@ -43901,6 +43901,16 @@ PrefabInstance:
       propertyPath: Player2
       value: 
       objectReference: {fileID: 1504500582}
+    - target: {fileID: 3752391638338540723, guid: f4d8e69a9811d6a78ba4f07123ae63fc,
+        type: 3}
+      propertyPath: lineHoldKey
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3752391638338540723, guid: f4d8e69a9811d6a78ba4f07123ae63fc,
+        type: 3}
+      propertyPath: actionKey
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 3752391638338540728, guid: f4d8e69a9811d6a78ba4f07123ae63fc,
         type: 3}
       propertyPath: m_Name
@@ -43965,6 +43975,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7236385827729009456, guid: f4d8e69a9811d6a78ba4f07123ae63fc,
+        type: 3}
+      propertyPath: use
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4d8e69a9811d6a78ba4f07123ae63fc, type: 3}
@@ -51755,6 +51770,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1797855101}
     m_Modifications:
+    - target: {fileID: -7321957730464645439, guid: 0e2548745488f6eccbd7d28517c51046,
+        type: 3}
+      propertyPath: use
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 2665752789069849569, guid: 0e2548745488f6eccbd7d28517c51046,
         type: 3}
       propertyPath: m_LocalPosition.z
