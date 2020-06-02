@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Interacting : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Interacting : MonoBehaviour
     public PlayerScript playerScript;
     public FloatingHintBehaviour floatingHintBehaviour;
     bool buttonPressed = false;
+    public UnityEvent useDoor;
+    public UnityEvent cantUseDoor;
 
     public void AddUsableElement(int id, GameObject obj)
     {
@@ -93,11 +96,17 @@ public class Interacting : MonoBehaviour
             switch (type)
             {
                 case InteractionSurrounding.Type.leftDoor:
-                    anim.SetTrigger("Player2UseLeft");
-                    break;
+                    {
+                        useDoor.Invoke();
+                        anim.SetTrigger("Player2UseLeft");
+                        break;
+                    }
                 case InteractionSurrounding.Type.rightDoor:
-                    anim.SetTrigger("Player2UseRight");
-                    break;
+                    {
+                        useDoor.Invoke();
+                        anim.SetTrigger("Player2UseRight");
+                        break;
+                    }
                 default:
                     Debug.Log("Unknown surrounding type!!!");
                     break;
@@ -155,11 +164,17 @@ public class Interacting : MonoBehaviour
             switch (type)
             {
                 case InteractionSurrounding.Type.leftDoor:
-                    anim.SetTrigger("Player1UseLeft");
-                    break;
+                    {
+                        useDoor.Invoke();
+                        anim.SetTrigger("Player1UseLeft");
+                        break;
+                    }
                 case InteractionSurrounding.Type.rightDoor:
-                    anim.SetTrigger("Player1UseRight");
-                    break;
+                    {
+                        useDoor.Invoke();
+                        anim.SetTrigger("Player1UseRight");
+                        break;
+                    }
                 case InteractionSurrounding.Type.hidingSpotEntrance:
                     if (!playerScript.isSeen)
                     {
@@ -189,15 +204,27 @@ public class Interacting : MonoBehaviour
         switch (type)
         {
             case InteractionSurrounding.Type.leftDoor:
-                anim.SetTrigger("EnemyUseLeft");
-                break;
+                {
+                    useDoor.Invoke();
+                    anim.SetTrigger("EnemyUseLeft");
+                    break;
+                }
             case InteractionSurrounding.Type.rightDoor:
-                anim.SetTrigger("EnemyUseRight");
-                break;
+                {
+                    useDoor.Invoke();
+                    anim.SetTrigger("EnemyUseRight");
+                    break;
+                }
             default:
                 //Debug.Log("Unknown surrounding type!!!");
                 break;
         }
         return 0;
+    }
+
+
+    public void Use()
+    {
+        Debug.Log("USING DOOR");
     }
 }

@@ -18,9 +18,6 @@ public class StoryEventManager : MonoBehaviour
     void Start()
     {
         statemnets = new Queue<string>();
-
-        if (talkEvent == null)
-            talkEvent = new UnityEvent();
     }
 
     public void StartStoryEvent(StoryEvent storyevent)

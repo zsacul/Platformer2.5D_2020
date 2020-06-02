@@ -75,9 +75,6 @@ public class PlayerScript : MonoBehaviour
 
     void Awake()
     {
-        if (jumpEvent == null)
-            jumpEvent = new UnityEvent();
-
         lineHoldHelp = GetComponentInChildren<lineHoldHelper>();
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
