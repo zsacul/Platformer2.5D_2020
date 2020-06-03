@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8745416784525499097}
   - component: {fileID: 8745416784525499096}
+  - component: {fileID: 8588638178301440301}
   m_Layer: 0
   m_Name: StoryEventManager
   m_TagString: Untagged
@@ -45,10 +46,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8588638178301440301}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   titleText: {fileID: 6059127887102049553, guid: 70e1cd3cf8cc3de428837e93bb7f64c9,
     type: 3}
   storyText: {fileID: 3037702447122485519, guid: 6d9d901f157edb344a8de9f25e88fba1,
     type: 3}
   animator: {fileID: 7486250334096947303, guid: f0d65837481244845908b4606f97af9c,
     type: 3}
+--- !u!114 &8588638178301440301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8745416784525499094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73dc912795bd28c4292c46d8a19fa217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipToPlay: {fileID: 8300000, guid: e83191a54251881478d899a184264161, type: 3}
+  mixer: {fileID: -5698640081988524619, guid: e1e9b531752c08649b4bf81b1bafda9f, type: 2}
