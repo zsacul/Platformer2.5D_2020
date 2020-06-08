@@ -33,6 +33,11 @@ public class StoryEventManager : MonoBehaviour
             statemnets.Enqueue(statement);
         }
 
+        Time.timeScale = 0;
+        if (talkEvent != null)
+        {
+            talkEvent.Invoke();
+        }
         DisplayNextStoryEvent();
     }
 
@@ -51,10 +56,16 @@ public class StoryEventManager : MonoBehaviour
         string statemnet = statemnets.Dequeue();
 
         StopAllCoroutines();
-        StartCoroutine(TypeStatement(statemnet));
+        //StartCoroutine(TypeStatement(statemnet));
+        storyText.text = "";
+
+        foreach (char letter in statemnet.ToCharArray())
+        {
+            storyText.text += letter;
+        }
     }
 
-    IEnumerator TypeStatement(string statement)
+ /*   IEnumerator TypeStatement(string statement)
     {
         storyText.text = "";
 
@@ -64,9 +75,11 @@ public class StoryEventManager : MonoBehaviour
             yield return null;
         }
     }
+*/
 
     public void EndStoryEvent()
     {
+        Time.timeScale = 1;
         animator.SetBool("isOpen", false);
     }
 }
