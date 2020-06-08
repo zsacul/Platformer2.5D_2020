@@ -83,8 +83,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.869463, y: 1, z: 1}
+  m_Center: {x: 0.10878219, y: 0, z: 0}
 --- !u!114 &7950934564900377498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,8 +274,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7058293, y: 2.0556324, z: 1}
-  m_Center: {x: -0.032544643, y: -0.8031126, z: 0}
+  m_Size: {x: 0.4791806, y: 2.0338418, z: 0.60999733}
+  m_Center: {x: 0.044762358, y: -0.7922174, z: 0.005270332}
 --- !u!114 &3752391638338540723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,6 +366,12 @@ MonoBehaviour:
   barricade: 0
   playerScript: {fileID: 3752391638338540723}
   floatingHintBehaviour: {fileID: 7833361473541359071}
+  useDoor:
+    m_PersistentCalls:
+      m_Calls: []
+  cantUseDoor:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5668755599952251460
 MonoBehaviour:
   m_ObjectHideFlags: 0
