@@ -107,7 +107,6 @@ public class Interacting : MonoBehaviour
         }
         if (buttonPressed)
         {
-            Debug.Log("DUPA");
             buttonPressed = false;
             switch (type)
             {
