@@ -8,11 +8,11 @@ public class UIsound2d : ShortSoundAttachment
     AudioSource src;
     void Start()
     {
-        if(this.GetComponent<AudioSource>() != null)
+        if(this.GetComponent<AudioSource>() == null)
         {
-            this.gameObject.AddComponent<AudioSource>();
+            this.gameObject.AddComponent<AudioSource>();            
         }
-        src = GetComponent<AudioSource>();
+        src = GetComponent<AudioSource>();     
         src.spatialBlend = 0.0f;
     }
 
