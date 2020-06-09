@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Interacting : MonoBehaviour
 {
@@ -22,8 +23,20 @@ public class Interacting : MonoBehaviour
         usableElements.Add(id, obj);
     }
 
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(use))
+            buttonPressed = true;
+
+        if(Input.GetKeyUp(use))
+            buttonPressed = false;
+    }
+
     protected void OnTriggerStay(Collider other)
     {
+        //Debug.Log(use);
+
         if (other.tag == "InteractionSurrounding")
         {
             switch ((ScriptOwnerType)scriptOwnerType)
@@ -92,9 +105,10 @@ public class Interacting : MonoBehaviour
             default:
                 break;
         }
-        if (Input.GetKeyDown(use))// && !buttonPressed)
+        if (buttonPressed)
         {
-            //buttonPressed = true;
+            Debug.Log("DUPA");
+            buttonPressed = false;
             switch (type)
             {
                 case InteractionSurrounding.Type.leftDoor:
@@ -130,8 +144,7 @@ public class Interacting : MonoBehaviour
                     break;
             }
         }*/
-        //else if (!Input.GetKeyDown(use) && !Input.GetKeyDown(barricade))
-          //  buttonPressed = false;
+
         return 0;
     }
     public int BoyOnTrigger(Collider other)
@@ -140,7 +153,9 @@ public class Interacting : MonoBehaviour
             return 0;
 
         InteractionSurrounding.Type type = other.GetComponent<InteractionSurrounding>().SurroundingType;
-        Animator anim = usableElements[other.GetComponent<InteractionSurrounding>().ParentID].GetComponent<Animator>();
+        Animator anim = other.gameObject.GetComponentInParent<Animator>();//usableElements[other.GetComponent<InteractionSurrounding>().ParentID].GetComponent<Animator>();
+
+        
         switch (type)
         {
             case InteractionSurrounding.Type.leftDoor:
@@ -160,9 +175,9 @@ public class Interacting : MonoBehaviour
         }
 
         
-        if (Input.GetKeyDown(use))// && !buttonPressed)
+        if (buttonPressed)
         {
-            //buttonPressed = true;
+            buttonPressed = false;
             switch (type)
             {
                 case InteractionSurrounding.Type.leftDoor:
@@ -195,8 +210,7 @@ public class Interacting : MonoBehaviour
                     break;
             }
         }
-        //else if (!Input.GetKeyDown(use))
-          //  buttonPressed = false;
+
         return 0;
     }
     public int SoldierOnTrigger(Collider other)

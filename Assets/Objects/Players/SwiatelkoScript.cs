@@ -10,8 +10,9 @@ public class SwiatelkoScript : MonoBehaviour
     public KeyCode actionKey;
     public float moveSpeed = 3f;
     public GameObject line;
-    bool lineActive;
+    public bool lineActive;
 
+    public bool canDropLine;
     public bool inAction;
 
     Rigidbody rb;
@@ -51,7 +52,7 @@ public class SwiatelkoScript : MonoBehaviour
     {
         Move();
         rb.useGravity = false;
-        if (Input.GetKeyDown(actionKey) && !inAction)
+        if (Input.GetKeyDown(actionKey) && !inAction && canDropLine)
         {
             lineActive = !lineActive;
             line.SetActive(lineActive);
@@ -68,4 +69,21 @@ public class SwiatelkoScript : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "LineZone")
+        {
+            canDropLine = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "LineZone")
+        {
+            canDropLine = false;
+        }
+    }
+
 }

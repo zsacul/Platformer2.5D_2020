@@ -226,7 +226,7 @@ public class PlayerScript : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (lineHoldHelp.canCatch && Input.GetKey(lineHoldKey) && !jump)
+        if (lineHoldHelp.canCatch && Input.GetKey(lineHoldKey) && !jump && Player2.GetComponent<SwiatelkoScript>().lineActive)
         {
             ToLine();
 
@@ -270,12 +270,13 @@ public class PlayerScript : MonoBehaviour
                 other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.right * 100f);
 
         }
-        else if (other.gameObject.tag == "line" && !Input.GetKey(lineHoldKey))
+        else if (other.gameObject.tag == "line" && (!Input.GetKey(lineHoldKey) || Player2.GetComponent<SwiatelkoScript>().lineActive))
         {
-            rb.useGravity = true;
+            ToGround();
+            /*rb.useGravity = true;
             state = State.running;
             rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
-            currentLinePart = null;
+            currentLinePart = null;*/
         }
     }
 

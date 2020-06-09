@@ -186,10 +186,7 @@ public class WalkingEnemyScript : MonoBehaviour
 			Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y, rayDirection.z - rayMult * i);
 			if (Physics.Raycast(transform.position, currentRayDirection, out hit, Mathf.Infinity, seeMask))
 			{
-				//if (hit.transform.tag != null)
-				//    Debug.Log(hit.transform.tag);
-				if(gameObject.name == "CellsEnemy")
-					//Debug.Log(hit.transform.tag);
+				
 				if (hit.transform.CompareTag("Player1"))
 				{
 					//Debug.Log("HERE 1");
@@ -200,10 +197,7 @@ public class WalkingEnemyScript : MonoBehaviour
 
 		if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, seeMask)) //promień w przód
 		{
-			//if(hit.transform.tag != null)
-			//    Debug.Log(hit.transform.tag);
-			if (gameObject.name == "CellsEnemy")
-				//Debug.Log(hit.transform.tag);
+			
 			if (hit.transform.CompareTag("Player1"))
 			{
 				//Debug.Log("SEES");
@@ -216,10 +210,7 @@ public class WalkingEnemyScript : MonoBehaviour
 			Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y, rayDirection.z + rayMult * i);
 			if (Physics.Raycast(transform.position, currentRayDirection, out hit, Mathf.Infinity, seeMask))
 			{
-				//if (hit.transform.tag != null)
-				//    Debug.Log(hit.transform.tag);
-				if (gameObject.name == "CellsEnemy")
-					//Debug.Log(hit.transform.tag);
+				
 				if (hit.transform.CompareTag("Player1"))
 				{
 					//Debug.Log("HERE 3");
