@@ -50,6 +50,7 @@ public class SwiatelkoScript : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log(canDropLine);
         Move();
         rb.useGravity = false;
         if (Input.GetKeyDown(actionKey) && !inAction && canDropLine)
@@ -78,9 +79,18 @@ public class SwiatelkoScript : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        //Debug.Log(other.tag);
+        if (other.gameObject.CompareTag("LineZone"))
+        {
+            canDropLine = true;
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "LineZone")
+        if (other.gameObject.CompareTag("LineZone"))
         {
             canDropLine = false;
         }

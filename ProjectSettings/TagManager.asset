@@ -23,6 +23,7 @@ TagManager:
   - CRATE
   - CameraWall
   - CameraWallBuffer
+  - LineZone
   layers:
   - Default
   - TransparentFX
