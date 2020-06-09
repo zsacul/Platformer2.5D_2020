@@ -19,7 +19,7 @@ public class GroundDetectorScript : MonoBehaviour
 	
 	void OnTriggerStay(Collider col)
 	{
-		if(!col.gameObject.CompareTag("Player1") && !col.gameObject.CompareTag("InteractionSurrounding") && !col.gameObject.CompareTag("CameraWall") && !col.gameObject.CompareTag("CameraWallBuffer"))
+		if(!col.gameObject.CompareTag("Player1") && !col.gameObject.CompareTag("InteractionSurrounding") && !col.gameObject.CompareTag("CameraWall") && !col.gameObject.CompareTag("CameraWallBuffer") && !col.gameObject.CompareTag("LineZone"))
 		{
 			//Debug.Log(col.gameObject.name);
 			grounded = true;
@@ -28,7 +28,7 @@ public class GroundDetectorScript : MonoBehaviour
 	}
 	void OnTriggerExit(Collider col)
 	{
-		if (!col.gameObject.CompareTag("Player1") && !col.gameObject.CompareTag("InteractionSurrounding") && !col.gameObject.CompareTag("CameraWall") && !col.gameObject.CompareTag("CameraWallBuffer"))
+		if (!col.gameObject.CompareTag("Player1") && !col.gameObject.CompareTag("InteractionSurrounding") && !col.gameObject.CompareTag("CameraWall") && !col.gameObject.CompareTag("CameraWallBuffer") && !col.gameObject.CompareTag("LineZone"))
 		{
 			grounded = false;
 			ps.SetGrounded(grounded);
