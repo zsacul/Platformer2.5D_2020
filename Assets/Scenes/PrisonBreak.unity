@@ -42257,7 +42257,7 @@ PrefabInstance:
     - target: {fileID: 7351558354695994989, guid: 6e3354d23953a6b488f83aa3e8164319,
         type: 3}
       propertyPath: shouldUseBgmQueue
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e3354d23953a6b488f83aa3e8164319, type: 3}

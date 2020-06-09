@@ -44,12 +44,9 @@ public class stairScript : MonoBehaviour
                     }
                     StartCoroutine(fadeRoutine(col));
                 }
-                else
+                else if (cantUseStairs != null)
                 {
-                    if (cantUseStairs != null)
-                    {
-                        cantUseStairs.Invoke();
-                    }
+                    cantUseStairs.Invoke();
                 }
             }
         }
@@ -62,7 +59,13 @@ public class stairScript : MonoBehaviour
             if (Input.GetKey(swiatelkoScript.actionKey))
             {
                 if (cs.Stairs(other))
+                {
+                    if (useStairs != null)
+                    {
+                        useStairs.Invoke();
+                    }
                     StartCoroutine(fadeRoutine(col));
+                }
                 else if (cantUseStairs != null)
                 {
                     cantUseStairs.Invoke();
