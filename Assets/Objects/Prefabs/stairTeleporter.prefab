@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1284329944662992538}
+  - component: {fileID: 5090665234419424905}
   m_Layer: 0
   m_Name: stairTeleporter
   m_TagString: Untagged
@@ -33,6 +34,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5090665234419424905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284329944662992537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351686f032f5e874e95b91114a47cb1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipToPlay: {fileID: 8300000, guid: f5b676b0f3678df4e977540a8d01f5c6, type: 3}
+  mixer: {fileID: -5698640081988524619, guid: e1e9b531752c08649b4bf81b1bafda9f, type: 2}
 --- !u!1 &1284329944719627044
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,6 +207,34 @@ MonoBehaviour:
   other: {fileID: 1284329945724190974}
   fadeAnim: {fileID: 1284329945435548711}
   cs: {fileID: 0}
+  useStairs:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5090665234419424905}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  cantUseStairs:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2529367895363254838}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1284329945435548709
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,6 +339,7 @@ GameObject:
   - component: {fileID: 1284329945724190975}
   - component: {fileID: 1284329945724190961}
   - component: {fileID: 1284329945724190960}
+  - component: {fileID: 2529367895363254838}
   m_Layer: 9
   m_Name: 1
   m_TagString: Stairs
@@ -345,3 +389,45 @@ MonoBehaviour:
   other: {fileID: 1284329944927938789}
   fadeAnim: {fileID: 1284329945435548711}
   cs: {fileID: 0}
+  useStairs:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5090665234419424905}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  cantUseStairs:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2529367895363254838}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2529367895363254838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284329945724190974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351686f032f5e874e95b91114a47cb1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipToPlay: {fileID: 8300000, guid: 24573f8e8b2042f47ab1895425b427d4, type: 3}
+  mixer: {fileID: -5698640081988524619, guid: e1e9b531752c08649b4bf81b1bafda9f, type: 2}
