@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6115849002220446228}
   - component: {fileID: 568391612049989357}
   - component: {fileID: 7853835962182300421}
+  - component: {fileID: 5074700011257586743}
   m_Layer: 0
   m_Name: SingleLamp
   m_TagString: Untagged
@@ -95,6 +96,19 @@ CapsuleCollider:
   m_Height: 3.543503
   m_Direction: 1
   m_Center: {x: 0, y: 1.7717515, z: 0.0043095946}
+--- !u!65 &5074700011257586743
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2296698527035632177}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19919938, y: 0.118480444, z: 1.0261129}
+  m_Center: {x: -0.000000014901161, y: 3.484263, z: 0.41345674}
 --- !u!1 &7853835963068211755
 GameObject:
   m_ObjectHideFlags: 0

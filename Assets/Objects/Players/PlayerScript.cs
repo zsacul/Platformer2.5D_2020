@@ -80,7 +80,8 @@ public class PlayerScript : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         Player2 = GameObject.FindWithTag("Player2");
-        Physics.IgnoreCollision(GetComponent<Collider>(), GameObject.FindWithTag("Player2").GetComponent<Collider>());
+        foreach(Collider collider in GetComponents<Collider>())
+            Physics.IgnoreCollision(collider, GameObject.FindWithTag("Player2").GetComponent<Collider>());
     }
 
     void CheckForce()

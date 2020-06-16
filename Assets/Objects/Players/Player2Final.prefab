@@ -610,6 +610,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5463808582607186422, guid: 7456c89a77355ee36bfe11a011dc26f7,
+        type: 3}
+      propertyPath: m_TagString
+      value: line
+      objectReference: {fileID: 0}
     - target: {fileID: 5463808582607186424, guid: 7456c89a77355ee36bfe11a011dc26f7,
         type: 3}
       propertyPath: m_LocalPosition.x
