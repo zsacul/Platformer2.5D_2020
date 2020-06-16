@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using UnityEditor;
 
 public class PlayerScript : MonoBehaviour
 {
-
+    bool escapingLine;
     public GameObject Player2;
 
     public float normalSpeed;
@@ -124,9 +125,6 @@ public class PlayerScript : MonoBehaviour
 
     void Move()
     {
-
-
-
         if (xMov < 0)
             transform.eulerAngles = new Vector3(0, -180, 0);
         else if (xMov > 0)
@@ -147,15 +145,12 @@ public class PlayerScript : MonoBehaviour
         }
         anim.SetFloat("velocity", Math.Abs(rb.velocity.x));
     }
-
-
     void Update()
     {
         GetInput();
         CheckForce();
         if (state == State.running)
             Move();
-
         //Debug.Log(getting_power);
     }
 
@@ -175,13 +170,13 @@ public class PlayerScript : MonoBehaviour
     public void SetGrounded(bool gr) // function used by GroundDetector
     {
         grounded = gr;
+        escapingLine = false;
         if (grounded)
             anim.SetTrigger("ground");
     }
 
     public void ToGround()
     {
-        onLine = false;
         rb.useGravity = true;
         state = State.running;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
@@ -191,8 +186,7 @@ public class PlayerScript : MonoBehaviour
 
     void ToLine()
     {
-        //rb.velocity = Vector3.zero;
-        onLine = true;
+        rb.velocity = Vector3.zero;
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezePositionZ;
         state = State.climbing;
@@ -209,92 +203,50 @@ public class PlayerScript : MonoBehaviour
         */
     }
 
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (lineHoldHelp.canCatch && Input.GetKey(lineHoldKey))
-        {
-            ToLine();
-            rb.velocity = Vector3.zero;
-        }
-
-        if (other.tag == "ladder")
-        {
-            anim.SetTrigger("climb");
-        }
-    }
-
     void OnTriggerStay(Collider other)
     {
-        if (lineHoldHelp.canCatch && Input.GetKey(lineHoldKey) && !jump && Player2.GetComponent<SwiatelkoScript>().lineActive)
+        float rotationSmooth = 0.5f;
+
+        if (other.tag == "line")
         {
-            ToLine();
-
-            float deadX = 0.15f;
-            transform.rotation = Quaternion.Lerp(transform.rotation, other.gameObject.transform.rotation, 0.5f);
-
-            Vector3 vel = rb.velocity;
-
-
-            if (!Input.GetKey(KeyCode.UpArrow))
+            if (!escapingLine)
             {
-                anim.SetBool("arrow_up", false);
-                vel = Vector3.zero;
-                Vector3 destination = lineHoldHelp.currentLinePart.transform.position;// + offset;
-                Vector3 smoothedPosition = Vector3.Lerp(transform.position, destination, 1);
-                transform.position = smoothedPosition;
-            }
-            else
-            {
-                anim.SetBool("arrow_up", true);
-                vel.y = transform.up.y * lineClimbSpeed; //climbing up
+                //transform.position = new Vector3( lineHoldHelp.currentLinePart.transform.position.x, transform.position.y, transform.position.z);
+                transform.position = new Vector3(Vector3.Lerp(transform.position, other.transform.position, 0.6f).x, transform.position.y, transform.position.z);
+                //transform.rotation = Quaternion.Lerp(transform.rotation, other.gameObject.transform.rotation, rotationSmooth);
 
-                if (Math.Abs(other.gameObject.transform.position.x - transform.position.x) > deadX)
+                ToLine();
+
+                if (Input.GetKey(KeyCode.UpArrow))
                 {
-                    vel.x += (other.gameObject.transform.position - transform.position).x / (Time.fixedDeltaTime);//for player to hold onto line on x
+                    transform.position += (Player2.transform.position - transform.position).normalized / 3 * Time.deltaTime;
                 }
-                else
-                    vel.x *= 0.6f;
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    transform.position -= (Player2.transform.position - transform.position).normalized / 3 * Time.deltaTime;
+                }
 
-                if (Math.Abs(vel.x) > 2.5f)
-                    vel.x = vel.x > 0 ? 2.5f : -2.5f;
+                if (xMov < 0)//swinging rope
+                    other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.left * 100f);
+                else if (xMov > 0)
+                    other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.right * 100f);
             }
 
-<<<<<<< HEAD
-            if(Input.GetKey(lineHoldKey))
+            if (Input.GetKey(lineHoldKey))
             {
                 ToGround();
-                escapingLine = true;            
+                escapingLine = true;
             }
             Player2.GetComponent<SwiatelkoScript>().DebugLineSpeed();
-=======
-            vel.z = 0;
-
-            rb.velocity = vel;
-
-            if (xMov < 0)//swinging rope
-                other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.left * 100f);
-            else if (xMov > 0)
-                other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.right * 100f);
-
-        }
-        else if (other.gameObject.tag == "line" && (!Input.GetKey(lineHoldKey) || Player2.GetComponent<SwiatelkoScript>().lineActive))
-        {
-            ToGround();
-            /*rb.useGravity = true;
-            state = State.running;
-            rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
-            currentLinePart = null;*/
->>>>>>> c0c6117fccb967204b0ce9c1aa9c3331bbc81b9d
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "line")
+        if (Input.GetKey(KeyCode.DownArrow) && other.gameObject.CompareTag("line"))
         {
-            currentLinePart = null;
             ToGround();
+            //escapingLine = true;
         }
     }
 
