@@ -68,10 +68,21 @@ public class Interacting : MonoBehaviour
                     break;
             }
         }
+        else if (other.tag == "LineZone")
+        {
+            switch ((ScriptOwnerType)scriptOwnerType)
+            {
+                case ScriptOwnerType.Light:
+                    floatingHintBehaviour.setSprite(3);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "InteractionSurrounding" || other.tag == "Stairs")
+        if (other.tag == "InteractionSurrounding" || other.tag == "Stairs" || other.tag == "LineZone")
         {
             switch ((ScriptOwnerType)scriptOwnerType)
             {
