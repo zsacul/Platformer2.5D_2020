@@ -7,8 +7,13 @@ public class LoopedSoundAttachment : BaseSoundAttachment
     AudioSource src;
     override public void Play()
     {
-        AudioManager.Instance.PlayLooped(clipToPlay, this.gameObject, mixer);
-        src = GetComponent<AudioSource>();
+
+        //AudioManager.Instance.PlayLooped(clipToPlay, this.gameObject, mixer);
+
+        //if (clipToPlay!=null)
+        //AudioManager.Instance.PlayLooped(clipToPlay, gameObject, mixer);
+
+        //src = GetComponent<AudioSource>();
     }
 
     public void Stop()

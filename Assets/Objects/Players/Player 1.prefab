@@ -191,7 +191,6 @@ GameObject:
   - component: {fileID: 3752391638338540732}
   - component: {fileID: 3752391638338540733}
   - component: {fileID: 3752391638338540734}
-  - component: {fileID: 3752391638338540735}
   - component: {fileID: 3752391638338540723}
   - component: {fileID: 1155893862591916674}
   - component: {fileID: 3601723970280554715}
@@ -271,19 +270,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3752391638338540735
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3752391638338540728}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.7058293, y: 2.0556324, z: 1}
-  m_Center: {x: -0.032544643, y: -0.8031126, z: 0}
 --- !u!114 &3752391638338540723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,6 +360,12 @@ MonoBehaviour:
   barricade: 0
   playerScript: {fileID: 3752391638338540723}
   floatingHintBehaviour: {fileID: 7833361473541359071}
+  useDoor:
+    m_PersistentCalls:
+      m_Calls: []
+  cantUseDoor:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5668755599952251460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,8 +740,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.98241484, y: 0.31131947, z: 2.075509}
-  m_Center: {x: -0.03036815, y: 0.0591622, z: 0.021267653}
+  m_Size: {x: 0.3082173, y: 0.12932336, z: 2.075509}
+  m_Center: {x: 0.0050144494, y: 0.15016025, z: 0.021267653}
 --- !u!114 &414479737288310936
 MonoBehaviour:
   m_ObjectHideFlags: 0
