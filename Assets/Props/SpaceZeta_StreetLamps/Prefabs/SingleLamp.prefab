@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 568391612049989357}
   - component: {fileID: 7853835962182300421}
   m_Layer: 0
-  m_Name: StreetLamp2_Short (Black)
+  m_Name: SingleLamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,8 +139,8 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.97338027, b: 0.811, a: 1}
   m_Intensity: 3
-  m_Range: 7
-  m_SpotAngle: 101
+  m_Range: 6.3858824
+  m_SpotAngle: 85.078026
   m_InnerSpotAngle: 7.6
   m_CookieSize: 10
   m_Shadows:
