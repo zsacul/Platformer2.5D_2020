@@ -46,7 +46,6 @@ public class stairScript : MonoBehaviour
                 }
                 else if (cantUseStairs != null)
                 {
-                    Debug.Log("DALEKO");
                     cantUseStairs.Invoke();
                 }
             }
