@@ -29,7 +29,7 @@ public class Interacting : MonoBehaviour
         if (Input.GetKeyDown(use))
             buttonPressed = true;
 
-        if(Input.GetKeyUp(use))
+        if (Input.GetKeyUp(use))
             buttonPressed = false;
     }
 
@@ -44,7 +44,7 @@ public class Interacting : MonoBehaviour
                 case ScriptOwnerType.Light:
                     SwiatelkoScript swiatelkoScript = GetComponent<SwiatelkoScript>();
                     swiatelkoScript.inAction = true;
-                    LightOnTrigger (other);
+                    LightOnTrigger(other);
                     break;
                 case ScriptOwnerType.Boy:
                     BoyOnTrigger(other);
@@ -59,10 +59,21 @@ public class Interacting : MonoBehaviour
             switch ((ScriptOwnerType)scriptOwnerType)
             {
                 case ScriptOwnerType.Light:
-                    floatingHintBehaviour.setText(6);
+                    floatingHintBehaviour.setSprite(1);
                     break;
                 case ScriptOwnerType.Boy:
-                    floatingHintBehaviour.setText(5);
+                    floatingHintBehaviour.setSprite(1);
+                    break;
+                default:
+                    break;
+            }
+        }
+        else if (other.tag == "LineZone")
+        {
+            switch ((ScriptOwnerType)scriptOwnerType)
+            {
+                case ScriptOwnerType.Light:
+                    floatingHintBehaviour.setSprite(3);
                     break;
                 default:
                     break;
@@ -71,17 +82,17 @@ public class Interacting : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "InteractionSurrounding" || other.tag == "Stairs")
+        if (other.tag == "InteractionSurrounding" || other.tag == "Stairs" || other.tag == "LineZone")
         {
             switch ((ScriptOwnerType)scriptOwnerType)
             {
                 case ScriptOwnerType.Light:
                     SwiatelkoScript swiatelkoScript = GetComponent<SwiatelkoScript>();
                     swiatelkoScript.inAction = false;
-                    floatingHintBehaviour.setText(0);
+                    floatingHintBehaviour.clearSprite();
                     break;
                 case ScriptOwnerType.Boy:
-                    floatingHintBehaviour.setText(0);
+                    floatingHintBehaviour.clearSprite();
                     break;
                 default:
                     break;
@@ -97,10 +108,10 @@ public class Interacting : MonoBehaviour
         switch (type)
         {
             case InteractionSurrounding.Type.leftDoor:
-                floatingHintBehaviour.setText(2);
+                floatingHintBehaviour.setSprite(0);
                 break;
             case InteractionSurrounding.Type.rightDoor:
-                floatingHintBehaviour.setText(2);
+                floatingHintBehaviour.setSprite(0);
                 break;
             default:
                 break;
@@ -127,22 +138,22 @@ public class Interacting : MonoBehaviour
                     break;
             }
         }
-     /*   else if (Input.GetKeyDown(barricade))// && !buttonPressed)
-        {
-            //buttonPressed = true;
-            switch (type)
-            {
-                case InteractionSurrounding.Type.leftDoor:
-                    anim.SetTrigger("Player2BarricadeLeft");
-                    break;
-                case InteractionSurrounding.Type.rightDoor:
-                    anim.SetTrigger("Player2BarricadeRight");
-                    break;
-                default:
-                    Debug.Log("Unknown surrounding type!!!");
-                    break;
-            }
-        }*/
+        /*   else if (Input.GetKeyDown(barricade))// && !buttonPressed)
+           {
+               //buttonPressed = true;
+               switch (type)
+               {
+                   case InteractionSurrounding.Type.leftDoor:
+                       anim.SetTrigger("Player2BarricadeLeft");
+                       break;
+                   case InteractionSurrounding.Type.rightDoor:
+                       anim.SetTrigger("Player2BarricadeRight");
+                       break;
+                   default:
+                       Debug.Log("Unknown surrounding type!!!");
+                       break;
+               }
+           }*/
 
         return 0;
     }
@@ -154,26 +165,26 @@ public class Interacting : MonoBehaviour
         InteractionSurrounding.Type type = other.GetComponent<InteractionSurrounding>().SurroundingType;
         Animator anim = other.gameObject.GetComponentInParent<Animator>();//usableElements[other.GetComponent<InteractionSurrounding>().ParentID].GetComponent<Animator>();
 
-        
+
         switch (type)
         {
             case InteractionSurrounding.Type.leftDoor:
-                    floatingHintBehaviour.setText(1);
+                floatingHintBehaviour.setSprite(0);
                 break;
             case InteractionSurrounding.Type.rightDoor:
-                floatingHintBehaviour.setText(1);
+                floatingHintBehaviour.setSprite(0);
                 break;
             case InteractionSurrounding.Type.hidingSpotEntrance:
-                floatingHintBehaviour.setText(3);
+                floatingHintBehaviour.setSprite(3);
                 break;
             case InteractionSurrounding.Type.hidingSpotInside:
-                floatingHintBehaviour.setText(4);
+                floatingHintBehaviour.setSprite(4);
                 break;
             default:
                 break;
         }
 
-        
+
         if (buttonPressed)
         {
             buttonPressed = false;

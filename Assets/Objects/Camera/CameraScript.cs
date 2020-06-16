@@ -209,11 +209,11 @@ public class CameraScript : MonoBehaviour
 	
 	void Update()
     {
-		if (bottomScript.falling && !ps.grounded)
+		if (bottomScript.falling && !ps.grounded && !ps.onLine)
 		{ 			
 			falling = true;
         }
-		if(ps.grounded)
+		if(ps.grounded || ps.onLine)
         {
 			falling = false;
         }
