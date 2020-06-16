@@ -191,13 +191,13 @@ GameObject:
   - component: {fileID: 3752391638338540732}
   - component: {fileID: 3752391638338540733}
   - component: {fileID: 3752391638338540734}
-  - component: {fileID: 3752391638338540735}
   - component: {fileID: 3752391638338540723}
   - component: {fileID: 1155893862591916674}
   - component: {fileID: 3601723970280554715}
   - component: {fileID: 7236385827729009456}
   - component: {fileID: 5668755599952251460}
   - component: {fileID: 5892620280987951629}
+  - component: {fileID: 5709433885558782375}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player1
@@ -271,19 +271,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3752391638338540735
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3752391638338540728}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.7058293, y: 2.0556324, z: 1}
-  m_Center: {x: -0.032544643, y: -0.8031126, z: 0}
 --- !u!114 &3752391638338540723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,6 +361,12 @@ MonoBehaviour:
   barricade: 0
   playerScript: {fileID: 3752391638338540723}
   floatingHintBehaviour: {fileID: 7833361473541359071}
+  useDoor:
+    m_PersistentCalls:
+      m_Calls: []
+  cantUseDoor:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5668755599952251460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,9 +391,22 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.25025034
-  m_Height: 2.1833293
+  m_Height: 2.0795877
   m_Direction: 1
-  m_Center: {x: 0.005348146, y: -0.5916647, z: -0.005954325}
+  m_Center: {x: 0.005348146, y: -0.7680479, z: -0.005954325}
+--- !u!65 &5709433885558782375
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3752391638338540728}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.39917216, y: 0.12580621, z: 0.605262}
+  m_Center: {x: -0.0019832104, y: 0.25582248, z: -0.00403437}
 --- !u!1 &3903813905389359015
 GameObject:
   m_ObjectHideFlags: 0

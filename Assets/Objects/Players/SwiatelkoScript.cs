@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
@@ -35,29 +36,52 @@ public class SwiatelkoScript : MonoBehaviour
     }
 
 
-    void StopSwing()
+    IEnumerator StopSwingRoutine()
     {
-        for (int i = 0; i < 5; i++)
+        for (int k = 0; k < 2; k++)
         {
-            foreach (Rigidbody part in lineParts)
+            for (int i = 0; i < 5; i++)
             {
-                part.velocity = new Vector3(0f, 0f, 0f);
-                part.AddForce(new Vector3(0f, -100f, 0f));
+                foreach (Rigidbody part in lineParts)
+                {
+                    part.velocity = new Vector3(0f, 0f, 0f);
+                    part.AddForce(new Vector3(0f, -100f, 0f));
+                }
             }
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
+    public void StopSwing()
+    {
+        StartCoroutine(StopSwingRoutine());
+    }
+
+    public void DebugLineSpeed()
+    {
+
+        float maxi = 0.0f;
+        foreach (Rigidbody part in lineParts)
+        {
+            if (part.velocity.magnitude > 2.6f)
+                part.velocity /= 2;
+            //part.AddForce(new Vector3(0f, -100f, 0f));
+        }
+
+    }
 
     void Update()
     {
         //Debug.Log(canDropLine);
         Move();
+        //DebugLineSpeed();
         rb.useGravity = false;
         if (Input.GetKeyDown(actionKey) && !inAction && canDropLine)
         {
+            StopSwing();
             lineActive = !lineActive;
             line.SetActive(lineActive);
-            if(!lineActive)
+            if (!lineActive)
             {
                 GameObject.Find("Player 1").GetComponent<PlayerScript>().ToGround();
                 rb.isKinematic = false;
@@ -73,7 +97,7 @@ public class SwiatelkoScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "LineZone")
+        if (other.tag == "LineZone")
         {
             canDropLine = true;
         }
