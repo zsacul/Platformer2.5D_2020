@@ -216,14 +216,14 @@ public class PlayerScript : MonoBehaviour
                 //transform.rotation = Quaternion.Lerp(transform.rotation, other.gameObject.transform.rotation, rotationSmooth);
 
                 ToLine();
-            
-                if(Input.GetKey(KeyCode.UpArrow))
+
+                if (Input.GetKey(KeyCode.UpArrow))
                 {
-                    transform.position += (Player2.transform.position - transform.position).normalized/3 * Time.deltaTime;
+                    transform.position += (Player2.transform.position - transform.position).normalized / 3 * Time.deltaTime;
                 }
                 if (Input.GetKey(KeyCode.DownArrow))
                 {
-                    transform.position -= (Player2.transform.position - transform.position).normalized/3 * Time.deltaTime;
+                    transform.position -= (Player2.transform.position - transform.position).normalized / 3 * Time.deltaTime;
                 }
 
                 if (xMov < 0)//swinging rope
@@ -232,11 +232,10 @@ public class PlayerScript : MonoBehaviour
                     other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.right * 100f);
             }
 
-            if(Input.GetKey(lineHoldKey))
+            if (Input.GetKey(lineHoldKey))
             {
                 ToGround();
                 escapingLine = true;
-                //ExitLine();               
             }
             Player2.GetComponent<SwiatelkoScript>().DebugLineSpeed();
         }
@@ -244,7 +243,7 @@ public class PlayerScript : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if(Input.GetKey(KeyCode.DownArrow) && other.gameObject.CompareTag("line"))
+        if (Input.GetKey(KeyCode.DownArrow) && other.gameObject.CompareTag("line"))
         {
             ToGround();
             //escapingLine = true;

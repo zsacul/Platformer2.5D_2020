@@ -10,6 +10,9 @@ public class LoopedSoundAttachment : BaseSoundAttachment
 
         //AudioManager.Instance.PlayLooped(clipToPlay, this.gameObject, mixer);
 
+
+        //AudioManager.Instance.PlayLooped(clipToPlay, this.gameObject, mixer);
+
         //if (clipToPlay!=null)
         //AudioManager.Instance.PlayLooped(clipToPlay, gameObject, mixer);
 

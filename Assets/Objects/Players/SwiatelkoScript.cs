@@ -64,10 +64,10 @@ public class SwiatelkoScript : MonoBehaviour
         foreach (Rigidbody part in lineParts)
         {
             if (part.velocity.magnitude > 2.6f)
-                part.velocity /= 2;    
+                part.velocity /= 2;
             //part.AddForce(new Vector3(0f, -100f, 0f));
         }
-        
+
     }
 
     void Update()
@@ -81,7 +81,7 @@ public class SwiatelkoScript : MonoBehaviour
             StopSwing();
             lineActive = !lineActive;
             line.SetActive(lineActive);
-            if(!lineActive)
+            if (!lineActive)
             {
                 GameObject.Find("Player 1").GetComponent<PlayerScript>().ToGround();
                 rb.isKinematic = false;
@@ -97,7 +97,7 @@ public class SwiatelkoScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "LineZone")
+        if (other.tag == "LineZone")
         {
             canDropLine = true;
         }
