@@ -178,6 +178,7 @@ public class PlayerScript : MonoBehaviour
 
     public void ToGround()
     {
+        onLine = false;
         rb.useGravity = true;
         state = State.running;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
@@ -187,6 +188,7 @@ public class PlayerScript : MonoBehaviour
 
     void ToLine()
     {
+        onLine = true;
         rb.velocity = Vector3.zero;
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezePositionZ;
