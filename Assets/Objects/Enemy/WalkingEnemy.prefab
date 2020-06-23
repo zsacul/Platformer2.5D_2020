@@ -35,7 +35,7 @@ MonoBehaviour:
   speed: 1
   chasingSpeed: 3
   climbingSpeed: 2
-  chasingDist: {x: 10, y: 3, z: 1}
+  chasingDist: {x: 20, y: 5, z: 2}
   onlyPowerBullet: 0
   cycleWalking: 0
   patrolAfterEnd: 0
@@ -115,7 +115,7 @@ PrefabInstance:
     - target: {fileID: 1228439401950370739, guid: 011661526ee990743bb62fdf6ec61c83,
         type: 3}
       propertyPath: m_Height
-      value: 9.93017
+      value: 9.0753565
       objectReference: {fileID: 0}
     - target: {fileID: 1228439401950370739, guid: 011661526ee990743bb62fdf6ec61c83,
         type: 3}
@@ -125,7 +125,7 @@ PrefabInstance:
     - target: {fileID: 1228439401950370739, guid: 011661526ee990743bb62fdf6ec61c83,
         type: 3}
       propertyPath: m_Center.y
-      value: 4.498804
+      value: 4.1686387
       objectReference: {fileID: 0}
     - target: {fileID: 1228439401950370739, guid: 011661526ee990743bb62fdf6ec61c83,
         type: 3}

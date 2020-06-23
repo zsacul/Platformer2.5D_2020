@@ -8,9 +8,11 @@ using UnityEditor;
 
 public class PlayerScript : MonoBehaviour
 {
-    bool escapingLine;
+    bool escapingLine, lineClicked;
     public GameObject Player2;
+    Vector3 currentLinePos;
 
+    float cooldown = 0.0f;
     public float normalSpeed;
     public float jumpForce;
     public float lineClimbSpeed;
@@ -56,7 +58,8 @@ public class PlayerScript : MonoBehaviour
         if (state != State.hiding)
         {
             state = State.hiding;
-            anim.SetBool("hiding", true);
+            anim.Play("Hide");
+            //anim.SetBool("hiding", true);
             transform.eulerAngles = new Vector3(0, 0, 0);
             rb.velocity = Vector3.zero;
             anim.SetFloat("velocity", 0);
@@ -69,7 +72,8 @@ public class PlayerScript : MonoBehaviour
         if (state == State.hiding)
         {
             state = State.running;
-            anim.SetBool("hiding", false);
+            anim.SetTrigger("unhide");
+            //anim.SetBool("hiding", false);
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - hidingSpotDist);
         }
     }
@@ -126,6 +130,18 @@ public class PlayerScript : MonoBehaviour
 
     void Move()
     {
+        if (Math.Abs(xMov) > 0)
+        {
+            anim.SetBool("run", true);
+            anim.SetBool("idle", false);
+        }
+        else
+        {
+            anim.SetBool("run", false);
+            anim.SetBool("idle", true);
+        }
+
+
         if (xMov < 0)
             transform.eulerAngles = new Vector3(0, -180, 0);
         else if (xMov > 0)
@@ -148,6 +164,8 @@ public class PlayerScript : MonoBehaviour
     }
     void Update()
     {
+        if (cooldown > 0)
+            cooldown -= 1;
         GetInput();
         CheckForce();
         if (state == State.running)
@@ -179,11 +197,12 @@ public class PlayerScript : MonoBehaviour
     public void ToGround()
     {
         onLine = false;
+        lineClicked = false;
         rb.useGravity = true;
         state = State.running;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-        //anim.SetTrigger("ground");
+        anim.SetTrigger("endRope");
     }
 
     void ToLine()
@@ -193,7 +212,7 @@ public class PlayerScript : MonoBehaviour
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezePositionZ;
         state = State.climbing;
-        anim.SetTrigger("climb");
+        
     }
 
     public void Cought()
@@ -212,21 +231,37 @@ public class PlayerScript : MonoBehaviour
 
         if (other.tag == "line")
         {
-            if (!escapingLine)
+            if (Input.GetKey(KeyCode.UpArrow))
+                lineClicked = true;
+
+            if (!escapingLine && lineClicked)
             {
                 //transform.position = new Vector3( lineHoldHelp.currentLinePart.transform.position.x, transform.position.y, transform.position.z);
-                transform.position = new Vector3(Vector3.Lerp(transform.position, other.transform.position, 0.6f).x, transform.position.y, transform.position.z);
-                //transform.rotation = Quaternion.Lerp(transform.rotation, other.gameObject.transform.rotation, rotationSmooth);
+                
+                transform.rotation = Quaternion.Lerp(transform.rotation, other.gameObject.transform.rotation, rotationSmooth);
 
                 ToLine();
 
+                currentLinePos = GetComponent<lineHoldHelper>().PickBestFitting();
+
                 if (Input.GetKey(KeyCode.UpArrow))
                 {
+                    anim.Play("RopeClimbUp");
                     transform.position += (Player2.transform.position - transform.position).normalized / 3 * Time.deltaTime;
+                    transform.position = new Vector3(Vector3.Lerp(transform.position, currentLinePos, 0.4f).x, transform.position.y, transform.position.z);
+                    currentLinePos = new Vector3(0, -100, 0);
                 }
-                if (Input.GetKey(KeyCode.DownArrow))
+                else if (Input.GetKey(KeyCode.DownArrow))
                 {
+                    anim.Play("RopeClimbDown");
                     transform.position -= (Player2.transform.position - transform.position).normalized / 3 * Time.deltaTime;
+                    transform.position = new Vector3(Vector3.Lerp(transform.position, currentLinePos, 0.4f).x, transform.position.y, transform.position.z);
+                    currentLinePos = new Vector3(0, -100, 0);
+                }
+                else
+                {
+                    anim.Play("RopeIdle");
+                    transform.position = currentLinePos;
                 }
 
                 if (xMov < 0)//swinging rope
@@ -239,6 +274,7 @@ public class PlayerScript : MonoBehaviour
             {
                 ToGround();
                 escapingLine = true;
+                anim.SetTrigger("endRope");
             }
             Player2.GetComponent<SwiatelkoScript>().DebugLineSpeed();
         }
@@ -246,11 +282,11 @@ public class PlayerScript : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (Input.GetKey(KeyCode.DownArrow) && other.gameObject.CompareTag("line"))
+        /*if (Input.GetKey(KeyCode.DownArrow) && other.gameObject.CompareTag("line"))
         {
             ToGround();
-            //escapingLine = true;
-        }
+            escapingLine = true;
+        }*/
     }
 
 }

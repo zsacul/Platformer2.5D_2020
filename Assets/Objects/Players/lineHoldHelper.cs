@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class lineHoldHelper : MonoBehaviour
@@ -9,43 +10,21 @@ public class lineHoldHelper : MonoBehaviour
     [HideInInspector]
     public GameObject currentLinePart;
 
-    void Update()
-    {
-        // disabled while working on other parts of a game
-        // Debug.Log(canCatch);
-    }
+    public List<GameObject> lineParts;    
 
-    void OnTriggerEnter(Collider other)
+    public Vector3 PickBestFitting()
     {
+        float bestDist = 1000.0f;
+        Vector3 ret = new Vector3();
 
-    }
-
-    void OnTriggerStay(Collider other)
-    {
-        // disabled while working on other parts of a game
-        // Debug.Log("col");
-        if (other.gameObject.tag == "line")
+        foreach(GameObject part in lineParts)
         {
-            if (currentLinePart == null || currentLinePart == other.gameObject || (currentLinePart.transform.position.y <= other.gameObject.transform.position.y && Input.GetKey(KeyCode.UpArrow)))
+            if(Vector3.Distance(transform.position, part.transform.position) < bestDist)
             {
-                currentLinePart = other.gameObject;
-                canCatch = true;
-            }
-            else
-            {
-                canCatch = false;
+                bestDist = Vector3.Distance(transform.position, part.transform.position);
+                ret = part.transform.position;
             }
         }
-        else
-        {
-            canCatch = false;
-            currentLinePart = null;
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        canCatch = false;
-        currentLinePart = null;
+        return ret;
     }
 }
