@@ -10,7 +10,7 @@ public class lineHoldHelper : MonoBehaviour
     [HideInInspector]
     public GameObject currentLinePart;
 
-    public List<GameObject> lineParts;    
+    public List<GameObject> lineParts;
 
     public Vector3 PickBestFitting()
     {
