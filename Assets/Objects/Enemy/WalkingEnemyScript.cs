@@ -1,10 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class WalkingEnemyScript : MonoBehaviour
 {
+	public UnityEvent enemyWalking;
+	public UnityEvent enemyChasing;
+	public UnityEvent enemyClimbing;
+
 	public int lives;
 	public float speed;
 	public float chasingSpeed;
@@ -17,7 +22,7 @@ public class WalkingEnemyScript : MonoBehaviour
 	public bool cycleWalking;
 	public bool patrolAfterEnd;
 	
-	enum State {chasing, walkingRoute }; //hide in inspector
+	enum State {chasing, walkingRoute, climbingLadder }; //hide in inspector
     State state = State.walkingRoute; //hide in inspector
 	
 	//Vector3 direction;	
@@ -65,17 +70,22 @@ public class WalkingEnemyScript : MonoBehaviour
     {
 		if (StartChase())
 		{
-			state = State.chasing;
-			GetComponent<Animator>().SetTrigger("running");
+			if (state != State.chasing)
+			{
+				state = State.chasing;
+				GetComponent<Animator>().SetTrigger("running");
+				if (enemyChasing != null)
+				{
+					enemyChasing.Invoke();
+				}
+			}
+			SetRotationToPoint(boy.transform.position);
+			transform.Translate(Vector3.forward * chasingSpeed * Time.deltaTime);
 		}
 		else
 		{
-			state = State.walkingRoute;
-			GetComponent<Animator>().SetTrigger("walking");
-		}
-		
-		if(state == State.walkingRoute)
-		{
+			
+
 			if(CheckDist(pointsList[currentPoint], transform.position, false))
 			{
 				//Debug.Log("in point");
@@ -101,6 +111,15 @@ public class WalkingEnemyScript : MonoBehaviour
 				}
 				if(Mathf.Abs(transform.position.y - point.y) < 0.3f || !ladder)
 				{
+					if (state != State.walkingRoute)
+					{
+						state = State.walkingRoute;
+						GetComponent<Animator>().SetTrigger("walking");
+						if (enemyWalking != null)
+						{
+							enemyWalking.Invoke();
+						}
+					}
 					SetRotationToPoint(point);
 					transform.Translate(Vector3.forward * speed * Time.deltaTime);
 				}
@@ -108,6 +127,15 @@ public class WalkingEnemyScript : MonoBehaviour
 				{
 					if(ladder)
 					{
+						if (state != State.climbingLadder)
+						{
+							state = State.climbingLadder;
+							//GetComponent<Animator>().SetTrigger("climbing"); //need to add  ladder climbing animation
+							if (enemyClimbing != null)
+							{
+								enemyClimbing.Invoke();
+							}
+						}
 						transform.eulerAngles = new Vector3(0f, 0f, 0f);
 						int direction;
 						if (point.y > transform.position.y)
@@ -120,11 +148,6 @@ public class WalkingEnemyScript : MonoBehaviour
 			}
 		}
 		
-		if(state == State.chasing)
-		{
-			SetRotationToPoint(boy.transform.position);
-			transform.Translate(Vector3.forward * chasingSpeed * Time.deltaTime);
-		}
 		
 	}
 	
