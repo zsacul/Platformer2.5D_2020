@@ -89,10 +89,10 @@ MonoBehaviour:
   sRunning: {fileID: 8300000, guid: 0dcaeefd229465e428b587dab47a1e6e, type: 3}
   sWalking: {fileID: 8300000, guid: 5180dfa5c312e724887294a77620f7e4, type: 3}
   sCrouchWalking: {fileID: 8300000, guid: 5180dfa5c312e724887294a77620f7e4, type: 3}
-  sBGM1: {fileID: 0}
+  sBGM1: {fileID: 8300000, guid: e01661719aa331145b56b4ac0c025901, type: 3}
   sBGM2: {fileID: 0}
   sBGM3: {fileID: 0}
-  sBGMAmbient1: {fileID: 0}
+  sBGMAmbient1: {fileID: 8300000, guid: 8e981354ddc6ee341b3e36ccdb467ed7, type: 3}
   sBGMAmbient2: {fileID: 0}
   sBGMAmbient3: {fileID: 0}
   mMASTER: {fileID: 24300002, guid: e1e9b531752c08649b4bf81b1bafda9f, type: 2}
