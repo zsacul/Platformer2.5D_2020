@@ -49,8 +49,6 @@ public class PlayerScript : MonoBehaviour
     public bool climbing = false;
     public bool grounded = true;
 
-    public bool isSeen = false;
-
     private GameObject currentLinePart;
 
     public void hidePlayer()

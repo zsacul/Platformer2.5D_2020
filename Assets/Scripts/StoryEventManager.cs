@@ -14,7 +14,6 @@ public class StoryEventManager : MonoBehaviour
 
     public Animator animator;
 
-    // Start is called before the first frame update
     void Start()
     {
         statemnets = new Queue<string>();
@@ -34,10 +33,6 @@ public class StoryEventManager : MonoBehaviour
         }
 
         Time.timeScale = 0;
-        if (talkEvent != null)
-        {
-            talkEvent.Invoke();
-        }
         DisplayNextStoryEvent();
     }
 
@@ -56,7 +51,6 @@ public class StoryEventManager : MonoBehaviour
         string statemnet = statemnets.Dequeue();
 
         StopAllCoroutines();
-        //StartCoroutine(TypeStatement(statemnet));
         storyText.text = "";
 
         foreach (char letter in statemnet.ToCharArray())
@@ -64,18 +58,6 @@ public class StoryEventManager : MonoBehaviour
             storyText.text += letter;
         }
     }
-
- /*   IEnumerator TypeStatement(string statement)
-    {
-        storyText.text = "";
-
-        foreach(char letter in statement.ToCharArray())
-        {
-            storyText.text += letter;
-            yield return null;
-        }
-    }
-*/
 
     public void EndStoryEvent()
     {
