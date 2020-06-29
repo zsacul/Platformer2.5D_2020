@@ -37,21 +37,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d1aa483c5e281c09652ca5b90b258b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 24573f8e8b2042f47ab1895425b427d4,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  audioOnStateEnter: {fileID: 8300000, guid: baecf5f2a29721b448aea9dd9190ce01, type: 3}
+  audioOnStateExit: {fileID: 0}
+  mixer: {fileID: -5698640081988524619, guid: e1e9b531752c08649b4bf81b1bafda9f, type: 2}
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -132,9 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d1aa483c5e281c09652ca5b90b258b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  audioOnStateEnter: {fileID: 8300000, guid: 8136de10471d82642bcaadeb5d09b7fc, type: 3}
+  audioOnStateExit: {fileID: 0}
+  mixer: {fileID: -5698640081988524619, guid: e1e9b531752c08649b4bf81b1bafda9f, type: 2}
 --- !u!1101 &4125250416061174679
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

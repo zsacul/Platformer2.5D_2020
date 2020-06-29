@@ -31,6 +31,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9917a4cf1d441ef408b4ea14813e3c14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyWalking:
+    m_PersistentCalls:
+      m_Calls: []
+  enemyChasing:
+    m_PersistentCalls:
+      m_Calls: []
+  enemyClimbing:
+    m_PersistentCalls:
+      m_Calls: []
   lives: 3
   speed: 1
   chasingSpeed: 3
@@ -40,6 +49,18 @@ MonoBehaviour:
   cycleWalking: 0
   patrolAfterEnd: 0
   ladder: 0
+--- !u!114 &4147788471477428247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197218806657931180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afcd7dd42688db04d8c023ebc7077ef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5119671983573765137
 PrefabInstance:
   m_ObjectHideFlags: 0
