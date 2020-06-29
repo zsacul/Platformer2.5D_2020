@@ -63,8 +63,8 @@ public class SwiatelkoScript : MonoBehaviour
         float maxi = 0.0f;
         foreach (Rigidbody part in lineParts)
         {
-            if (part.velocity.magnitude > 2.6f)
-                part.velocity /= 2;
+            if (part.velocity.magnitude > 3.0f)
+                part.velocity *= 0.75f;
             //part.AddForce(new Vector3(0f, -100f, 0f));
         }
 

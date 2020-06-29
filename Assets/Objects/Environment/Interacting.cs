@@ -203,12 +203,9 @@ public class Interacting : MonoBehaviour
                         break;
                     }
                 case InteractionSurrounding.Type.hidingSpotEntrance:
-                    if (!playerScript.isSeen)
-                    {
-                        Debug.Log("Hiding player");
-                        playerScript.hidePlayer();
-                        anim.SetTrigger("Player1GetInside");
-                    }
+                    Debug.Log("Hiding player");
+                    playerScript.hidePlayer();
+                    anim.SetTrigger("Player1GetInside");
                     break;
                 case InteractionSurrounding.Type.hidingSpotInside:
                     Debug.Log("Unhiding player");
