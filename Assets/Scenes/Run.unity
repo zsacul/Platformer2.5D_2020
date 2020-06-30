@@ -7361,9 +7361,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7351558354695994989, guid: 6e3354d23953a6b488f83aa3e8164319,
         type: 3}
+      propertyPath: songsToPlayInThisLevel.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7351558354695994989, guid: 6e3354d23953a6b488f83aa3e8164319,
+        type: 3}
       propertyPath: shouldUseBgmQueue
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7351558354695994989, guid: 6e3354d23953a6b488f83aa3e8164319,
+        type: 3}
+      propertyPath: playInRandomOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7351558354695994989, guid: 6e3354d23953a6b488f83aa3e8164319,
+        type: 3}
+      propertyPath: songsToPlayInThisLevel.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e01661719aa331145b56b4ac0c025901, type: 3}
+    - target: {fileID: 7351558354695994989, guid: 6e3354d23953a6b488f83aa3e8164319,
+        type: 3}
+      propertyPath: songsToPlayInThisLevel.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8e981354ddc6ee341b3e36ccdb467ed7, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e3354d23953a6b488f83aa3e8164319, type: 3}
 --- !u!1001 &1486875727
