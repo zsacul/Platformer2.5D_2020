@@ -35,9 +35,16 @@ public class AudioManager : MonoBehaviour
     private Queue<AudioClip> BGMqueue = new Queue<AudioClip>();
     private List<AudioClip> ambientMusic = new List<AudioClip>();
     private List<AudioClip> actionMusic = new List<AudioClip>();
+    [SerializeField]
+    List<AudioClip> songsToPlayInThisLevel = new List<AudioClip>();
 
     [SerializeField]
+    bool playInRandomOrder = true;
+
     bool shouldUseBgmQueue = true;
+
+    [SerializeField]
+    bool playBGM = true;
 
     private bool isBGMFadingOut = false;
 
@@ -204,6 +211,36 @@ public class AudioManager : MonoBehaviour
         PlayBGM(BGMqueue.Dequeue(), BGMFadeInDuration + 4, BGMFadeOutDuration);
     }
 
+    public void PlayLevelBGM()
+    {
+        shouldUseBgmQueue = true;
+
+        BGMqueue.Clear();
+
+        if(playInRandomOrder)
+        {
+            for (int i = 0; i < 15; i++)
+            {
+                int r = Random.Range(0, songsToPlayInThisLevel.Count);
+                BGMqueue.Enqueue(songsToPlayInThisLevel[r]);
+            }
+        }
+        else
+        {
+            
+            while(BGMqueue.Count < 15)
+            {
+                for(int i = 0; i < songsToPlayInThisLevel.Count; i++)
+                {
+                    BGMqueue.Enqueue(songsToPlayInThisLevel[i]);
+                }
+            }
+        }
+        
+        PlayBGM(BGMqueue.Dequeue(), BGMFadeInDuration + 4, BGMFadeOutDuration);
+    }
+
+
     private IEnumerator FadeOutCoroutine(AudioSource source, float duration, AnimationCurve curve, float startingVol)
     {
         float currtime = 0;
@@ -268,9 +305,17 @@ public class AudioManager : MonoBehaviour
         //actionMusic.Add(Sounds.sBGMAction3);
         //actionMusic.Add(Sounds.sBGMAction4);
         AddBgmToQueue(Sounds.sBGMAmbient1);
-        if (shouldUseBgmQueue)
+        if (playBGM)
         {
-            PlayBGM(Sounds.sBGMAmbient1);
+            if(songsToPlayInThisLevel.Count > 0)
+            {
+                PlayLevelBGM();
+            }
+            else
+            {
+                PlayBGM(Sounds.sBGMAmbient1);
+            }
+            
         }
         /* if (shouldUseBgmQueue)
         {
