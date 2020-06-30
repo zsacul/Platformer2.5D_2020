@@ -244,14 +244,14 @@ public class PlayerScript : MonoBehaviour
 
                 currentLinePos = GetComponent<lineHoldHelper>().PickBestFitting();
 
-                if (Input.GetKey(KeyCode.UpArrow))
+                if (Input.GetKey(KeyCode.UpArrow) && !Player2.GetComponent<SwiatelkoScript>().moving)
                 {
                     anim.Play("RopeClimbUp");
                     transform.position += (Player2.transform.position - transform.position).normalized / 3 * Time.deltaTime;
                     transform.position = new Vector3(Vector3.Lerp(transform.position, currentLinePos, 0.4f).x, transform.position.y, transform.position.z);
                     currentLinePos = new Vector3(0, -100, 0);
                 }
-                else if (Input.GetKey(KeyCode.DownArrow))
+                else if (Input.GetKey(KeyCode.DownArrow) && !Player2.GetComponent<SwiatelkoScript>().moving)
                 {
                     anim.Play("RopeClimbDown");
                     transform.position -= (Player2.transform.position - transform.position).normalized / 3 * Time.deltaTime;

@@ -12,6 +12,7 @@ public class SwiatelkoScript : MonoBehaviour
     public float lineActiveTime = 3.0f;
     public float lineCooldown = 1.0f;
 
+    public bool moving;
 
     public UnityEvent lineOnOff;
     public Animator lineAnim;
@@ -39,6 +40,12 @@ public class SwiatelkoScript : MonoBehaviour
     {
         rb.velocity = (Input.GetKey("d") == true ? moveSpeed : 0) * Vector3.right + (Input.GetKey("w") == true ? moveSpeed : 0) * Vector3.up +
             (Input.GetKey("a") == true ? moveSpeed : 0) * Vector3.left + (Input.GetKey("s") == true ? moveSpeed : 0) * Vector3.down;
+
+        if (Input.GetKey("d") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("w"))
+            moving = true;
+        else
+            moving = false;
+
 
     }
 
@@ -82,7 +89,7 @@ public class SwiatelkoScript : MonoBehaviour
         //DebugLineSpeed();
         rb.useGravity = false;
 
-        if (lineActive && Time.time > nextLineDrop && GameObject.Find("Player 1").GetComponent<PlayerScript>().onLine)
+        if ((lineActive && Time.time > nextLineDrop && GameObject.Find("Player 1").GetComponent<PlayerScript>().onLine) || canDropLine == false)
         {
             lineActive = false;
             GameObject.Find("Player 1").GetComponent<PlayerScript>().ToGround();
