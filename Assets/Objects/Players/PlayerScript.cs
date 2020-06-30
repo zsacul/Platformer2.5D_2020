@@ -53,9 +53,10 @@ public class PlayerScript : MonoBehaviour
 
     public void hidePlayer()
     {
-        if (state != State.hiding)
+        if (state != State.hiding && grounded)
         {
             state = State.hiding;
+            //Debug.Log("Player have been hidden");
             anim.Play("Hide");
             //anim.SetBool("hiding", true);
             transform.eulerAngles = new Vector3(0, 0, 0);
@@ -69,6 +70,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (state == State.hiding)
         {
+            //Debug.Log("Really unhiding player");
             state = State.running;
             anim.SetTrigger("unhide");
             //anim.SetBool("hiding", false);
@@ -82,7 +84,7 @@ public class PlayerScript : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
         Player2 = GameObject.FindWithTag("Player2");
-        foreach(Collider collider in GetComponents<Collider>())
+        foreach (Collider collider in GetComponents<Collider>())
             Physics.IgnoreCollision(collider, GameObject.FindWithTag("Player2").GetComponent<Collider>());
     }
 
@@ -109,6 +111,7 @@ public class PlayerScript : MonoBehaviour
 
             if (Input.GetButtonDown("StateButton"))
             {
+                //Debug.Log("Player is not hiding");
                 if (state == State.running)
                 {
                     state = State.shooting;
@@ -197,7 +200,8 @@ public class PlayerScript : MonoBehaviour
         onLine = false;
         lineClicked = false;
         rb.useGravity = true;
-        state = State.running;
+        if (state != State.hiding)
+            state = State.running;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
         anim.SetTrigger("endRope");
@@ -210,7 +214,7 @@ public class PlayerScript : MonoBehaviour
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezePositionZ;
         state = State.climbing;
-        
+
     }
 
     public void Cought()
