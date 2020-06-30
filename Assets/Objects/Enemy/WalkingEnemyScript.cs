@@ -6,9 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class WalkingEnemyScript : MonoBehaviour
 {
-	public UnityEvent enemyWalking;
-	public UnityEvent enemyChasing;
-	public UnityEvent enemyClimbing;
+	public UnityEvent enemyWalkingStart;
+	public UnityEvent enemyWalkingStop;
+	public UnityEvent enemyChasingStart;
+	public UnityEvent enemyChasingStop;
+	public UnityEvent enemyClimbingStart;
+	public UnityEvent enemyClimbingStop;
 
 	public int lives;
 	public float speed;
@@ -39,6 +42,41 @@ public class WalkingEnemyScript : MonoBehaviour
 	
 	Renderer r;
 	Rigidbody rb;
+
+	void SetSound(State newState)
+    {
+		switch (state)
+		{
+			case State.chasing:
+				if(enemyChasingStop != null)
+					enemyChasingStop.Invoke();
+				break;
+			case State.walkingRoute:
+				if(enemyWalkingStop != null)
+					enemyWalkingStop.Invoke();
+				break;
+			case State.climbingLadder:
+				if(enemyClimbingStop != null)
+					enemyClimbingStop.Invoke();
+				break;
+		}
+
+		switch (newState)
+		{
+			case State.chasing:
+				if(enemyChasingStart != null)
+					enemyChasingStart.Invoke();
+				break;
+			case State.walkingRoute:
+				if(enemyWalkingStart != null)
+					enemyWalkingStart.Invoke();
+				break;
+			case State.climbingLadder:
+				if(enemyClimbingStart != null)
+					enemyClimbingStart.Invoke();
+				break;
+		}
+	}
 	
 	void GetPointsList()
 	{
@@ -72,12 +110,10 @@ public class WalkingEnemyScript : MonoBehaviour
 		{
 			if (state != State.chasing)
 			{
-				state = State.chasing;
+				
 				GetComponent<Animator>().SetTrigger("running");
-				if (enemyChasing != null)
-				{
-					enemyChasing.Invoke();
-				}
+				SetSound(State.chasing);
+				state = State.chasing;
 			}
 			SetRotationToPoint(boy.transform.position);
 			transform.Translate(Vector3.forward * chasingSpeed * Time.deltaTime);
@@ -113,12 +149,9 @@ public class WalkingEnemyScript : MonoBehaviour
 				{
 					if (state != State.walkingRoute)
 					{
-						state = State.walkingRoute;
 						GetComponent<Animator>().SetTrigger("walking");
-						if (enemyWalking != null)
-						{
-							enemyWalking.Invoke();
-						}
+						SetSound(State.walkingRoute);
+						state = State.walkingRoute;
 					}
 					SetRotationToPoint(point);
 					transform.Translate(Vector3.forward * speed * Time.deltaTime);
@@ -129,12 +162,9 @@ public class WalkingEnemyScript : MonoBehaviour
 					{
 						if (state != State.climbingLadder)
 						{
-							state = State.climbingLadder;
 							//GetComponent<Animator>().SetTrigger("climbing"); //need to add  ladder climbing animation
-							if (enemyClimbing != null)
-							{
-								enemyClimbing.Invoke();
-							}
+							SetSound(State.climbingLadder);
+							state = State.climbingLadder;
 						}
 						transform.eulerAngles = new Vector3(0f, 0f, 0f);
 						int direction;

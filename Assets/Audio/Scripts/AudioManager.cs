@@ -140,14 +140,18 @@ public class AudioManager : MonoBehaviour
     ///use this to play sounds on dynamic objects that are disappearing or appearing once, like bullet hits or some particle effects
     public void PlayOnceAtLocation(AudioClip soundToPlay, Vector3 originOfSound, AudioMixerGroup mixer = null)
     {
-        GameObject srcLoc;
+        GameObject srcLoc = null;
         AudioSource src;
 
 
-        if (freeSources.Count > 0)
-            srcLoc = freeSources.Dequeue();
-        else
-            srcLoc = Instantiate(sourceTemplate, originOfSound, sourceTemplate.transform.rotation);
+        while(srcLoc == null)
+        {
+            if (freeSources.Count > 0)
+                srcLoc = freeSources.Dequeue();
+            else
+                srcLoc = Instantiate(sourceTemplate, originOfSound, sourceTemplate.transform.rotation);
+        }
+        
 
         srcLoc.SetActive(true);
         srcLoc.transform.position = originOfSound;
@@ -280,7 +284,7 @@ public class AudioManager : MonoBehaviour
         else
             Instance = this;
 
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
 
         Sounds = GetComponent<AudioAssets>();
         src = this.gameObject.AddComponent<AudioSource>();
