@@ -2,11 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SocialPlatforms;
 
 public class SwiatelkoScript : MonoBehaviour
 {
-
+    public UnityEvent lineOnOff;
     public Animator lineAnim;
     public KeyCode actionKey;
     public float moveSpeed = 3f;
@@ -81,6 +82,8 @@ public class SwiatelkoScript : MonoBehaviour
             StopSwing();
             lineActive = !lineActive;
             line.SetActive(lineActive);
+            if (lineOnOff != null)
+                lineOnOff.Invoke();
             if (!lineActive)
             {
                 GameObject.Find("Player 1").GetComponent<PlayerScript>().ToGround();
