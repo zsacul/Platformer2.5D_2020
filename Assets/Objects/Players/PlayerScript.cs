@@ -234,8 +234,10 @@ public class PlayerScript : MonoBehaviour
 
             if (!escapingLine && lineClicked)
             {
+                if (!onLine)
+                    Player2.GetComponent<SwiatelkoScript>().nextLineDrop = Time.time + Player2.GetComponent<SwiatelkoScript>().lineActiveTime;
                 //transform.position = new Vector3( lineHoldHelp.currentLinePart.transform.position.x, transform.position.y, transform.position.z);
-                
+
                 transform.rotation = Quaternion.Lerp(transform.rotation, other.gameObject.transform.rotation, rotationSmooth);
 
                 ToLine();
