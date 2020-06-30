@@ -7,6 +7,12 @@ using UnityEngine.SocialPlatforms;
 
 public class SwiatelkoScript : MonoBehaviour
 {
+    public float nextLineDrop = 0;
+    public float nextLineHide = 0;
+    public float lineActiveTime = 3.0f;
+    public float lineCooldown = 1.0f;
+
+
     public UnityEvent lineOnOff;
     public Animator lineAnim;
     public KeyCode actionKey;
@@ -60,7 +66,6 @@ public class SwiatelkoScript : MonoBehaviour
 
     public void DebugLineSpeed()
     {
-
         float maxi = 0.0f;
         foreach (Rigidbody part in lineParts)
         {
@@ -70,31 +75,39 @@ public class SwiatelkoScript : MonoBehaviour
         }
 
     }
-
     void Update()
     {
         //Debug.Log(canDropLine);
         Move();
         //DebugLineSpeed();
         rb.useGravity = false;
-        if (Input.GetKeyDown(actionKey) && !inAction && canDropLine)
+
+        if (lineActive && Time.time > nextLineDrop && GameObject.Find("Player 1").GetComponent<PlayerScript>().onLine)
         {
-            StopSwing();
-            lineActive = !lineActive;
+            lineActive = false;
+            GameObject.Find("Player 1").GetComponent<PlayerScript>().ToGround();
             line.SetActive(lineActive);
+            //rb.isKinematic = false;
+            StopSwing();
+            nextLineDrop = Time.time + lineCooldown;
             if (lineOnOff != null)
                 lineOnOff.Invoke();
-            if (!lineActive)
-            {
-                GameObject.Find("Player 1").GetComponent<PlayerScript>().ToGround();
-                rb.isKinematic = false;
-                StopSwing();
-            }
-            else
+        }
+
+        if (Input.GetKeyDown(actionKey) && !inAction && canDropLine)
+        {
+            if(Time.time > nextLineDrop)
             {
                 StopSwing();
-                rb.isKinematic = true;
+                lineActive = true;
+                line.SetActive(lineActive);
+                StopSwing();
+                //rb.isKinematic = true;
+                nextLineDrop = Time.time + lineActiveTime;
             }
+
+            if (lineOnOff != null)
+                lineOnOff.Invoke();
         }
     }
 
