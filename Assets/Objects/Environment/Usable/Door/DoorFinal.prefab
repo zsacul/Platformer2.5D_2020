@@ -51,20 +51,6 @@ MonoBehaviour:
   interactionSurroundings: {fileID: 1075986896278545065}
   rightInteractionSurrounding: {fileID: 8655413318572377163}
   startingState: 0
-  useDoor:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!95 &7729696809985613548
 Animator:
   serializedVersion: 3
@@ -471,6 +457,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1000734784037022123, guid: f0190af349fa8488aaa10c69a08583da,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4bbe3d3b7f211d040a2a6b89ca82c341, type: 2}
     - target: {fileID: 4086164946732853912, guid: f0190af349fa8488aaa10c69a08583da,
         type: 3}
       propertyPath: m_Name

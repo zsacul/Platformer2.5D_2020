@@ -143,4 +143,13 @@ public class SwiatelkoScript : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            foreach(Collider col in GetComponents<Collider>())
+                Physics.IgnoreCollision(collision.collider, col);
+        }
+    }
+
 }
