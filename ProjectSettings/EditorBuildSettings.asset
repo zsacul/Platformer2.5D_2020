@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/PrisonBreak.unity
     guid: 6f4467af8aea7c54fa17b9e7b458b76c
   - enabled: 1
-    path: Assets/Scenes/Run.unity
-    guid: c31831853683534419b1e283623ebca9
-  - enabled: 1
     path: Assets/Scenes/AfterPrison_2.unity
     guid: 5e12ab86e1c0bbf468f8a65b127f02cf
+  - enabled: 1
+    path: Assets/Scenes/Run.unity
+    guid: c31831853683534419b1e283623ebca9
   m_configObjects: {}
