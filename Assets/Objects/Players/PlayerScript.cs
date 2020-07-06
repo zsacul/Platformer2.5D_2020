@@ -248,7 +248,7 @@ public class PlayerScript : MonoBehaviour
 
                 currentLinePos = GetComponent<lineHoldHelper>().PickBestFitting();
 
-                if (Input.GetKey(KeyCode.UpArrow) && !Player2.GetComponent<SwiatelkoScript>().moving)
+                if (Input.GetKey(KeyCode.UpArrow) && !Player2.GetComponent<SwiatelkoScript>().moving && Math.Abs(transform.position.y - Player2.transform.position.y) > 0.6f)
                 {
                     anim.Play("RopeClimbUp");
                     transform.position += (Player2.transform.position - transform.position).normalized / 3 * Time.deltaTime;
@@ -280,10 +280,14 @@ public class PlayerScript : MonoBehaviour
                 escapingLine = true;
                 anim.SetTrigger("endRope");
             }
-            Player2.GetComponent<SwiatelkoScript>().DebugLineSpeed();
+            //Player2.GetComponent<SwiatelkoScript>().DebugLineSpeed();
         }
     }
 
+    static void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+    {
+
+    }
     void OnTriggerExit(Collider other)
     {
         /*if (Input.GetKey(KeyCode.DownArrow) && other.gameObject.CompareTag("line"))

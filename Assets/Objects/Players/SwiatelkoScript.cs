@@ -59,7 +59,7 @@ public class SwiatelkoScript : MonoBehaviour
                 foreach (Rigidbody part in lineParts)
                 {
                     part.velocity = new Vector3(0f, 0f, 0f);
-                    part.AddForce(new Vector3(0f, -100f, 0f));
+                    //part.AddForce(new Vector3(0f, -100f, 0f));
                 }
             }
             yield return new WaitForSeconds(0.1f);
@@ -95,7 +95,7 @@ public class SwiatelkoScript : MonoBehaviour
             GameObject.Find("Player 1").GetComponent<PlayerScript>().ToGround();
             line.SetActive(lineActive);
             //rb.isKinematic = false;
-            StopSwing();
+            //StopSwing();
             nextLineDrop = Time.time + lineCooldown;
             if (lineOnOff != null)
                 lineOnOff.Invoke();
@@ -108,7 +108,7 @@ public class SwiatelkoScript : MonoBehaviour
                 StopSwing();
                 lineActive = true;
                 line.SetActive(lineActive);
-                StopSwing();
+                //StopSwing();
                 //rb.isKinematic = true;
                 nextLineDrop = Time.time + lineActiveTime;
             }

@@ -31,13 +31,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9917a4cf1d441ef408b4ea14813e3c14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyWalking:
+  enemyWalkingStart:
     m_PersistentCalls:
       m_Calls: []
-  enemyChasing:
+  enemyWalkingStop:
     m_PersistentCalls:
       m_Calls: []
-  enemyClimbing:
+  enemyChasingStart:
+    m_PersistentCalls:
+      m_Calls: []
+  enemyChasingStop:
+    m_PersistentCalls:
+      m_Calls: []
+  enemyClimbingStart:
+    m_PersistentCalls:
+      m_Calls: []
+  enemyClimbingStop:
     m_PersistentCalls:
       m_Calls: []
   lives: 3
@@ -68,6 +77,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 794358249417577473, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 625b22bdb825ee747b926a7a6476d19c, type: 2}
+    - target: {fileID: 1028343210989142084, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 625b22bdb825ee747b926a7a6476d19c, type: 2}
     - target: {fileID: 1228439401950370736, guid: 011661526ee990743bb62fdf6ec61c83,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -173,6 +192,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2197813708460845471, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 625b22bdb825ee747b926a7a6476d19c, type: 2}
+    - target: {fileID: 2432725628105375696, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 625b22bdb825ee747b926a7a6476d19c, type: 2}
+    - target: {fileID: 3476494246025119385, guid: 011661526ee990743bb62fdf6ec61c83,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 625b22bdb825ee747b926a7a6476d19c, type: 2}
     m_RemovedComponents:
     - {fileID: 1228439401950370748, guid: 011661526ee990743bb62fdf6ec61c83, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 011661526ee990743bb62fdf6ec61c83, type: 3}
