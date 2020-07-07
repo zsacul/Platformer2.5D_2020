@@ -33,6 +33,14 @@ public class Interacting : MonoBehaviour
             buttonPressed = false;
     }
 
+    private void DoorOpenClose(Animator anim)
+    {
+        if (anim.GetBool("Closing") == true)
+            anim.SetBool("Closing", false);
+        else
+            anim.SetBool("Closing", true);
+    }
+
     protected void OnTriggerStay(Collider other)
     {
         //Debug.Log(use);
@@ -125,12 +133,14 @@ public class Interacting : MonoBehaviour
                     {
                         useDoor.Invoke();
                         anim.SetTrigger("Player2UseLeft");
+                        DoorOpenClose(anim);
                         break;
                     }
                 case InteractionSurrounding.Type.rightDoor:
                     {
                         useDoor.Invoke();
                         anim.SetTrigger("Player2UseRight");
+                        DoorOpenClose(anim);
                         break;
                     }
                 default:
@@ -193,13 +203,13 @@ public class Interacting : MonoBehaviour
                 case InteractionSurrounding.Type.leftDoor:
                     {
                         useDoor.Invoke();
-                        anim.SetTrigger("Player1UseLeft");
+                        DoorOpenClose(anim);
                         break;
                     }
                 case InteractionSurrounding.Type.rightDoor:
                     {
                         useDoor.Invoke();
-                        anim.SetTrigger("Player1UseRight");
+                        DoorOpenClose(anim);
                         break;
                     }
                 case InteractionSurrounding.Type.hidingSpotEntrance:
@@ -229,13 +239,15 @@ public class Interacting : MonoBehaviour
             case InteractionSurrounding.Type.leftDoor:
                 {
                     useDoor.Invoke();
-                    anim.SetTrigger("EnemyUseLeft");
+                    if (anim.GetBool("Closing") == true)
+                        anim.SetBool("Closing", false);
                     break;
                 }
             case InteractionSurrounding.Type.rightDoor:
                 {
                     useDoor.Invoke();
-                    anim.SetTrigger("EnemyUseRight");
+                    if (anim.GetBool("Closing") == true)
+                        anim.SetBool("Closing", false);
                     break;
                 }
             default:
