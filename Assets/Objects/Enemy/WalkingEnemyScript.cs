@@ -119,9 +119,7 @@ public class WalkingEnemyScript : MonoBehaviour
 			transform.Translate(Vector3.forward * chasingSpeed * Time.deltaTime);
 		}
 		else
-		{
-			
-
+		{	
 			if(CheckDist(pointsList[currentPoint], transform.position, false))
 			{
 				//Debug.Log("in point");
