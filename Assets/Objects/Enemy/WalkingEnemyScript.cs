@@ -140,7 +140,7 @@ public class WalkingEnemyScript : MonoBehaviour
 					if(CheckDist(stScript.other.transform.position, point, true))
 					{
                         
-						transform.position = stScript.other.transform.position;
+						transform.position = stScript.other.transform.position - new Vector3(0f,1f,0f);
 					}
 					//Debug.Log("dest " + point);
 					//Debug.Log("stairs" + stScript.other.transform.position);
