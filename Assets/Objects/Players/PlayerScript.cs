@@ -172,8 +172,7 @@ public class PlayerScript : MonoBehaviour
             else
             {
                 anim.Play("StandJump");
-                StartCoroutine(JumpWithDelay(0.5f));
-                
+                rb.AddForce(new Vector3(0f, jumpForce, 0f));
             }
             
         }

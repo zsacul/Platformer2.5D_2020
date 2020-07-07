@@ -114,8 +114,8 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: StandJump
-  m_Speed: 1.5
-  m_CycleOffset: 0
+  m_Speed: 1
+  m_CycleOffset: 0.39
   m_Transitions:
   - {fileID: -3894174486995701579}
   - {fileID: -9169286710400058848}
@@ -128,7 +128,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 0e87c4f7dc1b957408462054f404c51f,
+  m_Motion: {fileID: -203655887218126122, guid: 3f59acff858b9da469ecefa997d55294,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -152,9 +152,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.46443224
-  m_TransitionOffset: 0
-  m_ExitTime: 0.9118771
+  m_TransitionDuration: 0.30999994
+  m_TransitionOffset: 0.011597978
+  m_ExitTime: 0.92577386
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
