@@ -129,6 +129,11 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    IEnumerator JumpWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        rb.AddForce(new Vector3(0f, jumpForce, 0f));
+    }
     void Move()
     {
         if (Math.Abs(xMov) > 0)
@@ -158,8 +163,19 @@ public class PlayerScript : MonoBehaviour
             {
                 jumpEvent.Invoke();
             }
-            anim.SetTrigger("jump");
-            rb.AddForce(new Vector3(0f, jumpForce, 0f));
+
+            if (Math.Abs(xMov) > 0)
+            {
+                anim.Play("RunJump");
+                rb.AddForce(new Vector3(0f, jumpForce, 0f));
+            }
+            else
+            {
+                anim.Play("StandJump");
+                StartCoroutine(JumpWithDelay(0.5f));
+                
+            }
+            
         }
         anim.SetFloat("velocity", Math.Abs(rb.velocity.x));
     }
@@ -284,10 +300,6 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    static void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
-    {
-
-    }
     void OnTriggerExit(Collider other)
     {
         /*if (Input.GetKey(KeyCode.DownArrow) && other.gameObject.CompareTag("line"))
