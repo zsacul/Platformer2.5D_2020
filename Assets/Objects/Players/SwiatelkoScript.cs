@@ -96,7 +96,7 @@ public class SwiatelkoScript : MonoBehaviour
             line.SetActive(lineActive);
             //rb.isKinematic = false;
             //StopSwing();
-            nextLineDrop = Time.time + lineCooldown;
+            nextLineDrop = Time.time; //+ lineCooldown;
             if (lineOnOff != null)
                 lineOnOff.Invoke();
         }
