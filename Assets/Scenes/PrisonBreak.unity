@@ -43845,6 +43845,11 @@ PrefabInstance:
       propertyPath: actionKey
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 3752391638338540723, guid: f4d8e69a9811d6a78ba4f07123ae63fc,
+        type: 3}
+      propertyPath: lineClimbSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3752391638338540728, guid: f4d8e69a9811d6a78ba4f07123ae63fc,
         type: 3}
       propertyPath: m_Name
@@ -66131,7 +66136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797855100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.37, y: 0.02, z: 0}
+  m_LocalPosition: {x: -6.84, y: 7.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1222181570}

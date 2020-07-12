@@ -24,12 +24,16 @@ public class ClimbingScript : MonoBehaviour
 
     	    if (Input.GetKey(players[0].up) && other.gameObject.CompareTag("Player1"))
     	    {
+                other.gameObject.transform.eulerAngles = new Vector3(0, -90, 0);
+                other.gameObject.GetComponentInChildren<Animator>().Play("LadderClimb");
     	        other.gameObject.transform.position += new Vector3(0f, speed * Time.deltaTime, 0f);
     	    }
 
     	    if (Input.GetKey(players[0].down) && other.gameObject.CompareTag("Player1"))
     	    {
-    	        other.gameObject.transform.position += new Vector3(0f, -speed * Time.deltaTime, 0f);
+                other.gameObject.transform.eulerAngles = new Vector3(0, -90, 0);
+                other.gameObject.GetComponentInChildren<Animator>().Play("LadderClimb");
+                other.gameObject.transform.position += new Vector3(0f, -speed * Time.deltaTime, 0f);
     	    }
     	}
 		if(other.gameObject.CompareTag("Enemy"))
@@ -46,8 +50,11 @@ public class ClimbingScript : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-    	if (other.gameObject.CompareTag("Player1"))
-    	    other.gameObject.GetComponent<Rigidbody>().useGravity = true;
+        if (other.gameObject.CompareTag("Player1"))
+        {
+            other.gameObject.GetComponent<Rigidbody>().useGravity = true;
+            other.gameObject.GetComponentInChildren<Animator>().SetTrigger("endLadder");
+        }
 		if (other.gameObject.CompareTag("Enemy"))
 		{
     	    other.gameObject.GetComponent<Rigidbody>().useGravity = true;
