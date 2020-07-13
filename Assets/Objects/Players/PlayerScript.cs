@@ -9,6 +9,7 @@ using UnityEditor;
 public class PlayerScript : MonoBehaviour
 {
     bool escapingLine, lineClicked;
+    public bool onLadder;
     public GameObject Player2;
     Vector3 currentLinePos;
 
@@ -21,7 +22,7 @@ public class PlayerScript : MonoBehaviour
 
     public float hidingSpotDist;
 
-    float xMov;
+    public float xMov;
     bool jump;
     public bool inStairs, onLine;
 
@@ -105,6 +106,11 @@ public class PlayerScript : MonoBehaviour
         if (state != State.hiding)
         {
             xMov = Input.GetAxis("Horizontal");
+            if (Math.Abs(xMov) > 0 && onLadder)
+            {
+                ToGround();
+                anim.Play("StandJump");
+            }
             if (Input.GetKeyDown(jumpButton))
                 jump = true;
             else jump = false;
@@ -147,11 +153,13 @@ public class PlayerScript : MonoBehaviour
             anim.SetBool("idle", true);
         }
 
-
-        if (xMov < 0)
-            transform.eulerAngles = new Vector3(0, -180, 0);
-        else if (xMov > 0)
-            transform.eulerAngles = new Vector3(0, 0, 0);
+        if (!onLadder)
+        {
+            if (xMov < 0)
+                transform.eulerAngles = new Vector3(0, -180, 0);
+            else if (xMov > 0)
+                transform.eulerAngles = new Vector3(0, 0, 0);
+        }
 
         Vector3 move = transform.right * Math.Abs(xMov) * normalSpeed;
         move.y = rb.velocity.y;
@@ -206,12 +214,15 @@ public class PlayerScript : MonoBehaviour
     {
         grounded = gr;
         escapingLine = false;
-        if (grounded)
+        /*if (grounded)
             anim.SetTrigger("ground");
+            */
     }
 
     public void ToGround()
     {
+        //Debug.Log("DUPA");
+        onLadder = false;
         onLine = false;
         lineClicked = false;
         rb.useGravity = true;
@@ -246,7 +257,7 @@ public class PlayerScript : MonoBehaviour
     {
         float rotationSmooth = 0.5f;
 
-        if (other.tag == "line")
+        if (other.gameObject.tag == "line")
         {
             if (Input.GetKey(KeyCode.UpArrow))
                 lineClicked = true;

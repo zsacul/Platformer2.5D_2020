@@ -6,6 +6,19 @@ public class GroundDetectorScript : MonoBehaviour
 {
 	public bool grounded;
 	public PlayerScript ps;
+
+	private List<string> ignoreTags = new List<string>() {
+		"Player1",
+		"InteractionSurrounding",
+		"CameraWall",
+		"CameraWallBuffer",
+		"LineZone",
+		"line",
+		"Stairs",
+		"Player2",
+		"Ladder" 
+	};
+
     void Start()
     {
 		ps = GameObject.FindWithTag("Player1").GetComponent<PlayerScript>();
@@ -19,8 +32,9 @@ public class GroundDetectorScript : MonoBehaviour
 	
 	void OnTriggerStay(Collider col)
 	{
-		if(!col.gameObject.CompareTag("Player1") && !col.gameObject.CompareTag("InteractionSurrounding") && !col.gameObject.CompareTag("CameraWall") && !col.gameObject.CompareTag("CameraWallBuffer") && !col.gameObject.CompareTag("LineZone") && !col.gameObject.CompareTag("line") && !col.gameObject.CompareTag("Stairs") && !col.gameObject.CompareTag("Player2"))
+		if(!ignoreTags.Contains(col.gameObject.tag))
 		{
+			Debug.Log(col.gameObject.tag);
 			//Debug.Log(col.gameObject.name);
 			grounded = true;
 			ps.SetGrounded(grounded);
@@ -28,8 +42,9 @@ public class GroundDetectorScript : MonoBehaviour
 	}
 	void OnTriggerExit(Collider col)
 	{
-		if (!col.gameObject.CompareTag("Player1") && !col.gameObject.CompareTag("InteractionSurrounding") && !col.gameObject.CompareTag("CameraWall") && !col.gameObject.CompareTag("CameraWallBuffer") && !col.gameObject.CompareTag("LineZone") && !col.gameObject.CompareTag("line") && !col.gameObject.CompareTag("Stairs") && !col.gameObject.CompareTag("Player2"))
+		if (!ignoreTags.Contains(col.gameObject.tag))
 		{
+			Debug.Log(col.gameObject.tag);
 			grounded = false;
 			ps.SetGrounded(grounded);
 		}

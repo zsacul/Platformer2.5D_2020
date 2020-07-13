@@ -89,10 +89,11 @@ public class SwiatelkoScript : MonoBehaviour
         //DebugLineSpeed();
         rb.useGravity = false;
 
-        if ((lineActive && Time.time > nextLineDrop && GameObject.Find("Player 1").GetComponent<PlayerScript>().onLine) || canDropLine == false)
+        if ((lineActive && Time.time > nextLineDrop && GameObject.Find("Player 1").GetComponent<PlayerScript>().onLine) || (canDropLine == false && GameObject.Find("Player 1").GetComponent<PlayerScript>().onLine))
         {
             lineActive = false;
             GameObject.Find("Player 1").GetComponent<PlayerScript>().ToGround();
+            Debug.Log("B");
             line.SetActive(lineActive);
             //rb.isKinematic = false;
             //StopSwing();
