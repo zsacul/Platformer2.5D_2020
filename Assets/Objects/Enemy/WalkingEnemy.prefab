@@ -10,7 +10,7 @@ Animator:
   m_GameObject: {fileID: 3966401377575908657}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f5d50f824753b0a4f8e02be895c9cc83, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9c070ec34ed98a64c977389a33965817, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -96,6 +96,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6197218806657931169}
     m_Modifications:
+    - target: {fileID: -9064325173771588411, guid: 62c9be32cb1765e439ce95b652b4cf34,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.03984298
+      objectReference: {fileID: 0}
+    - target: {fileID: -9064325173771588411, guid: 62c9be32cb1765e439ce95b652b4cf34,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.009194818
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 62c9be32cb1765e439ce95b652b4cf34,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -170,6 +180,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Idle_2_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814502684447367421, guid: 62c9be32cb1765e439ce95b652b4cf34,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.009141932
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814502684447367421, guid: 62c9be32cb1765e439ce95b652b4cf34,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.05127241
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62c9be32cb1765e439ce95b652b4cf34, type: 3}
