@@ -7991,7 +7991,7 @@ MonoBehaviour:
     - Oh no, do you hear the helicopter?
     - They're looking for you!
     - RUN!
-  player: {fileID: 0}
+  player: {fileID: 1375586699}
 --- !u!4 &825264950
 Transform:
   m_ObjectHideFlags: 0
@@ -14155,6 +14155,12 @@ PrefabInstance:
       objectReference: {fileID: 269456521}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4d8e69a9811d6a78ba4f07123ae63fc, type: 3}
+--- !u!1 &1375586699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3752391638338540728, guid: f4d8e69a9811d6a78ba4f07123ae63fc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1375586698}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1401933424 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 493044, guid: 84d5262470b7b90498f0b03c9e62e79c,
