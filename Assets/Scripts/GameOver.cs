@@ -15,6 +15,8 @@ public class GameOver : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        credits.SetActive(true);
+        panel.SetActive(true);
         reflector.SetActive(false);
         //Debug.Log("Game Over");
         text.GetComponent<Animation>().Play();
