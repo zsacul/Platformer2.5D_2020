@@ -10,14 +10,14 @@ public class GameOver : MonoBehaviour
     public GameObject text;
     public GameObject panel;
     public GameObject reflector;
+    public LoopedSoundAttachment helicopterSound;
     public GameObject credits;
 
 
     public void OnTriggerEnter(Collider other)
     {
-        credits.SetActive(true);
-        panel.SetActive(true);
         reflector.SetActive(false);
+        helicopterSound.Stop();
         //Debug.Log("Game Over");
         text.SetActive(true);
         panel.SetActive(true);

@@ -17120,6 +17120,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3217897065577022521}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1864644340 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2487098373623990607, guid: 07f88fc6606e4924db77aff6c1503151,
+    type: 3}
+  m_PrefabInstance: {fileID: 3217897065577022521}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864644339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 430a849d6330d04469236510150d91ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1872088017
 Mesh:
   m_ObjectHideFlags: 0
@@ -21230,6 +21242,7 @@ MonoBehaviour:
   text: {fileID: 222534744}
   panel: {fileID: 909832760}
   reflector: {fileID: 1657007603}
+  helicopterSound: {fileID: 1864644340}
   credits: {fileID: 1247147594}
 --- !u!114 &6782856226311265695
 MonoBehaviour:
