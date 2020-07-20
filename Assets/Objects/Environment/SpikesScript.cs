@@ -9,7 +9,7 @@ public class SpikesScript : MonoBehaviour
 	{
 		if(other.gameObject.CompareTag("Player1") && other.gameObject.GetComponent<Rigidbody>())
 		{
-			SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
+			other.gameObject.GetComponent<PlayerScript>().Cought();
 		}
 		if(other.gameObject.CompareTag("Enemy"))
 		{

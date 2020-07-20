@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class ChangeSceneScript : MonoBehaviour
 {
+    public UnityEvent levelUp;
     private int nextScene;
     void OnEnable()
     {
@@ -22,7 +24,7 @@ public class ChangeSceneScript : MonoBehaviour
     IEnumerator fadeRoutine(int nextScene)
     {
         GetComponentInChildren<Animator>().Play("screenFadeIn");
-        yield return new WaitForSeconds(0.22f);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(nextScene);
     }
 
@@ -30,6 +32,8 @@ public class ChangeSceneScript : MonoBehaviour
     {
         nextScene = SceneManager.GetActiveScene().buildIndex + 1;
         StartCoroutine(fadeRoutine(nextScene));
+        if (levelUp != null)
+            levelUp.Invoke();
         
     }
 }

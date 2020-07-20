@@ -8,6 +8,8 @@ using UnityEditor;
 
 public class PlayerScript : MonoBehaviour
 {
+    //public UnityEvent boyCought;
+
     bool escapingLine, lineClicked;
     public bool onLadder;
     public GameObject Player2;
@@ -245,13 +247,21 @@ public class PlayerScript : MonoBehaviour
 
     public void Cought()
     {
-
+        //StartCoroutine(CoughtCoroutine(0.3f));
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         /*Vector3 lastCheckpoint = GetComponent<CheckpointScript>().lastPos;
         transform.position = lastCheckpoint;
         Player2.transform.position = new Vector3(lastCheckpoint.x - 0.5f, lastCheckpoint.y + 1f, lastCheckpoint.z);
         */
     }
+
+    /*public IEnumerator CoughtCoroutine(float time)
+    {
+        if (boyCought != null)
+            boyCought.Invoke();
+        yield return new WaitForSeconds(time);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }*/
 
     void OnTriggerStay(Collider other)
     {
