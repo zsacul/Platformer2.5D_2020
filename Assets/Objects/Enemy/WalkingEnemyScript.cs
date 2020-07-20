@@ -43,6 +43,7 @@ public class WalkingEnemyScript : MonoBehaviour
 	Renderer r;
 	Rigidbody rb;
 
+	public Animator anim;
 	void SetSound(State newState)
     {
 		switch (state)
@@ -110,8 +111,7 @@ public class WalkingEnemyScript : MonoBehaviour
 		{
 			if (state != State.chasing)
 			{
-				
-				GetComponent<Animator>().SetTrigger("running");
+				anim.SetTrigger("running");
 				SetSound(State.chasing);
 				state = State.chasing;
 			}
@@ -147,7 +147,7 @@ public class WalkingEnemyScript : MonoBehaviour
 				{
 					if (state != State.walkingRoute)
 					{
-						GetComponent<Animator>().SetTrigger("walking");
+						anim.SetTrigger("walking");
 						SetSound(State.walkingRoute);
 						state = State.walkingRoute;
 					}

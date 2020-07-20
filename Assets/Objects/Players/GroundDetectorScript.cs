@@ -34,7 +34,7 @@ public class GroundDetectorScript : MonoBehaviour
 	{
 		if(!ignoreTags.Contains(col.gameObject.tag))
 		{
-			Debug.Log(col.gameObject.tag);
+			//Debug.Log(col.gameObject.tag);
 			//Debug.Log(col.gameObject.name);
 			grounded = true;
 			ps.SetGrounded(grounded);
@@ -44,7 +44,7 @@ public class GroundDetectorScript : MonoBehaviour
 	{
 		if (!ignoreTags.Contains(col.gameObject.tag))
 		{
-			Debug.Log(col.gameObject.tag);
+			//Debug.Log(col.gameObject.tag);
 			grounded = false;
 			ps.SetGrounded(grounded);
 		}
