@@ -19,6 +19,8 @@ public class GameOver : MonoBehaviour
         panel.SetActive(true);
         reflector.SetActive(false);
         //Debug.Log("Game Over");
+        text.SetActive(true);
+        panel.SetActive(true);
         text.GetComponent<Animation>().Play();
         panel.GetComponent<Animation>().Play();
         StartCoroutine(WaitForCredits(7f));
@@ -27,6 +29,7 @@ public class GameOver : MonoBehaviour
     public IEnumerator WaitForCredits(float sec)
     {
         yield return new WaitForSeconds(sec);
+        credits.SetActive(true);
         credits.GetComponent<Animation>().Play();
     }
 }
