@@ -89,6 +89,22 @@ public class SwiatelkoScript : MonoBehaviour
         //DebugLineSpeed();
         rb.useGravity = false;
 
+        if(lineActive && GameObject.Find("Player 1").GetComponent<PlayerScript>().onLine)
+        {
+            foreach(SpriteRenderer linePart in GetComponentsInChildren<SpriteRenderer>())
+            {
+                linePart.color = Color.Lerp(linePart.color, Color.gray, 0.03f);
+            }
+        }
+        else
+        {
+            foreach (SpriteRenderer linePart in GetComponentsInChildren<SpriteRenderer>())
+            {
+                linePart.color = new Color(255, 255, 255, 255);
+            }
+        }
+
+
         if ((lineActive && Time.time > nextLineDrop && GameObject.Find("Player 1").GetComponent<PlayerScript>().onLine) || (canDropLine == false && GameObject.Find("Player 1").GetComponent<PlayerScript>().onLine))
         {
             lineActive = false;
