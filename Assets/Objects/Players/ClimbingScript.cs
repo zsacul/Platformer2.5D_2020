@@ -27,7 +27,7 @@ public class ClimbingScript : MonoBehaviour
                     other.gameObject.GetComponent<PlayerScript>().onLadder = true;
                     other.gameObject.GetComponent<Rigidbody>().useGravity = false;
                     other.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
-                    other.gameObject.transform.eulerAngles = new Vector3(0, -90, 0);
+                    other.gameObject.transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y - 90, transform.eulerAngles.z);
                     other.gameObject.GetComponentInChildren<Animator>().Play("LadderClimb");
                     other.gameObject.transform.position += new Vector3(0f, speed * Time.deltaTime, 0f);
                     other.gameObject.GetComponentInChildren<Animator>().SetFloat("up", 1.0f);
@@ -37,7 +37,7 @@ public class ClimbingScript : MonoBehaviour
                     other.gameObject.GetComponent<PlayerScript>().onLadder = true;
                     other.gameObject.GetComponent<Rigidbody>().useGravity = false;
                     other.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
-                    other.gameObject.transform.eulerAngles = new Vector3(0, -90, 0);
+                    other.gameObject.transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y - 90, transform.eulerAngles.z);
                     other.gameObject.GetComponentInChildren<Animator>().Play("LadderClimb");
                     other.gameObject.transform.position += new Vector3(0f, -speed * Time.deltaTime, 0f);
                     other.gameObject.GetComponentInChildren<Animator>().SetFloat("up", -1.0f);
