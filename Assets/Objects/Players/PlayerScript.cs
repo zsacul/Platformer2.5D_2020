@@ -274,7 +274,7 @@ public class PlayerScript : MonoBehaviour
 
                 currentLinePos = GetComponent<lineHoldHelper>().PickBestFitting();
 
-                if (Input.GetKey(KeyCode.UpArrow) && !Player2.GetComponent<SwiatelkoScript>().moving && Math.Abs(transform.position.y - Player2.transform.position.y) > 0.6f)
+                if (Input.GetKey(KeyCode.UpArrow) && !Player2.GetComponent<SwiatelkoScript>().moving && Math.Abs(transform.position.y - Player2.transform.position.y) > 0.76f)
                 {
                     anim.Play("RopeClimbUp");
                     transform.position += (Player2.transform.position - transform.position).normalized / 3 * Time.deltaTime;

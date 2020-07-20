@@ -217,7 +217,13 @@ public class WalkingEnemyScript : MonoBehaviour
             Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y, rayDirection.z + rayMult * i);
             Debug.DrawRay(transform.position, currentRayDirection * 20, Color.green);
         }
-    }
+
+		for (int i = 1; i <= 5; i++) // promienie w górę
+		{
+			Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y + rayMult * i, rayDirection.z);
+			Debug.DrawRay(transform.position, currentRayDirection * 20, Color.green);
+		}
+	}
 
 
 	bool BoyIsSeen()
@@ -262,6 +268,19 @@ public class WalkingEnemyScript : MonoBehaviour
 			if (Physics.Raycast(transform.position, currentRayDirection, out hit, Mathf.Infinity, seeMask))
 			{
 				
+				if (hit.transform.CompareTag("Player1"))
+				{
+					//Debug.Log("HERE 3");
+					return true;
+				}
+			}
+		}
+
+		for (int i = 1; i <= 5; i++) // promienie w górę
+		{
+			Vector3 currentRayDirection = new Vector3(rayDirection.x, rayDirection.y + rayMult * i, rayDirection.z);
+			if (Physics.Raycast(transform.position, currentRayDirection, out hit, Mathf.Infinity, seeMask))
+			{
 				if (hit.transform.CompareTag("Player1"))
 				{
 					//Debug.Log("HERE 3");
