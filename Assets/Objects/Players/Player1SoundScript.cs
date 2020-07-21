@@ -10,5 +10,9 @@ public class Player1SoundScript : MonoBehaviour
         AudioManager.Instance.PlaySoundOnce(AudioManager.Instance.Sounds.sRunning, this.gameObject, AudioManager.Instance.Sounds.mAnimations);
     }
 
+    public void ClimbSound()
+    {
+        AudioManager.Instance.PlaySoundOnce(AudioManager.Instance.Sounds.sClimbing, this.gameObject, AudioManager.Instance.Sounds.mAnimations);
+    }
 
 }

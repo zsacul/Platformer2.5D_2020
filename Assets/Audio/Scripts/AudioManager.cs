@@ -121,20 +121,21 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(IEnumForFade);
     }
 
-    ///fades out(if specified) current bgm and fades in the new one
+    ///fades out current bgm and fades in the new one
     ///can be used even if BGM quque is in use, it will just replace 
     ///the current BGM unless it's fading out, and after
     ///it's finished the next BGM from queue shall be played
-    public void PlayBGM(AudioClip BGM, float fadeInDuration = 1.0f, float fadeOutDuration = 1.0f)
+    public void PlayBGM(AudioClip BGM, float fadeInDuration = 3.0f, float fadeOutDuration = 5.0f)
     {
 
         if (src.isPlaying)
         {
-            if (!isBGMFadingOut)
+            if (isBGMFadingOut)
             {
-                IEnumerator enumerator = ChangeBGM(BGM, fadeInDuration, fadeOutDuration);
-                StartCoroutine(enumerator);
+                StopAllCoroutines();
             }
+            IEnumerator enumerator = ChangeBGM(BGM, fadeInDuration, fadeOutDuration);
+            StartCoroutine(enumerator);
         }
         else
         {
