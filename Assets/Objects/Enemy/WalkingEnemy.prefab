@@ -77,6 +77,7 @@ MonoBehaviour:
   cycleWalking: 0
   patrolAfterEnd: 0
   ladder: 0
+  anim: {fileID: 77923389221961292}
 --- !u!114 &4147788471477428247
 MonoBehaviour:
   m_ObjectHideFlags: 0

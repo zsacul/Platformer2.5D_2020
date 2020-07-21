@@ -90,7 +90,6 @@ public class WalkingEnemyScript : MonoBehaviour
 
     void Start()
     {
-        anim = GetComponent<Animator>();
 		GetPointsList();
         currentPoint = 0;
 		r = GetComponent<Renderer>();
