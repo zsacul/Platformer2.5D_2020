@@ -14,7 +14,8 @@ public class SwiatelkoScript : MonoBehaviour
 
     public bool moving;
 
-    public UnityEvent lineOnOff;
+    public UnityEvent lineOn;
+    public UnityEvent lineOff;
     public Animator lineAnim;
     public KeyCode actionKey;
     public float moveSpeed = 3f;
@@ -114,8 +115,8 @@ public class SwiatelkoScript : MonoBehaviour
             //rb.isKinematic = false;
             //StopSwing();
             nextLineDrop = Time.time; //+ lineCooldown;
-            if (lineOnOff != null)
-                lineOnOff.Invoke();
+            if (lineOff != null)
+                lineOff.Invoke();
         }
 
         if (Input.GetKeyDown(actionKey) && !inAction && canDropLine)
@@ -130,8 +131,8 @@ public class SwiatelkoScript : MonoBehaviour
                 nextLineDrop = Time.time + lineActiveTime;
             }
 
-            if (lineOnOff != null)
-                lineOnOff.Invoke();
+            if (lineOn != null)
+                lineOn.Invoke();
         }
     }
 

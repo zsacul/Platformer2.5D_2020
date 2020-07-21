@@ -73,7 +73,9 @@ MonoBehaviour:
     type: 3}
   BGMFadeOutDuration: 5
   BGMFadeInDuration: 3
-  shouldUseBgmQueue: 1
+  songsToPlayInThisLevel: []
+  playInRandomOrder: 1
+  playBGM: 1
 --- !u!114 &3741624401419730234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5dbf26e0a2dfba4eaf0e32e6c3b69ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sRunning: {fileID: 8300000, guid: 0dcaeefd229465e428b587dab47a1e6e, type: 3}
+  sRunning: {fileID: 8300000, guid: 59947fe28734f804c94b2711854a80a8, type: 3}
   sWalking: {fileID: 8300000, guid: 5180dfa5c312e724887294a77620f7e4, type: 3}
   sCrouchWalking: {fileID: 8300000, guid: 5180dfa5c312e724887294a77620f7e4, type: 3}
   sBGM1: {fileID: 8300000, guid: e01661719aa331145b56b4ac0c025901, type: 3}

@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 5892620280987951629}
   - component: {fileID: 5709433885558782375}
   - component: {fileID: 4978543030867679334}
+  - component: {fileID: 6228587932612774658}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player1
@@ -304,7 +305,18 @@ MonoBehaviour:
   actionKey: 13
   jumpEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6228587932612774658}
+        m_MethodName: Play
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   state: 0
   getting_power: 0
   climbing: 0
@@ -425,6 +437,22 @@ MonoBehaviour:
   canCatch: 0
   currentLinePart: {fileID: 0}
   lineParts: []
+--- !u!114 &6228587932612774658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3752391638338540728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4192506d0a7acc41bed5dbdf14a43b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: c7bce82737803234d9fd693e54d04968, type: 3}
+  locationOverride: {x: 0, y: 0, z: 0}
+  mixer: {fileID: 7457593260308747220, guid: e1e9b531752c08649b4bf81b1bafda9f, type: 2}
 --- !u!1 &3903813905389359015
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,7 +564,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4123026221554084262}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 915b24ab4e1bf224d984c128715858be, type: 3}
   m_Name: 
