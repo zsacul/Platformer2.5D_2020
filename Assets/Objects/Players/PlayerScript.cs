@@ -215,7 +215,7 @@ public class PlayerScript : MonoBehaviour
     }*/
     public void SetGrounded(bool gr) // function used by GroundDetector
     {
-        if (gr && landEvent != null)
+        if (!grounded && gr && landEvent != null)
             landEvent.Invoke();
         grounded = gr;
         escapingLine = false;
