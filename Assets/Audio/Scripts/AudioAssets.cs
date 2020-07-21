@@ -13,8 +13,12 @@ public class AudioAssets : MonoBehaviour
 {
     //sfx
     public AudioClip sRunning;
+    public AudioClip sClimbing;
     public AudioClip sWalking;
     public AudioClip sCrouchWalking;
+
+    public AudioClip sEnemyRunning;
+    public AudioClip sEnemyWalking;
 
     //background music
     public AudioClip sBGM1;

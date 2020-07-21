@@ -37,6 +37,7 @@ public class PlayerScript : MonoBehaviour
     public KeyCode actionKey;
 
     public UnityEvent jumpEvent;
+    public UnityEvent landEvent;
 
     private Rigidbody rb;
     private lineHoldHelper lineHoldHelp;
@@ -216,6 +217,7 @@ public class PlayerScript : MonoBehaviour
     {
         grounded = gr;
         escapingLine = false;
+        
         /*if (grounded)
             anim.SetTrigger("ground");
             */
