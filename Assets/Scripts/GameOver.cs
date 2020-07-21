@@ -31,5 +31,14 @@ public class GameOver : MonoBehaviour
         yield return new WaitForSeconds(sec);
         credits.SetActive(true);
         credits.GetComponent<Animation>().Play();
+        StartCoroutine(WaitForEnd(21f));
+    }
+
+    public IEnumerator WaitForEnd(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        Application.Quit();
+        Debug.Log("Game just ended");
+
     }
 }
