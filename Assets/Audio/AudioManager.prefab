@@ -92,7 +92,7 @@ MonoBehaviour:
   sClimbing: {fileID: 8300000, guid: 215fc83d82260a946855aa39033e12fb, type: 3}
   sWalking: {fileID: 8300000, guid: 5180dfa5c312e724887294a77620f7e4, type: 3}
   sCrouchWalking: {fileID: 8300000, guid: 5180dfa5c312e724887294a77620f7e4, type: 3}
-  sEnemyRunning: {fileID: 8300000, guid: 0dcaeefd229465e428b587dab47a1e6e, type: 3}
+  sEnemyRunning: {fileID: 8300000, guid: 4e8e92f583a79ee40b46646a2e9b1116, type: 3}
   sEnemyWalking: {fileID: 8300000, guid: 5180dfa5c312e724887294a77620f7e4, type: 3}
   sBGM1: {fileID: 8300000, guid: e01661719aa331145b56b4ac0c025901, type: 3}
   sBGM2: {fileID: 0}

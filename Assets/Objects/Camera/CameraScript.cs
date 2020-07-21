@@ -18,6 +18,7 @@ public class CameraScript : MonoBehaviour
 	WallCollisionDetector bottomScript;
 
 	public GameObject wallPrefab;
+	public GameObject microphone;
 	private Transform player1, player2;
 	
 	public bool wallCollision = false;
@@ -234,6 +235,9 @@ public class CameraScript : MonoBehaviour
 			//UnityEngine.Debug.Log("forward");
 			//transform.Translate(new Vector3(target.x - transform.position.x, target.y - transform.position.y, 10f * Time.deltaTime * (zPosition - transform.position.z)));
 		}
+		Vector3 tempPos = transform.position;
+		tempPos.z = -1;
+		microphone.transform.position = tempPos;
 
     }
 }
