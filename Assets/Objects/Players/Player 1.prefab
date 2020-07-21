@@ -317,6 +317,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  landEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6228587932612774658}
+        m_MethodName: Play
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   state: 0
   getting_power: 0
   climbing: 0
@@ -451,6 +465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clips:
   - {fileID: 8300000, guid: c7bce82737803234d9fd693e54d04968, type: 3}
+  - {fileID: 8300000, guid: 9b556200812cc0042b3037ff6ff33dc0, type: 3}
   locationOverride: {x: 0, y: 0, z: 0}
   mixer: {fileID: 7457593260308747220, guid: e1e9b531752c08649b4bf81b1bafda9f, type: 2}
 --- !u!1 &3903813905389359015
@@ -776,6 +791,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9200317518844036703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5751379776621840752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 915b24ab4e1bf224d984c128715858be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8239059086570560588
 GameObject:
   m_ObjectHideFlags: 0

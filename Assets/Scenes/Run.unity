@@ -10337,6 +10337,11 @@ PrefabInstance:
       propertyPath: cycleWalking
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 94616073661237026, guid: 7a9ea7b15b4f56e48a2afe7ca6fcc0a5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6197218806657931169, guid: 7a9ea7b15b4f56e48a2afe7ca6fcc0a5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14482,21 +14487,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3741624401419730234, guid: 6e3354d23953a6b488f83aa3e8164319,
-        type: 3}
-      propertyPath: sBGM2
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741624401419730234, guid: 6e3354d23953a6b488f83aa3e8164319,
-        type: 3}
-      propertyPath: sBGM3
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741624401419730234, guid: 6e3354d23953a6b488f83aa3e8164319,
-        type: 3}
-      propertyPath: sBGMAmbient1
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5594572841768593414, guid: 6e3354d23953a6b488f83aa3e8164319,
         type: 3}
       propertyPath: m_Name
@@ -14565,7 +14555,7 @@ PrefabInstance:
     - target: {fileID: 7351558354695994989, guid: 6e3354d23953a6b488f83aa3e8164319,
         type: 3}
       propertyPath: songsToPlayInThisLevel.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7351558354695994989, guid: 6e3354d23953a6b488f83aa3e8164319,
         type: 3}
@@ -17426,6 +17416,11 @@ PrefabInstance:
       propertyPath: cycleWalking
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 94616073661237026, guid: 7a9ea7b15b4f56e48a2afe7ca6fcc0a5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6197218806657931169, guid: 7a9ea7b15b4f56e48a2afe7ca6fcc0a5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19588,10 +19583,10 @@ Transform:
   - {fileID: 355525800}
   - {fileID: 1290430384}
   - {fileID: 1317016050}
-  - {fileID: 1116343300}
-  - {fileID: 158808126}
   - {fileID: 234700899}
+  - {fileID: 158808126}
   - {fileID: 785998677}
+  - {fileID: 1116343300}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
