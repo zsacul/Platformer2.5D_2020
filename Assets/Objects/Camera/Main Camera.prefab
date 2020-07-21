@@ -105,6 +105,7 @@ MonoBehaviour:
   smoothSpeed: 0.07
   wallPrefab: {fileID: 7188537265178729070, guid: 02e00fcb457d75e46b03361e53f0ce43,
     type: 3}
+  microphone: {fileID: 3455026002322701956}
   wallCollision: 0
   bufferCollision: 0
   falling: 0

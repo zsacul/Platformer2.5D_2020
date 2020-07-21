@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clipToPlay: {fileID: 8300000, guid: c8903ad5f45135d46bf9555e07ed1d34, type: 3}
-  mixer: {fileID: -5698640081988524619, guid: e1e9b531752c08649b4bf81b1bafda9f, type: 2}
+  mixer: {fileID: 2931148618739298064, guid: e1e9b531752c08649b4bf81b1bafda9f, type: 2}
 --- !u!82 &-7155875540008023355
 AudioSource:
   m_ObjectHideFlags: 0
@@ -256,7 +256,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.667
   m_Pitch: 1
   Loop: 0
   Mute: 0
