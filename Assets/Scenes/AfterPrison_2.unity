@@ -16142,6 +16142,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 966083065}
+  - {fileID: 1878150625}
+  - {fileID: 1032128307}
   m_Father: {fileID: 0}
   m_RootOrder: 43
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21198,10 +21200,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storyEvent:
-    title: TEST
+    title: BOY
     texts:
-    - TESTOWY EVENT
-    - Mozna go kopiowac i ustawiac gdzie potrzeba
+    - So who are you?
+    - And what do you want from me?
   player: {fileID: 1798134119}
 --- !u!1001 &968436355
 PrefabInstance:
@@ -24012,6 +24014,54 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1032128306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1032128307}
+  - component: {fileID: 1032128308}
+  m_Layer: 0
+  m_Name: Event (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1032128307
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032128306}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 50.77, y: -14.29, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 638871127}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1032128308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032128306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6cd62265910ad48a13bf334efb3f35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storyEvent:
+    title: LIGHT
+    texts:
+    - Let's find way through this building, try not to get lost...
+  player: {fileID: 1798134119}
 --- !u!1 &1033894707
 GameObject:
   m_ObjectHideFlags: 0
@@ -38149,6 +38199,57 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1876762627}
   m_Mesh: {fileID: 555864176}
+--- !u!1 &1878150624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1878150625}
+  - component: {fileID: 1878150626}
+  m_Layer: 0
+  m_Name: Event (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1878150625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878150624}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.64, y: -21.99, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 638871127}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1878150626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878150624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b6cd62265910ad48a13bf334efb3f35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storyEvent:
+    title: LIGHT
+    texts:
+    - 'I''m something like side effect of an old experiment. '
+    - "I'm taking you to the lab where this happened.\n I tell you more when we get
+      there, I promise."
+    - But now, we're still not safe. Let's get out of  this place.
+  player: {fileID: 1798134119}
 --- !u!1 &1890403326
 GameObject:
   m_ObjectHideFlags: 0
