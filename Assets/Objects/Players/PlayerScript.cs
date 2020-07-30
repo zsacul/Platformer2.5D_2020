@@ -283,7 +283,6 @@ public class PlayerScript : MonoBehaviour
                 //transform.position = new Vector3( lineHoldHelp.currentLinePart.transform.position.x, transform.position.y, transform.position.z);
 
                 transform.rotation = Quaternion.Lerp(transform.rotation, other.gameObject.transform.rotation, rotationSmooth);
-
                 ToLine();
 
                 currentLinePos = GetComponent<lineHoldHelper>().PickBestFitting();

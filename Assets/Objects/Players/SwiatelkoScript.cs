@@ -90,6 +90,20 @@ public class SwiatelkoScript : MonoBehaviour
         //DebugLineSpeed();
         rb.useGravity = false;
 
+        if(lineActive && canDropLine == false)
+        {
+            lineActive = false;
+            if(GameObject.Find("Player 1").GetComponent<PlayerScript>().onLine)
+                GameObject.Find("Player 1").GetComponent<PlayerScript>().ToGround();
+            //Debug.Log("B");
+            line.SetActive(lineActive);
+            //rb.isKinematic = false;
+            //StopSwing();
+            nextLineDrop = Time.time; //+ lineCooldown;
+            if (lineOff != null)
+                lineOff.Invoke();
+        }
+
         if(lineActive && GameObject.Find("Player 1").GetComponent<PlayerScript>().onLine)
         {
             foreach(SpriteRenderer linePart in GetComponentsInChildren<SpriteRenderer>())
@@ -110,7 +124,7 @@ public class SwiatelkoScript : MonoBehaviour
         {
             lineActive = false;
             GameObject.Find("Player 1").GetComponent<PlayerScript>().ToGround();
-            Debug.Log("B");
+            //Debug.Log("B");
             line.SetActive(lineActive);
             //rb.isKinematic = false;
             //StopSwing();
