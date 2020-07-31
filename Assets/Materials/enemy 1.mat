@@ -8,19 +8,19 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: enemy 1
-  m_Shader: {fileID: 4800000, guid: 7f50d1ec77e2cc9459ca9d36924ffc53, type: 3}
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: AO_ON BACKSOLID BOTTOMSOLID DONTMIX FRONTSOLID LEFTSOLID RIGHTSOLID
-    TOPSOLID _ALPHAPREMULTIPLY_ON _AOUV_UV0 _EMISSION _GRADIENTSPACE_WORLD_SPACE
-    _GRADSETTINGS_B_USE_GLOBAL _GRADSETTINGS_D_USE_GLOBAL _GRADSETTINGS_F_USE_GLOBAL
-    _GRADSETTINGS_L_USE_GLOBAL _GRADSETTINGS_R_USE_GLOBAL _GRADSETTINGS_T_USE_GLOBAL
-    _LMAPBLENDINGMODE_ADD _NORMALMAP_TANGENT_SPACE _SHADING_B_VERTEX_COLOR _SHADING_D_VERTEX_COLOR
-    _SHADING_F_VERTEXCOLOR _SHADING_L_VERTEX_COLOR _SHADING_R_VERTEX_COLOR _SHADING_T_VERTEX_COLOR
+    TOPSOLID _ALPHATEST_ON _AOUV_UV0 _EMISSION _GRADIENTSPACE_WORLD_SPACE _GRADSETTINGS_B_USE_GLOBAL
+    _GRADSETTINGS_D_USE_GLOBAL _GRADSETTINGS_F_USE_GLOBAL _GRADSETTINGS_L_USE_GLOBAL
+    _GRADSETTINGS_R_USE_GLOBAL _GRADSETTINGS_T_USE_GLOBAL _LMAPBLENDINGMODE_ADD _NORMALMAP_TANGENT_SPACE
+    _SHADING_B_VERTEX_COLOR _SHADING_D_VERTEX_COLOR _SHADING_F_VERTEXCOLOR _SHADING_L_VERTEX_COLOR
+    _SHADING_R_VERTEX_COLOR _SHADING_T_VERTEX_COLOR
   m_LightmapFlags: 1
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 3000
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2450
   stringTagMap:
-    RenderType: Transparent
+    RenderType: TransparentCutout
   disabledShaderPasses:
   - DistortionVectors
   - MOTIONVECTORS
@@ -214,7 +214,7 @@ Material:
     - _DontMix: 1
     - _DoubleSidedEnable: 0
     - _DoubleSidedNormalMode: 1
-    - _DstBlend: 10
+    - _DstBlend: 0
     - _EmissiveColorMode: 1
     - _EmissiveExposureWeight: 1
     - _EmissiveIntensity: 1
@@ -321,7 +321,7 @@ Material:
     - _SpecularAAThreshold: 0.2
     - _SpecularHighlights: 1
     - _SpecularOcclusionMode: 1
-    - _SrcBlend: 5
+    - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 32
     - _StencilRefDistortionVec: 64
@@ -356,7 +356,7 @@ Material:
     - _ZTestGBuffer: 4
     - _ZTestModeDistortion: 4
     - _ZTestTransparent: 4
-    - _ZWrite: 0
+    - _ZWrite: 1
     - _ZWriteOverride: 0
     m_Colors:
     - _AOColor: {r: 0, g: 0, b: 0, a: 1}
@@ -379,7 +379,7 @@ Material:
     - _Color_Fog: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
-    - _EmissionColor: {r: 1.5772328, g: 0.30725315, b: 0.30725315, a: 1}
+    - _EmissionColor: {r: 2.9960785, g: 0, b: 0, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _GizmoPosition_B: {r: 0, g: 0, b: 10, a: 10}

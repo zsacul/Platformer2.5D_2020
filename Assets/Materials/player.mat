@@ -82,7 +82,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DontMix: 0
     - _DstBlend: 10
-    - _Fade: 0.8
+    - _Fade: 0.9
     - _FogHeight: 10
     - _FogYStartPos: 0
     - _GlossMapScale: 1
