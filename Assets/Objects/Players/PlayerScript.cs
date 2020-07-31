@@ -111,8 +111,11 @@ public class PlayerScript : MonoBehaviour
             xMov = Input.GetAxis("Horizontal");
             if (Math.Abs(xMov) > 0 && onLadder)
             {
-                ToGround();
-                anim.Play("StandJump");
+                if (!Input.GetKey(up) && !Input.GetKey(down))
+                {
+                    ToGround();
+                    anim.Play("StandJump");
+                }
             }
             if (Input.GetKeyDown(jumpButton))
                 jump = true;

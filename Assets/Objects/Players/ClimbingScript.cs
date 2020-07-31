@@ -20,8 +20,8 @@ public class ClimbingScript : MonoBehaviour
     {
     	if (other.gameObject.CompareTag("Player1"))
     	{
-            if (Math.Abs(other.gameObject.GetComponent<PlayerScript>().xMov) == 0)
-            {
+            //if (Math.Abs(other.gameObject.GetComponent<PlayerScript>().xMov) == 0)
+            //{
                 if (Input.GetKey(players[0].up))
                 {
                     other.gameObject.GetComponent<PlayerScript>().onLadder = true;
@@ -52,7 +52,7 @@ public class ClimbingScript : MonoBehaviour
                 {
                     other.gameObject.GetComponentInChildren<Animator>().SetFloat("up", 0.0f);
                 }
-            }
+            //}
     	}
 		if(other.gameObject.CompareTag("Enemy"))
 		{
