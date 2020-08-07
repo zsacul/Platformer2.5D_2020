@@ -40269,9 +40269,11 @@ MonoBehaviour:
   storyEvent:
     title: LIGHT
     texts:
-    - 'I''m something like side effect of an old experiment. '
-    - "I'm taking you to the lab where this happened.\n I tell you more when we get
-      there, I promise."
+    - I'm something like side effect of an old experiment.
+    - 'I''m taking you to the lab where this happened.
+
+      I tell you more when
+      we get there, I promise.'
     - But now, we're still not safe. Let's get out of  this place.
   player: {fileID: 1798134119}
 --- !u!1 &1890403326

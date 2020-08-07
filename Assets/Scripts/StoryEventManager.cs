@@ -55,7 +55,10 @@ public class StoryEventManager : MonoBehaviour
 
         foreach (char letter in statemnet.ToCharArray())
         {
-            storyText.text += letter;
+            if (letter == ' ')
+                storyText.text += " ";
+            else
+                storyText.text += letter;
         }
     }
 
