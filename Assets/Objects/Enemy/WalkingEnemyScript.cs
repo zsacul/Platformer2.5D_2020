@@ -403,7 +403,14 @@ public class WalkingEnemyScript : MonoBehaviour
 		}
 		if(col.gameObject.CompareTag("Player1"))
 		{
-            col.gameObject.GetComponent<PlayerScript>().Cought();
+			Vector3 point = transform.position;
+			Vector3 point2 = col.gameObject.transform.position;
+			float diff = 1f;
+			bool x = Mathf.Abs(point2.x - point.x) < diff;
+			bool y = Mathf.Abs(point2.y - point.y) < diff;
+			bool z = Mathf.Abs(point2.z - point.z) < diff;
+			if (x && y && z)
+				col.gameObject.GetComponent<PlayerScript>().Cought();
 		}
 	}
 	
