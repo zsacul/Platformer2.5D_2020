@@ -210,12 +210,12 @@ public class CameraScript : MonoBehaviour
 	
 	void Update()
     {
-		if (bottomScript.falling && !ps.grounded && !ps.onLine)
+		if (bottomScript.falling && !ps.grounded && !ps.onLine && !ps.onLadder)
 		{ 			
 			falling = true;
         }
 		//if(ps.grounded || ps.onLine || !bottomScript.falling)
-		else
+		else if(ps.grounded || ps.onLine || ps.onLadder)
         {
 			falling = false;
         }

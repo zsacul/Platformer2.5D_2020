@@ -24,6 +24,7 @@ TagManager:
   - CameraWall
   - CameraWallBuffer
   - LineZone
+  - EnemyDetector
   layers:
   - Default
   - TransparentFX
