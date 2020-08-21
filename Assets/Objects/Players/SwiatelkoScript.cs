@@ -27,6 +27,7 @@ public class SwiatelkoScript : MonoBehaviour
 
     Rigidbody rb;
 
+    public Material ColorForLine;
     public Rigidbody[] lineParts;
 
     void Start()
@@ -106,17 +107,11 @@ public class SwiatelkoScript : MonoBehaviour
 
         if(lineActive && GameObject.Find("Player 1").GetComponent<PlayerScript>().onLine)
         {
-            foreach(SpriteRenderer linePart in GetComponentsInChildren<SpriteRenderer>())
-            {
-                linePart.color = Color.Lerp(linePart.color, Color.gray, 0.03f);
-            }
+            ColorForLine.color = new Color(ColorForLine.color.r, ColorForLine.color.g, ColorForLine.color.b, ColorForLine.color.a * 0.99f);
         }
         else
         {
-            foreach (SpriteRenderer linePart in GetComponentsInChildren<SpriteRenderer>())
-            {
-                linePart.color = new Color(255, 255, 255, 255);
-            }
+            ColorForLine.color = new Color(ColorForLine.color.r, ColorForLine.color.g, ColorForLine.color.b, 3.5f);
         }
 
 

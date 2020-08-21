@@ -595,6 +595,7 @@ MonoBehaviour:
   lineActive: 0
   canDropLine: 0
   inAction: 0
+  ColorForLine: {fileID: 2100000, guid: ea87620a7228b7e45bc96fc818f28fe8, type: 2}
   lineParts:
   - {fileID: 1554276801629520102}
   - {fileID: 1554276802332871738}
