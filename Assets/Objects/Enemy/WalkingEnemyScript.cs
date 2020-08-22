@@ -43,7 +43,7 @@ public class WalkingEnemyScript : MonoBehaviour
 	Renderer r;
 	Rigidbody rb;
 
-	public GameObject boyCollider;
+	//public GameObject boyCollider;
 
 	public Animator anim;
 	void SetSound(State newState)
@@ -104,7 +104,7 @@ public class WalkingEnemyScript : MonoBehaviour
 			//UnityEngine.Debug.Log(wall.transform.position);
 			Physics.IgnoreCollision(wall.GetComponent<Collider>(), GetComponent<Collider>());
 		}
-		Physics.IgnoreCollision(boy.GetComponent<Collider>(), GetComponent<Collider>());
+		Physics.IgnoreCollision(boy.GetComponent<CapsuleCollider>(), GetComponent<Collider>());
 	}
 
     // Update is called once per frame
@@ -407,24 +407,10 @@ public class WalkingEnemyScript : MonoBehaviour
 		}
 		/*if(col.gameObject.CompareTag("Player1"))
 		{
-			Vector3 point = transform.position;
-			Vector3 point2 = col.gameObject.transform.position;
-			bool x = Mathf.Abs(point2.x - point.x) < 1f;
-			bool y = Mathf.Abs(point2.y - point.y) < 5f;
-			bool z = Mathf.Abs(point2.z - point.z) < 1f;
-			if (x && y && z)
-				col.gameObject.GetComponent<PlayerScript>().Cought();
+			Debug.Log(col.gameObject.tag);
+			Debug.Log(col.gameObject.name);
 		}*/
-		if(col.gameObject == boyCollider)
-        {
-			Vector3 point = transform.position;
-			Vector3 point2 = col.gameObject.transform.position;
-			bool x = Mathf.Abs(point2.x - point.x) < 1f;
-			bool y = Mathf.Abs(point2.y - point.y) < 5f;
-			bool z = Mathf.Abs(point2.z - point.z) < 1f;
-			if (x && y && z)
-				col.gameObject.GetComponent<PlayerScript>().Cought();
-		}
+		
 	}
 	
 	void OnTriggerEnter(Collider col)
@@ -438,6 +424,12 @@ public class WalkingEnemyScript : MonoBehaviour
 		{
 			stairs = true;
 			stScript = col.gameObject.GetComponent<stairScript>();
+		}
+
+		if (col.gameObject.CompareTag("EnemyDetector"))
+		{
+			Debug.Log("enemyDetector");
+			boy.GetComponent<PlayerScript>().Cought();
 		}
 	}
 	
