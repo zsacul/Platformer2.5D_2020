@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour
     public bool onLadder;
     public GameObject Player2;
     Vector3 currentLinePos;
+    int currentLinePartIndex;
 
     float cooldown = 0.0f;
     public float normalSpeed;
@@ -270,6 +271,14 @@ public class PlayerScript : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }*/
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "line")
+        {
+            currentLinePartIndex = GetComponent<lineHoldHelper>().PickBestFitting();
+        }
+    }
+
     void OnTriggerStay(Collider other)
     {
         float rotationSmooth = 0.5f;
@@ -287,10 +296,7 @@ public class PlayerScript : MonoBehaviour
 
                 transform.rotation = Quaternion.Lerp(transform.rotation, other.gameObject.transform.rotation, rotationSmooth);
                 ToLine();
-
-                currentLinePos = GetComponent<lineHoldHelper>().PickBestFitting();
-
-                if (Input.GetKey(KeyCode.UpArrow) && !Player2.GetComponent<SwiatelkoScript>().moving && Math.Abs(transform.position.y - Player2.transform.position.y) > 0.76f)
+                /*if (Input.GetKey(KeyCode.UpArrow) && !Player2.GetComponent<SwiatelkoScript>().moving && Math.Abs(transform.position.y - Player2.transform.position.y) > 0.76f)
                 {
                     anim.Play("RopeClimbUp");
                     transform.position += (Player2.transform.position - transform.position).normalized / 3 * Time.deltaTime;
@@ -305,10 +311,10 @@ public class PlayerScript : MonoBehaviour
                     currentLinePos = new Vector3(0, -100, 0);
                 }
                 else
-                {
-                    anim.Play("RopeIdle");
-                    transform.position = currentLinePos;
-                }
+                {*/
+                anim.Play("RopeIdle");
+                transform.position = Player2.GetComponent<SwiatelkoScript>().GetLinepartPos(currentLinePartIndex);
+                //}
 
                 if (xMov < 0)//swinging rope
                     other.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.left * 100f);

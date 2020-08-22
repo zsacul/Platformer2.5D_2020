@@ -51,26 +51,34 @@ public class SwiatelkoScript : MonoBehaviour
 
     }
 
-
-    IEnumerator StopSwingRoutine()
+    public Vector3 GetLinepartPos(int nr)
     {
-        for (int k = 0; k < 2; k++)
+        int it = 0;
+        Vector3 ret = lineParts[lineParts.Length - 1].transform.position;
+
+        foreach(Rigidbody part in lineParts)
         {
-            for (int i = 0; i < 5; i++)
+            if (it == nr)
             {
-                foreach (Rigidbody part in lineParts)
-                {
-                    part.velocity = new Vector3(0f, 0f, 0f);
-                    //part.AddForce(new Vector3(0f, -100f, 0f));
-                }
+                ret = part.transform.position;
+                return ret;
             }
-            yield return new WaitForSeconds(0.1f);
+            it += 1;
         }
+        return ret;
     }
 
     public void StopSwing()
     {
-        StartCoroutine(StopSwingRoutine());
+        int it = 1;
+        foreach (Rigidbody part in lineParts)
+        {
+            part.transform.localPosition = new Vector3(0f, -0.25f * it, 0f);
+            part.velocity = new Vector3(0f, 0f, 0f);
+            part.angularVelocity = new Vector3(0f, 0f, 0f);
+            part.transform.eulerAngles = new Vector3(0f, 0f, 0f);
+            it += 1;
+        }
     }
 
     public void DebugLineSpeed()
@@ -91,7 +99,7 @@ public class SwiatelkoScript : MonoBehaviour
         //DebugLineSpeed();
         rb.useGravity = false;
 
-        if(lineActive && canDropLine == false)
+        if((lineActive && canDropLine == false) || (lineActive && Input.GetKeyDown(actionKey)))
         {
             lineActive = false;
             if(GameObject.Find("Player 1").GetComponent<PlayerScript>().onLine)
@@ -99,7 +107,7 @@ public class SwiatelkoScript : MonoBehaviour
             //Debug.Log("B");
             line.SetActive(lineActive);
             //rb.isKinematic = false;
-            //StopSwing();
+            StopSwing();
             nextLineDrop = Time.time; //+ lineCooldown;
             if (lineOff != null)
                 lineOff.Invoke();

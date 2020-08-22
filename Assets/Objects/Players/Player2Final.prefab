@@ -1163,6 +1163,11 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5463808582335638508, guid: 7456c89a77355ee36bfe11a011dc26f7,
+        type: 3}
+      propertyPath: m_Mass
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 5463808582335638510, guid: 7456c89a77355ee36bfe11a011dc26f7,
         type: 3}
       propertyPath: m_Size.x
@@ -1358,10 +1363,20 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5463808582657956257, guid: 7456c89a77355ee36bfe11a011dc26f7,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5463808582824726900, guid: 7456c89a77355ee36bfe11a011dc26f7,
         type: 3}
       propertyPath: m_CollisionDetection
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463808582824726900, guid: 7456c89a77355ee36bfe11a011dc26f7,
+        type: 3}
+      propertyPath: m_Mass
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5463808582824726902, guid: 7456c89a77355ee36bfe11a011dc26f7,
         type: 3}
@@ -1468,6 +1483,11 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5463808582889713155, guid: 7456c89a77355ee36bfe11a011dc26f7,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5463808582889713157, guid: 7456c89a77355ee36bfe11a011dc26f7,
         type: 3}
       propertyPath: m_Size.x
@@ -1558,10 +1578,20 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5463808582940843389, guid: 7456c89a77355ee36bfe11a011dc26f7,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5463808582981606774, guid: 7456c89a77355ee36bfe11a011dc26f7,
         type: 3}
       propertyPath: m_CollisionDetection
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463808582981606774, guid: 7456c89a77355ee36bfe11a011dc26f7,
+        type: 3}
+      propertyPath: m_Mass
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5463808582981606776, guid: 7456c89a77355ee36bfe11a011dc26f7,
         type: 3}
@@ -1628,6 +1658,11 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5463808583974585170, guid: 7456c89a77355ee36bfe11a011dc26f7,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5463808583974585172, guid: 7456c89a77355ee36bfe11a011dc26f7,
         type: 3}
       propertyPath: m_Size.x
@@ -1693,6 +1728,11 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5463808583977461552, guid: 7456c89a77355ee36bfe11a011dc26f7,
+        type: 3}
+      propertyPath: m_Mass
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 5463808583977461554, guid: 7456c89a77355ee36bfe11a011dc26f7,
         type: 3}
       propertyPath: m_Size.x
@@ -1747,6 +1787,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CollisionDetection
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463808583978342704, guid: 7456c89a77355ee36bfe11a011dc26f7,
+        type: 3}
+      propertyPath: m_Mass
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5463808583978342705, guid: 7456c89a77355ee36bfe11a011dc26f7,
         type: 3}

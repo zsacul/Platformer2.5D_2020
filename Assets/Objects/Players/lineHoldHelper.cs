@@ -12,18 +12,18 @@ public class lineHoldHelper : MonoBehaviour
 
     public List<GameObject> lineParts;
 
-    public Vector3 PickBestFitting()
+    public int PickBestFitting()
     {
         float bestDist = 1000.0f;
-        Vector3 ret = new Vector3();
-
+        int ret = 0, it = 0;
         foreach(GameObject part in lineParts)
         {
             if(Vector3.Distance(transform.position, part.transform.position) < bestDist)
             {
                 bestDist = Vector3.Distance(transform.position, part.transform.position);
-                ret = part.transform.position;
+                ret = it;
             }
+            it += 1;
         }
         return ret;
     }
